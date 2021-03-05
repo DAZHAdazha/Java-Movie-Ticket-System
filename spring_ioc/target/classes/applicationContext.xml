@@ -3,5 +3,11 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="userDao" class="com.study.dao.impl.UserDaoImpl" scope="singleton"/>
+<!--    无参构造-->
+<!--    <bean id="userDao" class="com.study.dao.impl.UserDaoImpl" scope="singleton" init-method="init" destroy-method="destroy"/>-->
+<!--    静态工厂-->
+<!--    <bean id="userDao" class="com.study.factory.StaticFactory" factory-method="getUserDao"/>-->
+<!--    动态工厂-->
+    <bean id="factory" class="com.study.factory.DynamicFactory"/>
+    <bean id="userDao" factory-bean="factory" factory-method="getUserDao"/>
 </beans>
