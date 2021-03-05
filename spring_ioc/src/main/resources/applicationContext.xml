@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!--    无参构造(最常用)-->
+<!--    初始化方法用来初始还参数-->
+<!--    <bean id="userDao" class="com.study.dao.impl.UserDaoImpl" scope="singleton" init-method="init" destroy-method="destroy"/>-->
+<!--    静态工厂-->
+<!--    <bean id="userDao" class="com.study.factory.StaticFactory" factory-method="getUserDao"/>-->
+<!--    动态工厂-->
+<!--    创建工厂对象-->
+    <bean id="factory" class="com.study.factory.DynamicFactory"/>
+<!--    从工厂中获取对象-->
+    <bean id="userDao" factory-bean="factory" factory-method="getUserDao"/>
+</beans>
