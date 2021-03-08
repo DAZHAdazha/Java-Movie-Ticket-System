@@ -1,2 +1,3 @@
+com.study.config.SpringConfiguration=org.springframework.stereotype.Component
 com.study.dao.impl.UserDaoImpl=org.springframework.stereotype.Component
 com.study.service.impl.UserServiceImpl=org.springframework.stereotype.Component
