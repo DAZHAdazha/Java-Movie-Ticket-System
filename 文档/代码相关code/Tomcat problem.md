@@ -1,7 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE en-export SYSTEM "http://xml.evernote.com/pub/evernote-export2.dtd">
-<en-export export-date="20210310T100718Z" application="Evernote/Windows" version="6.x">
-<note><title>if this error appears in the process of Tomcat deployment.</title><content><![CDATA[<!DOCTYPE en-note SYSTEM 'http://xml.evernote.com/pub/enml2.dtd'><en-note><div style="font-size: 14px; margin: 0; padding: 0; width: 100%;"><p style="line-height: 160%; box-sizing: content-box; margin: 10px 0; color: #333;">if this error appears in the process of Tomcat deployment.</p>
-<p style="line-height: 160%; box-sizing: content-box; margin: 10px 0; color: #333;"><img src="Tomcatp1.png" style="line-height: 160%; margin: 4px 0 10px; box-sizing: border-box; vertical-align: top; max-width: 100%;"/></p>
-<p style="line-height: 160%; box-sizing: content-box; margin: 10px 0; color: #333;">using compile artifact can solve it.</p>
-</div><center style='display:none !important;visibility:collapse !important;height:0 !important;white-space:nowrap;width:100%;overflow:hidden'>%0A%EF%BB%BF%EF%BB%BF%EF%BB%BF%EF%BB%BF%EF%BB%BF%0Aif%20this%20error%20appears%20in%20the%20process%20of%20Tomcat%20deployment.%0A%0A%0A!%5Bavatar%5D(Tomcatp1.png)%0A%0A%0Ausing%20compile%20artifact%20can%20solve%20it.%0A%0A%0A%0A%0A%0A%0A%0A%0A%0A%0A%0A%0A%0A%0A%0A</center></en-note>]]></content><created>20210310T095451Z</created><updated>20210310T100622Z</updated><note-attributes><author>沉</author><source>desktop.win</source><source-url>https://www.jianshu.com/p/280c6a6f2594</source-url><source-application>yinxiang.win32</source-application><content-class>yinxiang.markdown</content-class></note-attributes></note></en-export>
+if this error appears in the process of Tomcat deployment.
+
+![avatar](Tomcatp1.png)
+
+using compile artifact can solve it.
