@@ -100,5 +100,8 @@
     <orderEntry type="library" name="Maven: org.wildfly.swarm:request-controller:1.0.0.Final" level="project" />
     <orderEntry type="library" name="Maven: org.wildfly.swarm:request-controller-api:1.0.0.Final" level="project" />
     <orderEntry type="library" name="Maven: org.wildfly.swarm:request-controller-modules:1.0.0.Final" level="project" />
+    <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-core:2.9.3" level="project" />
+    <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.9.3" level="project" />
+    <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.9.3" level="project" />
   </component>
 </module>
