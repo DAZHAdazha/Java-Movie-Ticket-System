@@ -2,8 +2,10 @@ package com.spring_mvc.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.spring_mvc.domain.User;
+import com.spring_mvc.domain.VO;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -12,6 +14,9 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.lang.reflect.Array;
+import java.util.Arrays;
+import java.util.List;
 
 @Controller
 // @RequestMapping(value = "/user", method = RequestMethod.GET, params = {"username"})
@@ -87,5 +92,57 @@ public class UserController {
         ObjectMapper objectMapper = new ObjectMapper();
         String json = objectMapper.writeValueAsString(user);
         return json;
+    }
+    // 返回对象或集合
+    // 期望spring自动将user转换为json
+    @RequestMapping("/quick10")
+    @ResponseBody
+    public User save10() throws IOException {
+        User user = new User();
+        user.setAge(28);
+        user.setName("admin2");
+        return user;
+    }
+
+    @RequestMapping("/quick11")
+    @ResponseBody
+    //localhost:8080/user/quick11?name=admin&age=18
+    public void save11(String name,int age){
+        //获取数据
+        System.out.println("Username: " + name);
+        System.out.println("Age     : " + age);
+    }
+
+    @RequestMapping("/quick12")
+    @ResponseBody
+    //POJO类型自动封装
+    public void save12(User user){
+        //获取数据
+        System.out.println(user.toString());
+    }
+
+    @RequestMapping("/quick13")
+    @ResponseBody
+    //获得数组类型参数
+    //user/quick13?strs=aaa&strs=ccc
+    public void save13(String[] strs){
+        //获取数据
+
+        System.out.println(Arrays.asList(strs));
+    }
+
+    @RequestMapping("/quick14")
+    @ResponseBody
+    //获得集合类型参数,先包装到POJO中
+    public void save14(VO vo){
+        System.out.println(Arrays.asList(vo));
+    }
+
+    @RequestMapping("/quick15")
+    @ResponseBody
+
+    //使用ajax提交可以指定json格式使用RequestBody可以直接收集集合
+    public void save15(@RequestBody List<User> userList){
+        System.out.println(Arrays.asList(userList));
     }
 }
