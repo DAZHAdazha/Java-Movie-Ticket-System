@@ -5,17 +5,18 @@ import com.spring_mvc.domain.User;
 import com.spring_mvc.domain.VO;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import org.wildfly.swarm.config.IO;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.xml.crypto.Data;
 import java.io.IOException;
 import java.lang.reflect.Array;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -140,9 +141,74 @@ public class UserController {
 
     @RequestMapping("/quick15")
     @ResponseBody
-
     //使用ajax提交可以指定json格式使用RequestBody可以直接收集集合
     public void save15(@RequestBody List<User> userList){
         System.out.println(Arrays.asList(userList));
+    }
+
+    @RequestMapping("/quick16")
+    @ResponseBody
+    //localhost:8080/user/quick16?username=admin3
+    //当请求参数名称和Controller业务方法参数名称不一样时，通过@ResquestOaram注解显示绑定
+    //value:请求参数名称
+    //required:指定请求参数是否必须包括，默认是true，提交时若没有此参数会报错
+    //defaultValue:当没有指定参数时，在则使用指定的默认值
+    public void save16(@RequestParam(value = "username", required = false, defaultValue = "tester") String name){
+        //获取数据
+        System.out.println("Username: " + name);
+    }
+
+    @RequestMapping("/quick17/{username}&{age}")
+    @ResponseBody
+    public void save17(@PathVariable(value = "username", required = true) String name, @PathVariable(value = "age") int age){
+        //获取数据
+        System.out.println("Username: " + name);
+        System.out.println("Age     : " + age);
+    }
+
+    @RequestMapping("/quick18")
+    @ResponseBody
+    //自定义类型转换器
+    //定义转换器接口
+    //配置文件中声明转换器
+    //在<annotation-driven>中引用转换器
+    public void save18(Date date){
+        //获取数据
+        System.out.println(date);
+    }
+
+    @RequestMapping("/quick19")
+    @ResponseBody
+    public void save19(HttpServletRequest request, HttpServletResponse response, HttpSession session){
+        System.out.println(request);
+        System.out.println(response);
+        System.out.println(session);
+    }
+
+    @RequestMapping("/quick20")
+    @ResponseBody
+    //获取请求头
+    public void save20(@RequestHeader(value = "Cookie", required = false) String cookie){
+        System.out.println(cookie);
+    }
+
+    @RequestMapping("/quick21")
+    @ResponseBody
+    //获取Cookie
+    //value是键
+    public void save21(@CookieValue(value = "Pycharm-bb2bdaa4") String jsessionId){
+        System.out.println(jsessionId);
+    }
+
+
+    @RequestMapping("/quick22")
+    @ResponseBody
+    //文件上传原理
+    //当form表单修改为多部分表单, request.getParameter()将失效。
+    //enctype= "application/x-www-form-urlencoded"时,form表单正文内容格式是:
+    //key=value&key=value&key=value
+    //当form表单是Multipart/form-data时,请求正文内容就变成多部分形式。
+    public void save22(@CookieValue(value = "Pycharm-bb2bdaa4") String jsessionId){
+        System.out.println(jsessionId);
     }
 }

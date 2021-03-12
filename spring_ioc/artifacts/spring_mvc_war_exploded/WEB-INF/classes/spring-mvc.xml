@@ -17,7 +17,15 @@
         <property name="suffix" value=".jsp"/>
     </bean>
 <!--配置处理器映射器-->
-    <mvc:annotation-driven/>
+    <mvc:annotation-driven conversion-service="conversionService"/>
 <!--开放资源访问,由tomcat开放-->
     <mvc:default-servlet-handler/>
+<!--声明转换器-->
+    <bean id="conversionService" class="org.springframework.context.support.ConversionServiceFactoryBean">
+        <property name="converters">
+            <list>
+                <bean class="com.spring_mvc.converter.DateConverter"/>
+            </list>
+        </property>
+    </bean>
 </beans>
