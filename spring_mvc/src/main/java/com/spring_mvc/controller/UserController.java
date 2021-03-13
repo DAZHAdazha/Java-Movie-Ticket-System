@@ -6,6 +6,7 @@ import com.spring_mvc.domain.VO;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.wildfly.swarm.config.IO;
 
@@ -13,8 +14,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.xml.crypto.Data;
+import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Array;
+import java.nio.file.Path;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
@@ -208,7 +211,27 @@ public class UserController {
     //enctype= "application/x-www-form-urlencoded"时,form表单正文内容格式是:
     //key=value&key=value&key=value
     //当form表单是Multipart/form-data时,请求正文内容就变成多部分形式。
-    public void save22(@CookieValue(value = "Pycharm-bb2bdaa4") String jsessionId){
-        System.out.println(jsessionId);
+    //参数需要与表单上名字一致
+    public void save22(String username, MultipartFile uploadFile) throws IOException {
+        System.out.println(username);
+        System.out.println(uploadFile);
+        //获得上传文件名称
+        String fileName = uploadFile.getOriginalFilename();
+        //相对路径会保存进tomcat路径下
+        uploadFile.transferTo(new File("F:\\StudySpring\\spring_mvc\\src\\main\\uploadFiles\\"+fileName));
+    }
+
+    @RequestMapping("/quick23")
+    @ResponseBody
+    //多文件上传原理
+    public void save23(String username, MultipartFile[] uploadFile) throws IOException {
+        System.out.println(username);
+        for(MultipartFile file:uploadFile){
+            if(file.isEmpty())
+                continue;
+            String fileName = file.getOriginalFilename();
+            System.out.println(fileName);
+            file.transferTo(new File("F:\\StudySpring\\spring_mvc\\src\\main\\uploadFiles\\"+fileName));
+        }
     }
 }
