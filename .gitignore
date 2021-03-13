@@ -1,4 +1,4 @@
+
 Movie/.idea
 code/.idea
-Movie/out
-Movie/src/main/resources/mysql.properties
+Movie/.idea/sqldialects.xml
