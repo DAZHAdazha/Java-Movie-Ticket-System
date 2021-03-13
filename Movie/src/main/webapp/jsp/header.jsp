@@ -45,7 +45,7 @@
                     </ul>
                 </div>
                 </div>
-                <form action="">
+                <form action="/movie/findMoviesByName">
                     <input name="searchMovie" class="search" type="search" maxlength="32" placeholder="找影视剧、影人、影院" autocomplete="off">
                 <input class="submit" type="submit" value="">
                 </form>
