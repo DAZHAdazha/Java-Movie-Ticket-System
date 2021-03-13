@@ -3,7 +3,6 @@ package com.util;
  * 返回给浏览器的数据
  * @param success 状态 true:成功 false:失败
  * @param msg 提示信息
- * @author Wxj
  */
 public class ResponseModel {
 	private boolean success;

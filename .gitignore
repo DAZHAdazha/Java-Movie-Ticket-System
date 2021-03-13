@@ -2,3 +2,4 @@ Movie/.idea
 code/.idea
 Movie/out
 Movie/src/main/resources/mysql.properties
+Movie/src/main/java/com/mapper/UserMapper.xml

@@ -3,7 +3,6 @@ package com.util;
 import java.util.UUID;
 /**
  * 生产唯一标识符
- * @author Wxj
  */
 public class UUIDUtil {
 
