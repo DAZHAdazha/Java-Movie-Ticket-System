@@ -6,4 +6,3 @@ Movie/src/main/java/com/mapper/UserMapper.xml
 Movie/target/*
 Movie/src/main/resources/mysql.properties
 Movie/target/*
-Movie/target/Movie/WEB-INF/classes/com/controller/OrderController.class
