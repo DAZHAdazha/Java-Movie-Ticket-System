@@ -83,9 +83,9 @@ public class MovieController {
 	
 	@RequestMapping("findMoviesByName")
 	@ResponseBody
-	public JSONObject findMoviesByName(@RequestParam("searchMovie") String name) {
+	public JSONObject findMoviesByName(@RequestParam("searchMovie") String searchMovie) {
 		JSONObject obj = new JSONObject();
-		List<Movie> list = movieService.findMoviesLikeName(name);
+		List<Movie> list = movieService.findMoviesLikeName(searchMovie);
 		obj.put("code", 0);
 		obj.put("count", list.size());
 		obj.put("data", list);

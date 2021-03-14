@@ -27,7 +27,7 @@
                 <h1>
                     <a href="javascript:void(0)" class="logo"></a>
                 </h1>
-                <div class="nav">
+                <div class="nav" style="width: 25%">
                     <ul>
                         <li><a href="./mainPage.jsp">首页</a></li>
                         <li class="active"><a href="./movieList.jsp">电影</a></li>
@@ -35,8 +35,8 @@
                         <li><a href="javascript:void(0)">榜单</a></li>
                     </ul>
                 </div>
-                <div class="app-download">
-                </div>
+<%--                <div class="app-download">--%>
+<%--                </div>--%>
                 <div class="user-info">
                 <div class="user-avatar J-login">
                     <ul class="layui-nav" style="background-color: #fff;">
@@ -45,10 +45,37 @@
                     </ul>
                 </div>
                 </div>
-                <form action="/movie/findMoviesByName">
-                    <input name="searchMovie" class="search" type="search" maxlength="32" placeholder="找影视剧、影人、影院" autocomplete="off">
-                <input class="submit" type="submit" value="">
+<%--                <form action="/movie/findMoviesByName">--%>
+<%--                    <input name="searchMovie" class="search" type="search" maxlength="32" placeholder="找影视剧、影人、影院" autocomplete="off">--%>
+
+<%--                    <input type="radio" name="searcType" value="movie" title="movie" checked>--%>
+<%--                    <input type="radio" name="searcType" value="star" title="star">--%>
+<%--                    <input type="radio" name="searcType" value="theater" title="theater">--%>
+<%--                    <input class="submit" type="submit" value="">--%>
+<%--                </form>--%>
+                <form class="layui-form" action="/movie/findMoviesByName" style="float: left">
+                    <div class="layui-form-item">
+
+                            <div class="layui-row">
+                                <div class="layui-col-md10">
+                                    <div class="layui-col-md4">
+                                        <input type="radio" name="searchType" value="movie" title="movie" checked>
+                                    </div>
+                                    <div class="layui-col-md4">
+                                        <input type="radio" name="searchType" value="star" title="star">
+                                    </div>
+                                    <div class="layui-col-md4">
+                                        <input type="radio" name="searchType" value="theater" title="theater">
+                                    </div>
+                                </div>
+                                <div class="layui-col-md2" style="float: right">
+                                    <input name="searchMovie" class="search" type="search" maxlength="32" placeholder="找影视剧、影人、影院" autocomplete="off">
+                                    <input class="submit" type="submit" value="">
+                                </div>
+                            </div>
+                    </div>
                 </form>
+
             </div>
         </div>
     </div>
