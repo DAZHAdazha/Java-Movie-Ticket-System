@@ -12,30 +12,27 @@
                友情链接:
                 <a href="https://maoyan.com/" target="_blank" style="margin-right:30px;">猫眼电影</a>
                 <span onclick="footerBtn()" style="height: 20px; cursor: pointer; border-left:0px">
-                    美女客服：
+                    客服：
                     <img src="../static/images/客服.jpg" style="width: 20px;">
                 </span>
             </p>
             <p>
-                组长：翁修杰
-                小组成员：梁颂伟、魏泽伟、黄泽伟、李鹏飞
+                组长：冯韵嘉
+                小组成员：张乐宇、华睿祺、李新豪、仝启航、杨圣宇
                 <br>
-                后台：翁修杰
-                前端：梁颂伟
-                前端协助：魏泽伟、黄泽伟、李鹏飞
             </p>
-            <p>©2019 版权归小组成员所有</p>
+            <p>©2021 版权归小组成员所有</p>
         </div>
     </div>
 </body>
 <script>
-//美女客服
+//客服
         function footerBtn(){
             layui.use(['layer'], function(){
                 var layer = layui.layer;
                 layer.open({
                     type: 1
-                    ,title: "美女客服" //不显示标题栏
+                    ,title: "客服" //不显示标题栏
                     ,closeBtn: false
                     ,area: '400px;'
                     ,shade: 0.8

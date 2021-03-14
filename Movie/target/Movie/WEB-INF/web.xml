@@ -5,8 +5,8 @@
          id="WebApp_ID" version="3.1">
 	<display-name>Movie</display-name>
   	<welcome-file-list>
-  		<welcome-file>index.html</welcome-file>
-  		<welcome-file>test.jsp</welcome-file>
+  		<welcome-file>index.jsp</welcome-file>
+<!--  		<welcome-file>test.jsp</welcome-file>-->
   	</welcome-file-list>
   	
 	<!-- 注册spring配置文件的位置 -->
