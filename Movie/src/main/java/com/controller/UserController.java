@@ -70,8 +70,11 @@ public class UserController {
 	
 	@RequestMapping("register")
 	@ResponseBody
-	public String register(User user) {
-		System.out.println("here");
+	public String register(User user,String test,HttpServletRequest request) {
+
+		System.out.println(test);
+		HttpSession session = request.getSession();
+		System.out.println(session.getAttribute("verifyCode"));
 		List<User> list = userService.findUserByName(user.getUser_name());
 		if(list.size() > 0) {
 			return "fail";

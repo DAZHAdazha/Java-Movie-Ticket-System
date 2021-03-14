@@ -1,5 +1,6 @@
+<%@ page import="java.util.Date" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+         pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -42,11 +43,11 @@
                 <div class="login_page">
                     <div>
                         <label>帐号</label><br/>
-                        <input id="UserName" type="text"/>
+                        <input id="loginUserName" type="text"/>
                     </div>
                     <div>
                         <label>密码</label><br/>
-                        <input id="PassWord" type="password"/>
+                        <input id="loginPassWord" type="password"/>
                     </div>
                 </div>
                 <div class="lo_error">
@@ -67,11 +68,11 @@
                 <div class="register_page">
                     <div>
                         <label>帐号</label><br/>
-                        <input id="UserName" type="text"/>
+                        <input id="registerUserName" type="text"/>
                     </div>
                     <div>
                         <label>密码</label><br/>
-                        <input id="PassWord" type="password"/>
+                        <input id="registerPassWord" type="password"/>
                     </div>
                     <div>
                         <label>邮箱</label><br/>
@@ -81,6 +82,11 @@
                         <label>验证码</label><br/>
                         <input id="Test" type="text"/>
                         <input id="TestNum" type="button"/>
+                        <%
+                            Date date = new Date();
+                            pageContext.setAttribute("date",date);
+                        %>
+                        <img src="/search/checkCode?"+ ${ date }>
                     </div>
                 </div>
                 <div class="re_error">
@@ -169,8 +175,8 @@
 
          //登录账号和密码信息验证
          function loginbtn(){
-            var user_name = $(".login_page").find("#UserName").val();
-            var user_pwd = $(".login_page").find("#PassWord").val();
+            var user_name = $(".login_page").find("#loginUserName").val();
+            var user_pwd = $(".login_page").find("#loginPassWord").val();
             var login_error = $(".login_error");
             if((user_name == "") || (user_pwd == "")){
                 login_error.text("账号和密码不能为空");
@@ -207,20 +213,22 @@
         //注册账号和密码逻信息验证
         function registerbtn(){
             var textNum = document.getElementById('TestNum'); 
-            var user_name = $(".register_page").find("#UserName").val();
-            var user_pwd = $(".register_page").find("#PassWord").val();
+            var user_name = $(".register_page").find("#registerUserName").val();
+            var user_pwd = $(".register_page").find("#registerPassWord").val();
             var user_email = $(".register_page").find("#Email").val();
             var register_error = $(".register_error");
             var test = $("#Test").val();
             var testbtn = $("#TestNum").val();
+
+
             if((user_name == "") || (user_pwd == "") || (user_email == "")){
                 register_error.text("账号和密码和邮箱不能为空");
                 textNum.value = TestNum();
             }
-            else if((test == "") || test!=testbtn){
-                register_error.text("验证码错误");
-                textNum.value = TestNum();
-            }
+            // else if((test == "") || test!=testbtn){
+            //     register_error.text("验证码错误");
+            //     textNum.value = TestNum();
+            // }
             else{
                 register_error.text("");
                 $.ajax({
@@ -229,7 +237,8 @@
                     data: {
                         user_name: user_name,
                         user_pwd: user_pwd,
-                        user_email: user_email
+                        user_email: user_email,
+                        test:test
                     },
                     dataType: "json",
                     success: function(data){
