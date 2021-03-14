@@ -47,5 +47,16 @@ public class User {
 	public void setUser_headImg(String user_headImg) {
 		this.user_headImg = user_headImg;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "User{" +
+				"user_id=" + user_id +
+				", user_name='" + user_name + '\'' +
+				", user_pwd='" + user_pwd + '\'' +
+				", user_email='" + user_email + '\'' +
+				", user_role=" + user_role +
+				", user_headImg='" + user_headImg + '\'' +
+				'}';
+	}
 }

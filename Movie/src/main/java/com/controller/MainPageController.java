@@ -3,10 +3,8 @@ package com.controller;
 import com.alibaba.fastjson.JSONObject;
 import com.entity.Cinema;
 import com.entity.Movie;
-import com.entity.Order;
 import com.service.ICinemaService;
 import com.service.IMovieService;
-import com.sun.deploy.net.HttpResponse;
 import com.util.CheckCodeUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -65,9 +63,6 @@ public class MainPageController {
         //将字符串写入输出流 130宽 40高
         CheckCodeUtil.outputImage(130, 40, response.getOutputStream(), verifyCode);
         //存入Session
-
-
-
     }
 
 }

@@ -1,21 +1,36 @@
 package com.util;
 
+import java.awt.image.BufferedImage;
 import java.io.Console;
+import java.io.File;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Random;
 
 import com.alibaba.fastjson.JSONObject;
-import org.junit.Test;
+import com.entity.Order;
+import com.github.pagehelper.PageInfo;
+import com.service.IOrderService;
+import com.service.IUserService;
+import com.service.imp.OrderServiceImp;
+import com.service.imp.UserServiceImp;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.testng.annotations.Test;
+import org.junit.runner.RunWith;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import javax.annotation.Resource;
+import javax.imageio.ImageIO;
 import javax.sql.DataSource;
-
 
 public class test {
 
@@ -128,5 +143,30 @@ public class test {
 		ApplicationContext app = new ClassPathXmlApplicationContext("spring.xml");
 		DataSource dataSource= app.getBean(DataSource.class);
 		System.out.println(dataSource.getConnection());
+	}
+
+	@Test
+	public void testOrder(){
+		ApplicationContext app = new ClassPathXmlApplicationContext("spring.xml");
+		IOrderService orderService = app.getBean(IOrderService.class);
+		PageInfo<Order> info = orderService.findOrdersByUserName(1, 10, "admin");
+		List<Order> arrayList = info.getList();
+		for (Order order:arrayList){
+			System.out.println(order.getOrder_state());
+		}
+	}
+
+	@Test
+	public void testImage(){
+		ApplicationContext app = new ClassPathXmlApplicationContext("spring.xml");
+		IUserService userService = app.getBean(UserServiceImp.class);
+
+	}
+
+	@Test
+	public void testQR() throws IOException {
+		BufferedImage image= QrcodeGenerator.encode("123",350,350);
+		File file =new File("QRImage");
+		ImageIO.write(image, "png",file);
 	}
 }

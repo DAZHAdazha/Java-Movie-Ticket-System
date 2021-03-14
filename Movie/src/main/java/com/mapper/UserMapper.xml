@@ -38,7 +38,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			</if>
 				user_email = #{user_email},
 				user_headImg = #{user_headImg}
-		</set>·
+		</set>
 		where user_id = #{user_id}
 	</update>
 </mapper>
