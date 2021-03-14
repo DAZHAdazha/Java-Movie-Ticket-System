@@ -27,7 +27,6 @@ import com.util.UUIDUtil;
 
 /**
  * 电影管理模块
- * @author Wxj
  */
 @Controller
 @RequestMapping("/movie")
@@ -81,16 +80,16 @@ public class MovieController {
 		return obj;
 	}
 	
-	@RequestMapping("findMoviesByName")
-	@ResponseBody
-	public JSONObject findMoviesByName(@RequestParam("searchMovie") String searchMovie) {
-		JSONObject obj = new JSONObject();
-		List<Movie> list = movieService.findMoviesLikeName(searchMovie);
-		obj.put("code", 0);
-		obj.put("count", list.size());
-		obj.put("data", list);
-		return obj;
-	}
+//	@RequestMapping("findMoviesByName")
+//	@ResponseBody
+//	public JSONObject findMoviesByName(@RequestParam("searchMovie") String searchMovie) {
+//		JSONObject obj = new JSONObject();
+//		List<Movie> list = movieService.findMoviesLikeName(searchMovie);
+//		obj.put("code", 0);
+//		obj.put("count", list.size());
+//		obj.put("data", list);
+//		return obj;
+//	}
 	
 	@RequestMapping("findMoviesByType")
 	@ResponseBody

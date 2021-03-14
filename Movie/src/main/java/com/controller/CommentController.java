@@ -20,7 +20,6 @@ import com.service.IUserService;
 
 /**
  *  评论管理模块
- * @author Wxj
  */
 @Controller
 @RequestMapping("/comment")

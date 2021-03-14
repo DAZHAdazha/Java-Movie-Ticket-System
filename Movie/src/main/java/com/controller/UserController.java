@@ -25,9 +25,7 @@ import com.github.pagehelper.PageInfo;
 import com.service.IUserService;
 import com.util.UUIDUtil;
 /**
- * 用户管理模块 
- * update: 2019年7月9日17:18:50 
- * @author Wxj
+ * 用户管理模块
  */
 @Controller
 @RequestMapping("user")

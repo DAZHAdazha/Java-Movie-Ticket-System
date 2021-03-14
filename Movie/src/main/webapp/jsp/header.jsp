@@ -45,17 +45,9 @@
                     </ul>
                 </div>
                 </div>
-<%--                <form action="/movie/findMoviesByName">--%>
-<%--                    <input name="searchMovie" class="search" type="search" maxlength="32" placeholder="找影视剧、影人、影院" autocomplete="off">--%>
 
-<%--                    <input type="radio" name="searcType" value="movie" title="movie" checked>--%>
-<%--                    <input type="radio" name="searcType" value="star" title="star">--%>
-<%--                    <input type="radio" name="searcType" value="theater" title="theater">--%>
-<%--                    <input class="submit" type="submit" value="">--%>
-<%--                </form>--%>
-                <form class="layui-form" action="/movie/findMoviesByName" style="float: left">
+                <form class="layui-form" action="/search/all" style="float: left">
                     <div class="layui-form-item">
-
                             <div class="layui-row">
                                 <div class="layui-col-md10">
                                     <div class="layui-col-md4">
@@ -69,7 +61,7 @@
                                     </div>
                                 </div>
                                 <div class="layui-col-md2" style="float: right">
-                                    <input name="searchMovie" class="search" type="search" maxlength="32" placeholder="找影视剧、影人、影院" autocomplete="off">
+                                    <input name="searchKeyword" class="search" type="search" maxlength="32" placeholder="找影视剧、影人、影院" autocomplete="off">
                                     <input class="submit" type="submit" value="">
                                 </div>
                             </div>
