@@ -71,21 +71,28 @@ public class UserController {
 	@RequestMapping("register")
 	@ResponseBody
 	public String register(User user,String test,HttpServletRequest request) {
-
-		System.out.println(test);
 		HttpSession session = request.getSession();
-		System.out.println(session.getAttribute("verifyCode"));
 		List<User> list = userService.findUserByName(user.getUser_name());
-		if(list.size() > 0) {
-			return "fail";
-		}else {
-			Integer rs = userService.addUser(user);
-			if(rs > 0) {
-				return "success";
-			}else {
+		System.out.println(test.toUpperCase());
+		String verifyCode = (String) session.getAttribute("verifyCode");
+		System.out.println(verifyCode);
+		System.out.println(test.toUpperCase().equals(verifyCode));
+		if(test.toUpperCase().equals(verifyCode)){
+			if(list.size() > 0) {
 				return "fail";
+			}else {
+				Integer rs = userService.addUser(user);
+				if(rs > 0) {
+					return "success";
+				}else {
+					return "fail";
+				}
 			}
 		}
+		else{
+			return "checkCode is Wrong!";
+		}
+
 	}
 	
 	@RequestMapping("updateUser")
