@@ -1,4 +1,8 @@
 package com.entity;
+
+import java.io.UnsupportedEncodingException;
+import java.util.Base64;
+
 /**
  * 用户表实体对象
  * @author Wxj
@@ -26,6 +30,12 @@ public class User {
 	public String getUser_pwd() {
 		return user_pwd;
 	}
+
+	public boolean compare(String password) throws UnsupportedEncodingException {
+		String base64encodedString = Base64.getEncoder().encodeToString(password.getBytes("utf-8"));
+		return base64encodedString.equals(this.user_pwd);
+	}
+
 	public void setUser_pwd(String user_pwd) {
 		this.user_pwd = user_pwd;
 	}

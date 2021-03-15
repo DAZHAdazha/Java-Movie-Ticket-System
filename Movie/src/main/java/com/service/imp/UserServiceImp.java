@@ -1,5 +1,6 @@
 package com.service.imp;
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,10 +23,10 @@ public class UserServiceImp implements IUserService{
 	
 	@Transactional(propagation=Propagation.REQUIRED,readOnly=true)
 	@Override
-	public User login(String user_name, String user_pwd) {
+	public User login(String user_name, String user_pwd) throws UnsupportedEncodingException {
 		List<User> userList = usermapper.findUserByName(user_name);
 		for(User user : userList) {
-			if(user.getUser_pwd().equals(user_pwd)) {
+			if(user.compare(user_pwd)) {
 				return user;
 			}
 		}

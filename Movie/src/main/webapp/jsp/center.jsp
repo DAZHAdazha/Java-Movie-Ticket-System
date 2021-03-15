@@ -430,16 +430,16 @@
                     );
                 });
             }
-            else if(user_old_password != user.user_pwd){
-                layui.use(['layer'], function(){
-                var layer = layui.layer;
-                    layer.alert('旧密码输入错误！',{icon: 0,offset: clientHeight/5},
-                        function (){
-                            layer.close(layer.index);
-                        }
-                    );
-                });
-            }
+            // else if(user_old_password != user.user_pwd){
+            //     layui.use(['layer'], function(){
+            //     var layer = layui.layer;
+            //         layer.alert('旧密码输入错误！',{icon: 0,offset: clientHeight/5},
+            //             function (){
+            //                 layer.close(layer.index);
+            //             }
+            //         );
+            //     });
+            // }
             else if(user_new_password != user_repeat_password){
                 layui.use(['layer'], function(){
                 var layer = layui.layer;
@@ -470,7 +470,7 @@
                                 }
                             );
                         }else{
-                            layer.alert('修改失败！',{icon: 0,offset: clientHeight/5},
+                            layer.alert('旧密码输入错误！',{icon: 0,offset: clientHeight/5},
                                 function (){
                                     layer.closeAll();
                                 }

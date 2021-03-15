@@ -199,6 +199,7 @@
             // var textNum = document.getElementById('TestNum');
             var user_name = $(".register_page").find("#registerUserName").val();
             var user_pwd = $(".register_page").find("#registerPassWord").val();
+
             var user_email = $(".register_page").find("#Email").val();
             var register_error = $(".register_error");
             var test = $("#Test").val();

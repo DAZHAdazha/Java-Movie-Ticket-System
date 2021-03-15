@@ -2,6 +2,8 @@ package com.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.util.Base64;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -36,7 +38,7 @@ public class UserController {
 	
 	@RequestMapping("/login")
 	@ResponseBody
-	public JSONObject login(String user_name,String user_pwd,HttpServletRequest request) {
+	public JSONObject login(String user_name,String user_pwd,HttpServletRequest request) throws UnsupportedEncodingException {
 
 		JSONObject obj = new JSONObject();
 		User user = userService.login(user_name, user_pwd);
@@ -70,7 +72,11 @@ public class UserController {
 	
 	@RequestMapping("register")
 	@ResponseBody
-	public String register(User user,String test,HttpServletRequest request) {
+	public String register(User user,String test,HttpServletRequest request) throws UnsupportedEncodingException {
+
+		String base64encodedString = Base64.getEncoder().encodeToString(user.getUser_pwd().getBytes("utf-8"));
+		user.setUser_pwd(base64encodedString);
+
 		HttpSession session = request.getSession();
 		List<User> list = userService.findUserByName(user.getUser_name());
 		System.out.println(test.toUpperCase());
@@ -108,11 +114,12 @@ public class UserController {
 	
 	@RequestMapping("modifyUserPwd")
 	@ResponseBody
-	public String modifyUserPwd(@RequestParam("oldPwd")String oldPwd,@RequestParam("newPwd")String newPwd,HttpServletRequest request) {
+	public String modifyUserPwd(@RequestParam("oldPwd")String oldPwd,@RequestParam("newPwd")String newPwd,HttpServletRequest request) throws UnsupportedEncodingException {
 		HttpSession session = request.getSession();
 		User user = (User)session.getAttribute("user");
-		if(user.getUser_pwd().equals(oldPwd)) {
-			user.setUser_pwd(newPwd);
+		if(user.compare(oldPwd)) {
+			String base64encodedString = Base64.getEncoder().encodeToString(newPwd.getBytes("utf-8"));
+			user.setUser_pwd(base64encodedString);
 			userService.updateUserInfo(user);
 			session.removeAttribute("user");
 			return "success";
