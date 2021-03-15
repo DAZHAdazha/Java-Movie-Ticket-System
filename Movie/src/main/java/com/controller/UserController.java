@@ -119,6 +119,7 @@ public class UserController {
 		User user = (User)session.getAttribute("user");
 		if(user.compare(oldPwd)) {
 			String base64encodedString = Base64.getEncoder().encodeToString(newPwd.getBytes("utf-8"));
+			user.setUser_headImg(this.userService.findUserById(user.getUser_id()).getUser_headImg());
 			user.setUser_pwd(base64encodedString);
 			userService.updateUserInfo(user);
 			session.removeAttribute("user");
