@@ -169,7 +169,6 @@
 		  <version>5.3.4</version>
 		  <scope>test</scope>
 	  </dependency>
-
 	  <dependency>
 		  <groupId>com.google.zxing</groupId>
 		  <artifactId>core</artifactId>
@@ -199,6 +198,10 @@
 		  <scope>compile</scope>
 	  </dependency>
 	  <dependency>
+		  <groupId>com.sun.image.codec.jpeg.JPEGImageEncoder</groupId>
+		  <artifactId>image</artifactId>
+	  </dependency>
+	  <dependency>
 		  <groupId>org.springframework</groupId>
 		  <artifactId>spring-test</artifactId>
 		  <version>5.3.4</version>
@@ -216,7 +219,7 @@
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
-                </configuration>
+				</configuration>
     	</plugin>
     </plugins>
 	  <resources>

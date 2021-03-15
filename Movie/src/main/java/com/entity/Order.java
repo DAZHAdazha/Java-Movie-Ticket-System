@@ -1,7 +1,15 @@
 package com.entity;
 
+import com.util.QrcodeGenerator;
+import com.util.UUIDUtil;
+
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Base64;
 import java.util.Date;
-import java.util.List;
 
 /**
  * 订单表实体对象
@@ -18,6 +26,7 @@ public class Order {
 	private Date order_time; //订单支付时间
 	private User order_user;   //所属用户对象
 	private Schedule order_schedule; //所属电影场次
+	private String QRImage; //电影信息二维码
 	
 	public String getOrder_id() {
 		return order_id;
@@ -73,6 +82,41 @@ public class Order {
 	public void setOrder_schedule(Schedule order_schedule) {
 		this.order_schedule = order_schedule;
 	}
-	
-	
+
+	public void setQRImage(String path) {
+		SimpleDateFormat format= new SimpleDateFormat("yyyy年MM月dd日");
+		String status;
+		if (order_state==0){
+			status = "退票中";
+		}
+		else if (order_state==1){
+			status = "已支付";
+		}
+		else if (order_state==2){
+			status = "退票成功";
+		}
+		else{
+			status = "无法退票";
+		}
+		QRImage = path + "QR_" + order_id + ".png";
+
+		String content = "影片: " + order_schedule.getSchedule_movie().getMovie_fg_name() + "\n订单号: " + order_id + "\n订单时间: " + format.format(order_time) + "\n座位: " + order_position + "\n价格: " +
+				order_price + "\n开场时间: " + order_schedule.getSchedule_startTime() + "\n场次: " +
+				order_schedule.getSchedule_hall().getHall_cinema().getCinema_name() + " " +
+				order_schedule.getSchedule_hall().getHall_name() + "\n订单状态: " + order_state;
+
+		BufferedImage Image = QrcodeGenerator.encode(content,350,350);
+
+		try {
+			ImageIO.write(Image, "png",new File(QRImage));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		QRImage = "/upload/QRImage/QR_" + order_id + ".png";
+	}
+
+	public String getQRImage() {
+		return QRImage;
+	}
 }

@@ -209,7 +209,7 @@ public class UserController {
 			System.out.println("name:"+name);
 			String path = request.getServletContext().getRealPath("/upload/head") + "/" + name;
 			System.out.println("path:"+path);
-			String filePath = "upload/head/" + name;
+			String filePath = "../upload/head/" + name;
 			System.out.println(filePath);
 			try {
 				file.transferTo(new File(path));	

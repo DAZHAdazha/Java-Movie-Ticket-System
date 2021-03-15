@@ -1,13 +1,19 @@
 package com.controller;
 
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+//import com.sun.image.codec.jpeg.JPEGImageEncoder;
 
 import javax.annotation.Resource;
+import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
 
+import com.util.QrcodeGenerator;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -34,9 +40,11 @@ public class OrderController {
 	
 	@RequestMapping("findOrderById")
 	@ResponseBody
-	public JSONObject findOrderById(@RequestParam("order_id")String order_id) {
+	public JSONObject findOrderById(@RequestParam("order_id")String order_id, HttpServletRequest request) {
+		String path = request.getServletContext().getRealPath("/upload/QRImage/");
 		JSONObject obj = new JSONObject();
 		Order order = orderService.findOrderById(order_id);
+		order.setQRImage(path);
 		List<Order> list = new ArrayList<Order>();
 		list.add(order);
 		obj.put("code", 0);
@@ -48,8 +56,13 @@ public class OrderController {
 	
 	@RequestMapping("findOrderByUserName")
 	@ResponseBody
-	public JSONObject findOrderByUserName(@RequestParam(value="page",defaultValue="1")Integer page,@RequestParam(value="limit",defaultValue="10")Integer limit,@RequestParam("user_name")String user_name) {
+	public JSONObject findOrderByUserName(@RequestParam(value="page",defaultValue="1")Integer page,@RequestParam(value="limit",defaultValue="10")Integer limit,@RequestParam("user_name")String user_name, HttpServletRequest request) {
 		PageInfo<Order> info = orderService.findOrdersByUserName(page, limit, user_name);
+		String path = request.getServletContext().getRealPath("/upload/QRImage/");
+		for(Order order:info.getList()){
+			order.setQRImage(path);
+		}
+		System.out.println("PageInfo-1: " + info.toString());
 		JSONObject obj = new JSONObject();
 		obj.put("code", 0);
 		obj.put("msg", "");
@@ -60,9 +73,13 @@ public class OrderController {
 	
 	@RequestMapping("findRefundOrderByUser")
 	@ResponseBody
-	public JSONObject findRefundOrderByUser(@RequestParam("user_name")String user_name) {
+	public JSONObject findRefundOrderByUser(@RequestParam("user_name")String user_name, HttpServletRequest request) {
+		String path = request.getServletContext().getRealPath("/upload/QRImage/");
 		JSONObject obj = new JSONObject();
 		List<Order> list = this.orderService.findRefundOrderByUserName(user_name);
+		for (Order order:list){
+			order.setQRImage(path);
+		}
 		obj.put("code", 0);
 		obj.put("msg", "");
 		obj.put("count", list.size());
@@ -72,9 +89,13 @@ public class OrderController {
 	
 	@RequestMapping("findAllOrders")
 	@ResponseBody
-	public JSONObject findAllOrders() {
+	public JSONObject findAllOrders(HttpServletRequest request) {
+		String path = request.getServletContext().getRealPath("/upload/QRImage/");
 		JSONObject obj = new JSONObject();
 		List<Order> list = orderService.findAllOrders();
+		for (Order order:list){
+			order.setQRImage(path);
+		}
 		obj.put("code", 0);
 		obj.put("msg", "");
 		obj.put("count", list.size());
@@ -84,8 +105,12 @@ public class OrderController {
 	
 	@RequestMapping("findAllOrdersPage")
 	@ResponseBody
-	public JSONObject findAllOrdersPage(@RequestParam(value="page",defaultValue="1")Integer page,@RequestParam(value="limit",defaultValue="10")Integer limit,String keyword) {
+	public JSONObject findAllOrdersPage(@RequestParam(value="page",defaultValue="1")Integer page,@RequestParam(value="limit",defaultValue="10")Integer limit,String keyword, HttpServletRequest request) {
 		PageInfo<Order> info = orderService.findAllOrdersBySplitPage(page, limit, keyword);
+		String path = request.getServletContext().getRealPath("/upload/QRImage/");
+		for(Order order:info.getList()){
+			order.setQRImage(path);
+		}
 		JSONObject obj = new JSONObject();
 		obj.put("code", 0);
 		obj.put("msg", "");
@@ -99,6 +124,7 @@ public class OrderController {
 	public JSONObject findAllRefundOrder(@RequestParam(value="page",defaultValue="1")Integer page,@RequestParam(value="limit",defaultValue="10")Integer limit) {
 		JSONObject obj = new JSONObject();
 		PageInfo<Order> info = orderService.findOrdersByState(page, limit, 0);
+		System.out.println("PageInfo-3: " + info.toString());
 		obj.put("code", 0);
 		obj.put("msg", "");
 		obj.put("count", info.getTotal());

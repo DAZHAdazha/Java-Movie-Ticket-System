@@ -1,8 +1,12 @@
 package com.service.imp;
 
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.util.QrcodeGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -21,6 +25,8 @@ import com.mapper.ScheduleMapper;
 import com.mapper.UserMapper;
 import com.service.IOrderService;
 
+import javax.imageio.ImageIO;
+
 @Service
 public class OrderServiceImp implements IOrderService{
 	@Autowired
@@ -35,6 +41,8 @@ public class OrderServiceImp implements IOrderService{
 	private MovieMapper movieMapper;
 	@Autowired
 	private CinemaMapper cinemaMapper;
+
+
 	
 	@Transactional(propagation=Propagation.REQUIRED,readOnly=true)
 	@Override
@@ -73,6 +81,7 @@ public class OrderServiceImp implements IOrderService{
 		}
 		return list;
 	}
+
 
 	@Transactional(propagation=Propagation.REQUIRED,rollbackFor=Exception.class)
 	@Override

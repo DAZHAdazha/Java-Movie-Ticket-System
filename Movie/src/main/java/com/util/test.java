@@ -14,8 +14,13 @@ import java.util.List;
 import java.util.Random;
 
 import com.alibaba.fastjson.JSONObject;
+import com.controller.MovieController;
+import com.controller.ScheduleController;
+import com.entity.Hall;
 import com.entity.Order;
+import com.entity.Schedule;
 import com.github.pagehelper.PageInfo;
+import com.mapper.*;
 import com.service.IOrderService;
 import com.service.IUserService;
 import com.service.imp.OrderServiceImp;
@@ -33,6 +38,13 @@ import javax.imageio.ImageIO;
 import javax.sql.DataSource;
 
 public class test {
+
+	private OrderMapper orderMapper;
+	private UserMapper userMapper;
+	private ScheduleMapper scheduleMapper;
+	private HallMapper hallMapper;
+	private CinemaMapper cinemaMapper;
+	private MovieMapper movieMapper;
 
 	public static void main(String[] args) {
 //		Date date = new Date();
@@ -152,7 +164,7 @@ public class test {
 		PageInfo<Order> info = orderService.findOrdersByUserName(1, 10, "admin");
 		List<Order> arrayList = info.getList();
 		for (Order order:arrayList){
-			System.out.println(order.getOrder_state());
+			System.out.println(order.getOrder_position());
 		}
 	}
 
@@ -168,5 +180,16 @@ public class test {
 		BufferedImage image= QrcodeGenerator.encode("123",350,350);
 		File file =new File("QRImage");
 		ImageIO.write(image, "png",file);
+	}
+
+	@Test
+	public void testQRTick() throws IOException{
+		ApplicationContext app = new ClassPathXmlApplicationContext("spring.xml");
+		IOrderService orderService = app.getBean(IOrderService.class);
+		PageInfo<Order> info = orderService.findOrdersByUserName(1, 10, "admin");
+		List<Order> arrayList = info.getList();
+		for (Order order:arrayList){
+			System.out.println(order.getQRImage());
+		}
 	}
 }
