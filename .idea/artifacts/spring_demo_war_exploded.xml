@@ -31,8 +31,6 @@
           <element id="library" level="project" name="Maven: org.springframework:spring-jdbc:5.0.5.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-tx:5.0.5.RELEASE" />
           <element id="library" level="project" name="Maven: jstl:jstl:1.2" />
-          <element id="library" level="project" name="Maven: org.glassfish.web:jstl-impl:1.2" />
-          <element id="library" level="project" name="Maven: javax.servlet.jsp.jstl:jstl-api:1.2" />
           <element id="library" level="project" name="Maven: org.eclipse.jetty.orbit:javax.servlet.jsp.jstl:1.2.0.v201105211821" />
         </element>
       </element>
