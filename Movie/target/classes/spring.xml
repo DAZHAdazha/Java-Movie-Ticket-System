@@ -61,7 +61,8 @@
  	
  	<!-- 开启aspectj代理 -->
  	<aop:aspectj-autoproxy/>
- 	
+
+	<mvc:default-servlet-handler/>
  	
 	<!-- Jackson配置-->
 	<bean id="objectMapper" class="com.fasterxml.jackson.databind.ObjectMapper">

@@ -39,81 +39,10 @@
                 <div class="nav-title">
                     <h3>后台管理</h3>
                 </div>
-                <a class="cardId">用户管理</a>
-                <a class="cardId">电影管理</a>
-                <a class="cardId">场次管理</a>
-                <a class="cardId">评论管理</a>
-                <a class="cardId">订单管理</a>
                 <a class="cardId">票房统计</a>
             </div>
             <div class="nav-body">
-                <!-- 用户管理 -->
-                <div class="one card" style="display: block;">
-                    <div>
-                        <div class="title">用户管理</div>
-                        <hr/>
-                    </div>
-                    <!-- 用户列表 -->
-                    <div class="userlist">
-                        <table class="layui-hide" id="user_table_id" lay-filter="UserTable" style="margin-right: 5%;"></table>
-                    </div>
-                </div>
-                <!-- 电影管理 -->
-                <div class="two card" style="display: none;">
-                    <div>
-                        <div class="title">电影管理</div>
-                        <hr/>
-                    </div>
-                    <div class="main-inner">
-                        <div class="addMovie">
-                            <img alt="" src="../static/images/addMovie.png" onclick="addConfirm(-1)">
-                            <span>添加电影</span>
-                        </div>
-                        <div class="movie-grid">
-                            <div class="panel-header">
-                                <span class="panel-title">
-                                </span>
-                            </div>
-                            <div class="panel-content">
-                                <ul class="movies-list">
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- 场次管理 -->
-                <div class="three card" style="display: none;">
-                    <div>
-                        <div class="title">场次管理</div>
-                        <hr/>
-                    </div>
-                    <!-- 场次列表 -->
-                    <div class="schedulelist">
-                        <table class="layui-hide" id="schedule_table_id" lay-filter="ScheduleTable" style="margin-right: 5%;"></table>
-                    </div>
-                </div>
-                <!-- 评论管理 -->
-                <div class="four card" style="display: none;">
-                    <div>
-                        <div class="title">评论管理</div>
-                        <hr/>
-                    </div>
-                    <!-- 评论列表 -->
-                    <div class="commentlist">
-                        <table class="layui-hide" id="comment_table_id" lay-filter="CommentTable" style="margin-right: 5%;"></table>
-                    </div>
-                </div>
-                <!-- 订单管理 -->
-                <div class="five card" style="display: none;">
-                    <div>
-                        <div class="title">订单管理</div>
-                        <hr/>
-                    </div>
-                    <!-- 订单列表 -->
-                    <div class="ticketlist">
-                        <table class="layui-hide" id="ticket_table_id" lay-filter="TicketTable" style="margin-right: 5%;"></table>
-                    </div>
-                </div>
+
                 <!-- 票房统计 -->
                 <div class="six card" style="display: none;">
                     <div>

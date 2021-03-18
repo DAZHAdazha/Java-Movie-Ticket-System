@@ -150,7 +150,7 @@
                     user_name: user.user_name
                 },
                 success:function (obj) {
-                    // console.log(obj);
+                    console.log(obj);
                     for(var i=0;i<obj.data.length;i++){
                       //  var order_time = obj.data[i].order_schedule.schedule_startTime.slice(0,10);
                         var StateText;
@@ -170,7 +170,7 @@
                             "<div class=\"order-head\">" +
                                     "<span class=\"order-date\">" + obj.data[i].order_time + "</span>" +
                                     "<span class=\"order-id\">订单号：" + obj.data[i].order_id + "</span>" +
-                                    "<span class=\"order-delete\">*</span>" +
+                                    "<span class=\"order-delete\"><a target='_blank' href=\" " +obj.data[i].qrimage+"\">查看二维码</a></span>" +
                                     "</div>" +
                             "<div class=\"order-body\">" +
                                 "<div class=\"poster\"><img src=\"" + obj.data[i].order_schedule.schedule_movie.movie_picture + "\"></div>" +
@@ -430,16 +430,6 @@
                     );
                 });
             }
-            // else if(user_old_password != user.user_pwd){
-            //     layui.use(['layer'], function(){
-            //     var layer = layui.layer;
-            //         layer.alert('旧密码输入错误！',{icon: 0,offset: clientHeight/5},
-            //             function (){
-            //                 layer.close(layer.index);
-            //             }
-            //         );
-            //     });
-            // }
             else if(user_new_password != user_repeat_password){
                 layui.use(['layer'], function(){
                 var layer = layui.layer;
