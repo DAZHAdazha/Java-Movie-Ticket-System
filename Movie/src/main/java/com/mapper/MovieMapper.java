@@ -26,4 +26,8 @@ public interface MovieMapper {
 	List<Movie> sortMovieByScore();
 	//票房排序
 	List<Movie> sortMovieByBoxOffice();
+
+	List<Movie> findMoviesLikeTAY(@Param("type") String type, @Param("area")String area, @Param("year")String year);
+
+	List<Movie> findMoviesLikeActor(@Param("actorName") String actorName);
 }

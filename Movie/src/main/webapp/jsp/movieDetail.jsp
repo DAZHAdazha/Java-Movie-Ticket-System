@@ -228,7 +228,7 @@
                 },
                 success:function (obj) {
                     StonefontTemp = obj.data.movie_boxOffice;
-                    StonefontTemp += "万";
+                    StonefontTemp += "亿";
                     avatar.append("<img class=\"avatar\" src=\"" + obj.data.movie_picture + "\" alt=\"\">");
                     movieBriefContainer.append(
                     "<h3 class=\"name\">" + obj.data.movie_cn_name + "</h3>" +
