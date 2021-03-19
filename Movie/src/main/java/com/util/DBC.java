@@ -24,13 +24,11 @@ public class DBC {
         List<User> users = jdbcTemplate.query("select * from user", new BeanPropertyRowMapper<User>(User.class));
         for(User user:users){
             String base64encodedString = null;
-            System.out.println("A: " + user.getUser_pwd());
             try {
-                base64encodedString = Base64.getEncoder().encodeToString(user.getUser_pwd().getBytes("utf-8"));
+                base64encodedString = Base64.getEncoder().encodeToString("1234".getBytes("utf-8"));
             } catch (UnsupportedEncodingException e) {
                 e.printStackTrace();
             }
-            System.out.println("B: " + base64encodedString);
             jdbcTemplate.update("UPDATE user SET user_pwd = ? WHERE user_id = ?",base64encodedString,user.getUser_id());
         }
     }
