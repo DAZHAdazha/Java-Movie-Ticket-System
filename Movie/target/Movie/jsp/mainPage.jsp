@@ -405,7 +405,7 @@
                                     "<div class=\"ranking-top-right-main\">" +
                                         "<span class=\"ranking-top-moive-name\">" + obj.sort[i].movie_cn_name + "</span>" +
                                         "<p class=\"ranking-top-wish\">" +
-                                            "<span class=\"stonefont\">" + obj.sort[i].movie_boxOffice + "</span>万" +
+                                            "<span class=\"stonefont\">" + obj.sort[i].movie_boxOffice + "</span>亿" +
                                         "</p>" +
                                     "</div>" +
                                 "</div>" +
@@ -422,7 +422,7 @@
                                     "<i class=\"ranking-index ranking-index-"+(i+1)+"\">" + (i+1) + "</i>" +
                                     "<span class=\"ranking-movie-name\">" + obj.sort[i].movie_cn_name + "</span>" +
                                     "<span class=\"ranking-num-info\">" +
-                                        "<span class=\"stonefont\">" + obj.sort[i].movie_boxOffice + "</span>万" +
+                                        "<span class=\"stonefont\">" + obj.sort[i].movie_boxOffice + "</span>亿" +
                                     "</span>" +
                                 "</span>" +
                             "</a>" +

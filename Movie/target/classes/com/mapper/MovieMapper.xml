@@ -97,5 +97,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="sortMovieByBoxOffice" resultMap="BaseResultMap">
 		select * from movie where movie_state = 1 order by movie_boxOffice desc
 	</select>
-	
+	<select id="findMoviesLikeTAY" parameterType="java.lang.String" resultMap="BaseResultMap">
+		select * from movie where movie_type like '%${type}%' and movie_country like '%${area}%' and movie_releaseDate like '%${year}%' and movie_state = 1
+	</select>
+	<select id="findMoviesLikeActor" parameterType="java.lang.String" resultMap="BaseResultMap">
+		select * from movie where movie_actor like '%${actorName}%' and movie_state = 1
+	</select>
 </mapper>

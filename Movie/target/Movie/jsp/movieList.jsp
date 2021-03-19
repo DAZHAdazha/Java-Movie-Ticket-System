@@ -129,14 +129,16 @@
 
         //初始化电影列表
         function initMovieList(){
-            if(getUrlParams("type") == "全部" || getUrlParams("type") == null){
+            type = getUrlParams("type")
+            year = getUrlParams("year")
+            area = getUrlParams("area")
+            if(type==null&&year==null&&area==null){
                 $.ajax({
                     type: "post",
                     url: url + "/movie/sortAllMovies",
                     data: {order: order},
                     dataType: "json",
                     success: function(obj){
-                        console.log(obj);
                         for(var i = 0;i < obj.count; i++){
                             movielist.append(
                                 "<li> <div class=\"movie-item\"> <a href=\"./buyTickets.jsp?movie_id="+ obj.data[i].movie_id +"\" target=\"_blank\"> <div class=\"movie-poster\"> <img src=\""+ obj.data[i].movie_picture +"\"> </div> </a>" +
@@ -150,16 +152,16 @@
                     },
                     error: function(){
                         alert("network error!");
+
                     }
                 });
             }else{
                 $.ajax({
                     type: "post",
-                    url: url + "/movie/findMoviesByType",
-                    data: {type: type},
+                    url: url + "/movie/findMoviesByTAY",//type,area,year
+                    data: {type: type,area: area,year: year},
                     dataType: "json",
                     success:function(obj){
-                        console.log(obj);
                         if(obj.count > 0){
                             for(var i = 0;i < obj.count; i++){
                                 movielist.append(
@@ -262,7 +264,7 @@
                 tagsYear = $(".tags-year");
             var TypeStr = ["全部","爱情","喜剧","动画","剧情","惊悚","科幻","动作","悬疑","犯罪","冒险","运动","家庭","古装","其他"],
                 AreaStr = ["全部","大陆","美国","韩国","日本","中国香港","中国台湾","泰国","印度","法国","英国","俄罗斯","意大利"],
-                YearStr = ["全部","2019","2018","2017","2016","2015","2014"];
+                YearStr = ["全部","2021","2020","2019","2018","2017","2016"];
             var TypeActive = [],
                 AreaActive = [],
                 YearActive = [];
@@ -279,6 +281,7 @@
                         "</a>" +
                     "</li>"
                 );
+
             }
             urlTemp = ["&type="+type,"&area="+area,"&year="+year];
             for(var i=0;i<AreaStr.length;i++){
@@ -322,17 +325,17 @@
         //初始化url参数
         function initParams(){
             if(getUrlParams('type') == null){
-                type = "0";
+                type = "全部";
             }else{
                 type = getUrlParams('type');
             }
             if(getUrlParams('area') == null){
-                area = "0";
+                area = "全部";
             }else{
                 area = getUrlParams('area');
             }
             if(getUrlParams('year') == null){
-                year = "0";
+                year = "全部";
             }else{
                 year = getUrlParams('year');
             }
