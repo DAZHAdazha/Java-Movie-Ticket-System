@@ -44,8 +44,13 @@ public class MainPageController {
             obj.put("data", cinemasLikeName);
             return obj;
         } else {
-            System.out.println("not implemented yet");
-            return null;
+            JSONObject obj = new JSONObject();
+            List<Movie> moviesLikeActor = movieService.findMoviesLikeActor(searchKeyword);obj.put("code", 0);
+            obj.put("count", moviesLikeActor.size());
+            obj.put("data", moviesLikeActor);
+            return obj;
+//            System.out.println("not implemented yet");
+//            return null;
         }
     }
 

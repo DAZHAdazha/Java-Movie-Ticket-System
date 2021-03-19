@@ -118,6 +118,27 @@ public class MovieServiceImp implements IMovieService{
 	public List<Movie> sortMovieByBoxOffice() {
 		return this.movieMapper.sortMovieByBoxOffice();
 	}
-	
-	
+
+	@Override
+	public List<Movie> findMoviesLikeTAY(String type, String area, String year) {
+		if (type.compareTo("全部")==0){
+			type="";
+		}
+
+		if (area.compareTo("全部")==0){
+			area="";
+		}
+
+		if (year.compareTo("全部")==0){
+			year="";
+		}
+		List<Movie> list = this.movieMapper.findMoviesLikeTAY(type,area,year);
+		return list;
+	}
+
+	@Override
+	public List<Movie> findMoviesLikeActor(String actorName) {
+		List<Movie> list = this.movieMapper.findMoviesLikeActor(actorName);
+		return list;
+	}
 }

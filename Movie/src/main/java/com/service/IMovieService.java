@@ -21,4 +21,8 @@ public interface IMovieService {
 	List<Movie> sortMovieByCount();
 	List<Movie> sortMovieByScore();
 	List<Movie> sortMovieByBoxOffice();
+
+	List<Movie> findMoviesLikeTAY(String type,String area,String year);
+
+	List<Movie> findMoviesLikeActor(String searchKeyword);
 }

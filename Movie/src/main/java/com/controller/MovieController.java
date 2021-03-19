@@ -91,11 +91,22 @@ public class MovieController {
 //		return obj;
 //	}
 	
-	@RequestMapping("findMoviesByType")
+//	@RequestMapping("findMoviesByType")
+//	@ResponseBody
+//	public JSONObject findMoviesByType(@RequestParam("type") String type) {
+//		JSONObject obj = new JSONObject();
+//		List<Movie> list = movieService.findMoviesLikeType(type);
+//		obj.put("code", 0);
+//		obj.put("count", list.size());
+//		obj.put("data", list);
+//		return obj;
+//	}
+
+	@RequestMapping("findMoviesByTAY")
 	@ResponseBody
-	public JSONObject findMoviesByType(@RequestParam("type") String type) {
+	public JSONObject findMoviesByTAY(@RequestParam("type") String type,@RequestParam("area") String area,@RequestParam("year") String year) {
 		JSONObject obj = new JSONObject();
-		List<Movie> list = movieService.findMoviesLikeType(type);
+		List<Movie> list = movieService.findMoviesLikeTAY(type,area,year);
 		obj.put("code", 0);
 		obj.put("count", list.size());
 		obj.put("data", list);
