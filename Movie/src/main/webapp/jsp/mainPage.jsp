@@ -36,19 +36,19 @@
             <div class="layui-carousel" id="test3" lay-filter="test4">
                 <div carousel-item="">
                     <div>
-                        <img src="../static/images/pic1.jpg">
+                        <img src="../static/images/promote1.jpg">
                     </div>
                     <div>
-                        <img src="../static/images/pic2.jpg">
+                        <img src="../static/images/promote2.jpg">
                     </div>
                     <div>
-                        <img src="../static/images/pic3.jpg">
+                        <img src="../static/images/promote3.jpg">
                     </div>
                     <div>
-                        <img src="../static/images/pic4.jpg">
+                        <img src="../static/images/promote4.jpg">
                     </div>
                     <div>
-                        <img src="../static/images/pic5.jpg">
+                        <img src="../static/images/promote5.jpg">
                     </div>
                 </div>
             </div> 
