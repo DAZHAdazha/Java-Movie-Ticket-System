@@ -11,10 +11,12 @@
         <module name="spring_jdbc" />
         <module name="spring_ioc" />
         <module name="spring_ioc_anno" />
+        <module name="spring_interceptor" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="spring_demo" target="11" />
+      <module name="spring_interceptor" target="11" />
       <module name="spring_ioc" target="11" />
       <module name="spring_ioc_anno" target="11" />
       <module name="spring_jdbc" target="11" />

@@ -9,8 +9,6 @@
 
 <!--配置注解驱动-->
     <mvc:annotation-driven/>
-<!--静态资源放行-->
-    <mvc:default-servlet-handler/>
 <!--内部资源视图解析器-->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="suffix" value=".jsp"/>
@@ -18,4 +16,16 @@
     </bean>
 <!--组件扫描-->
     <context:component-scan base-package="com.demo.controller"/>
+<!--配置权限拦截器-->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <!--配置对哪些资源执行拦截-->
+            <mvc:mapping path="/**"/>
+            <!--哪些资源排除拦截操作-->
+            <mvc:exclude-mapping path="/user/login"/>
+            <bean class="com.demo.interceptor.PrivilegeInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+<!--静态资源放行-->
+    <mvc:default-servlet-handler/>
 </beans>
