@@ -129,12 +129,13 @@
             (content.clientHeight - screen.clientHeight)/2 + "px;";
             setInterval(function(){
                 colorNum += middle;
-                if(colorNum>185){
+                if(colorNum>130){
                     middle = -3;
                 }else if(colorNum<80){
                     middle = 3;
                 }
-                title.style.cssText = "color:rgb(255," + colorNum + ", 0)";
+                // title.style.cssText = "color:rgb(255," + colorNum + ", 0)";
+                title.style.cssText = "color:rgb(223,99," +  colorNum + ")";
             },30);
         }
 
