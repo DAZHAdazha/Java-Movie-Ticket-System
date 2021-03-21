@@ -22,7 +22,7 @@
     <script src="../static/js/Api.js"></script>
     <script src="../static/layui/layui.js" charset="utf-8"></script>
     <link rel="stylesheet" href="../static/layui/css/layui.css" media="all">
-    <title>鹰眼电影-后台管理</title>
+    <title>淘淘电影-后台管理</title>
 </head>
 <body>
     <!-- ------------------------------------------------------------------- -->

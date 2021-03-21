@@ -3,11 +3,14 @@ package com.controller;
 import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.Base64;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,16 +41,22 @@ public class UserController {
 	
 	@RequestMapping("/login")
 	@ResponseBody
-	public JSONObject login(String user_name,String user_pwd,HttpServletRequest request) throws UnsupportedEncodingException {
+	public JSONObject login(String user_name, String user_pwd, HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException {
 
 		JSONObject obj = new JSONObject();
 		User user = userService.login(user_name, user_pwd);
 		System.out.println(user_name);
 		System.out.println(user_pwd);
+		System.out.println(user);
 		if(user != null) {
-			System.out.println("hhhhhhhhheere");
+			System.out.println("herrrrr");
+			Cookie cookie = new Cookie("user", "yes");
+			cookie.setMaxAge(60 * 60 * 24 * 30);
+			response.addCookie(cookie);
 			HttpSession session = request.getSession();
+			session.setMaxInactiveInterval(60 * 60 * 24 * 30);
 			session.setAttribute("user", user);
+			System.out.println("!!!!!");
 			if(user.getUser_role() == 0) {
 				obj.put("msg", "usersuccess");
 				obj.put("data", user);
