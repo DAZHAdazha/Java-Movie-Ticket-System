@@ -8,10 +8,11 @@
     System.out.println("cokkies!");
     if(cookies != null){
         for (Cookie cookie : cookies) {
-            if(cookie.getName().equals("user"))
+            if(cookie.getName().equals("user")){
                 System.out.println(cookie);
-            flag = 1;
-            break;
+                flag = 1;
+                break;
+            }
         }
     }
     if(flag == 0){

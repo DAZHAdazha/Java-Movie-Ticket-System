@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
@@ -70,9 +71,28 @@ public class CommentController {
 	public JSONObject addCommentByUser(@RequestParam("movie_id")long movie_id,@RequestParam("comment_content")String comment_content,HttpServletRequest request) {
 		User user = (User)request.getSession().getAttribute("user");
 		JSONObject obj = new JSONObject();
-		if(user == null) {
+		int sign = 0;
+		int flag = 0;
+		if(user == null){
+			Long userId = null;
+			Cookie[] cookies = request.getCookies();
+			for (Cookie cookie : cookies) {
+				if(cookie.getName().equals("user")){
+					userId = Long.parseLong(cookie.getValue());
+					flag = 1;
+					break;
+				}
+			}
+			if(flag == 1){
+				sign = 1;
+				user = userService.findUserById(userId);
+			}
+		} else {
+			sign = 1;
+		}
+		if(sign != 1) {
 			obj.put("code",200);
-			obj.put("msg", "您未登录,登录之后才可评论~");
+			obj.put("msg", "您未登录,登录之后才可购票~");
 		}else {
 			Comment comment = new Comment();
 			comment.setComment_content(comment_content);

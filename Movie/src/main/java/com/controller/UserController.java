@@ -49,14 +49,12 @@ public class UserController {
 		System.out.println(user_pwd);
 		System.out.println(user);
 		if(user != null) {
-			System.out.println("herrrrr");
-			Cookie cookie = new Cookie("user", "yes");
+			Cookie cookie = new Cookie("user",Long.toString(user.getUser_id()));
 			cookie.setMaxAge(60 * 60 * 24 * 30);
+			cookie.setPath("/");
 			response.addCookie(cookie);
 			HttpSession session = request.getSession();
-			session.setMaxInactiveInterval(60 * 60 * 24 * 30);
 			session.setAttribute("user", user);
-			System.out.println("!!!!!");
 			if(user.getUser_role() == 0) {
 				obj.put("msg", "usersuccess");
 				obj.put("data", user);

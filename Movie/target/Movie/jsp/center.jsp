@@ -1,18 +1,19 @@
 <%@page import="com.entity.User"%>
+<%@ page import="com.service.imp.UserServiceImp" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
 //	User user = (User)request.getSession().getAttribute("user");
     int flag = 0;
     Cookie[] cookies = request.getCookies();
-    System.out.println("cokkies!");
     if(cookies != null){
-        for (Cookie cookie : cookies) {
-            if(cookie.getName().equals("user"))
-                System.out.println(cookie);
+        for (Cookie cookie : cookies){
+            System.out.println(cookie.getName() + ":" + cookie.getValue());
+            if(cookie.getName().equals("user")){
                 flag = 1;
                 break;
             }
+        }
     }
 	if(flag == 0){
 		response.sendRedirect("./login.jsp");

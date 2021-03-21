@@ -11,8 +11,11 @@ import java.util.List;
 
 import javax.annotation.Resource;
 import javax.imageio.ImageIO;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 
+import com.service.IUserService;
+import com.service.imp.UserServiceImp;
 import com.util.QrcodeGenerator;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,6 +40,8 @@ public class OrderController {
 	@Resource
 	private IMovieService movieService; //支付、退票成功  票房+-
 	//查看订单是否 是支付的（返回给前端的数据）
+	@Resource
+	private IUserService userService;
 	
 	@RequestMapping("findOrderById")
 	@ResponseBody
@@ -137,7 +142,26 @@ public class OrderController {
 	public JSONObject buyTickets(@RequestParam("schedule_id")long schedule_id,@RequestParam("position[]")String[] position,@RequestParam("price")int price,HttpServletRequest request) {
 		User user = (User)request.getSession().getAttribute("user");
 		JSONObject obj = new JSONObject();
-		if(user == null) {
+		int sign = 0;
+		int flag = 0;
+		if(user == null){
+			Long userId = null;
+			Cookie[] cookies = request.getCookies();
+			for (Cookie cookie : cookies) {
+				if(cookie.getName().equals("user")){
+					userId = Long.parseLong(cookie.getValue());
+					flag = 1;
+					break;
+				}
+			}
+			if(flag == 1){
+				sign = 1;
+				user = userService.findUserById(userId);
+			}
+		} else {
+			sign = 1;
+		}
+		if(sign != 1) {
 			obj.put("code",200);
 			obj.put("msg", "您未登录,登录之后才可购票~");
 		}else {
