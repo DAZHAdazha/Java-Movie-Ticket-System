@@ -6,15 +6,17 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="spring_mvc" />
-        <module name="spring_demo" />
+        <module name="exception" />
         <module name="spring_jdbc" />
         <module name="spring_ioc" />
+        <module name="spring_mvc" />
+        <module name="spring_demo" />
         <module name="spring_ioc_anno" />
         <module name="spring_interceptor" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="exception" target="11" />
       <module name="spring_demo" target="11" />
       <module name="spring_interceptor" target="11" />
       <module name="spring_ioc" target="11" />

@@ -9,6 +9,7 @@
         <option value="$PROJECT_DIR$/spring_jdbc/pom.xml" />
         <option value="$PROJECT_DIR$/spring_demo/pom.xml" />
         <option value="$PROJECT_DIR$/spring_interceptor/pom.xml" />
+        <option value="$PROJECT_DIR$/exception/pom.xml" />
       </list>
     </option>
   </component>

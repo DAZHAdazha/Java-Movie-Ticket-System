@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/StudySpring.iml" filepath="$PROJECT_DIR$/.idea/StudySpring.iml" />
+      <module fileurl="file://$PROJECT_DIR$/exception/exception.iml" filepath="$PROJECT_DIR$/exception/exception.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring_demo/spring_demo.iml" filepath="$PROJECT_DIR$/spring_demo/spring_demo.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring_interceptor/spring_interceptor.iml" filepath="$PROJECT_DIR$/spring_interceptor/spring_interceptor.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring_ioc/spring_ioc.iml" filepath="$PROJECT_DIR$/spring_ioc/spring_ioc.iml" />
