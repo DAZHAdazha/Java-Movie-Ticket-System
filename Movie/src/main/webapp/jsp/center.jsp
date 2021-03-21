@@ -2,8 +2,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-	User user = (User)request.getSession().getAttribute("user");
-	if(user == null){
+//	User user = (User)request.getSession().getAttribute("user");
+    int flag = 0;
+    Cookie[] cookies = request.getCookies();
+    System.out.println("cokkies!");
+    if(cookies != null){
+        for (Cookie cookie : cookies) {
+            if(cookie.getName().equals("user"))
+                System.out.println(cookie);
+                flag = 1;
+                break;
+            }
+    }
+	if(flag == 0){
 		response.sendRedirect("./login.jsp");
 	}
 %>
@@ -25,7 +36,7 @@
     <script src="../static/js/Api.js"></script>
     <script src="../static/layui/layui.js" charset="utf-8"></script>
     <link rel="stylesheet" href="../static/layui/css/layui.css" media="all">
-    <title>鹰眼电影-个人中心</title>
+    <title>淘淘电影-个人中心</title>
 </head>
 <body>
     <!-- ------------------------------------------------------------------- -->

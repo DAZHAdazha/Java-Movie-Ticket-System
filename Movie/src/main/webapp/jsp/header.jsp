@@ -17,7 +17,7 @@
 
     <script src="../static/layui/layui.js" charset="utf-8"></script>
     <link rel="stylesheet" href="../static/layui/css/layui.css" media="all">
-    <title>鹰眼电影</title>
+    <title>淘淘电影</title>
 </head>
 <body>
  	<!-- 导航栏 -->

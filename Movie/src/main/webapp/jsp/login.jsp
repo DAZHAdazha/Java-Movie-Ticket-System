@@ -17,7 +17,7 @@
     <link href="../static/css/login.css" rel="stylesheet">
 
     <script></script>
-    <title>鹰眼电影-登录注册</title>
+    <title>淘淘电影-登录注册</title>
 </head>
 <body>
 
