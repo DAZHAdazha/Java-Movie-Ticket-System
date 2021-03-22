@@ -13,10 +13,12 @@
         <module name="spring_demo" />
         <module name="spring_ioc_anno" />
         <module name="spring_interceptor" />
+        <module name="spring_aop" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="exception" target="11" />
+      <module name="spring_aop" target="11" />
       <module name="spring_demo" target="11" />
       <module name="spring_interceptor" target="11" />
       <module name="spring_ioc" target="11" />
