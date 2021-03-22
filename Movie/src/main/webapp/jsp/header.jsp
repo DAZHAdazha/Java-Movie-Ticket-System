@@ -61,7 +61,7 @@
                                     </div>
                                 </div>
                                 <div class="layui-col-md2" style="float: right">
-                                    <input name="searchKeyword" class="search" type="search" maxlength="32" placeholder="找影视剧、影人、影院" autocomplete="off">
+                                    <input name="searchKeyword" class="search" type="search" maxlength="32" placeholder="Find movie,cinema,performer" autocomplete="off">
                                     <input class="submit" type="submit" value="">
                                 </div>
                             </div>

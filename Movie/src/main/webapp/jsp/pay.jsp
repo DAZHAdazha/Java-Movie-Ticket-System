@@ -37,7 +37,7 @@
     <script src="../static/js/Api.js"></script>
     <script src="../static/layui/layui.js" charset="utf-8"></script>
     <link rel="stylesheet" href="../static/layui/css/layui.css" media="all">
-    <title>淘淘电影-支付</title>
+    <title>Tao Tao Movie-Payment</title>
 </head>
 <body>
     <!-- ------------------------------------------------------------------- -->
@@ -53,45 +53,45 @@
             <div class="step first done">
                 <span class="step-num">1</span>
                 <div class="bar"></div>
-                <span class="step-next">选择影片场次</span>
+                <span class="step-next">Choose movie</span>
             </div>
             <div class="step done">
                 <span class="step-num">2</span>
                 <div class="bar"></div>
-                <span class="step-next">选择座位</span>
+                <span class="step-next">Choose seats</span>
             </div>
             <div class="step done">
                 <span class="step-num">3</span>
                 <div class="bar"></div>
-                <span class="step-next">付款</span>
+                <span class="step-next">Payment</span>
             </div>
             <div class="step last">
                 <span class="step-num">4</span>
                 <div class="bar"></div>
-                <span class="step-next">影院取票观影</span>
+                <span class="step-next">Watch movie</span>
             </div>
         </div>
 
         <div class="count-down-wrapper">
             <div class="count-down">
                 <p class="time-left">
-                    请在<span class="minute"></span>分钟<span class="second"></span>秒内完成支付
+                    Please complete the payment in <span class="minute"></span> minutes and <span class="second"></span> seconds
                 </p>
-                <p class="tip">超时订单会自动取消，如遇支付问题，请联系管理员</p>
+                <p class="tip">The overtime order will be cancelled automatically</p>
             </div>
         </div>
 
         <p class="warning">
-            请仔细核对场次信息，出票后将<span class="attention">无法退票和改签</span>
+            Please check the venue information carefully.<span class="attention">The ticket cannot be refunded or changed after it is issued</span>
         </p>
 
         <table class="order-table">
             <thead>
                 <tr>
-                    <th>影片</th>
-                    <th>时间</th>
-                    <th>影院</th>
-                    <th>座位</th>
+                    <th>Movie</th>
+                    <th>Time</th>
+                    <th>Theater</th>
+                    <th>Seat</th>
                 </tr>
             </thead>
             <tbody>
@@ -101,11 +101,11 @@
 
         <div class="right">
             <div class="price-wrapper">
-                <span>实际支付：</span>
+                <span>Price: </span>
                 <span class="price"></span>
             </div>
             <div>
-                <div class="pay-btn">确认支付</div>
+                <div class="pay-btn">Confirm payment</div>
             </div>
         </div>
     </div>
@@ -179,7 +179,7 @@
             timeSecond.text(localStorage.second);
             setInterval(function(){
                 if(second==0 && minute==0){
-                    window.alert("支付时间已过，订单失效！");
+                    window.alert("Overtime order!!");
                     localStorage.clear();
                 }
                 if((localStorage.second == "NaN") || (localStorage.second == 0 && localStorage.minute == 0))
@@ -219,7 +219,7 @@
                     if(obj.code == 0){
                         layui.use(['layer'], function(){
                             var layer = layui.layer;
-                            layer.alert('购票成功！',{icon: 0,offset: clientHeight/5},
+                            layer.alert('Successful purchase！',{icon: 0,offset: clientHeight/5},
                                  function (){
                                     layer.closeAll();
                                     document.location.href = "./payStatus.jsp";

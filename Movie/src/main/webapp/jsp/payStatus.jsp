@@ -37,7 +37,7 @@
     <script src="../static/js/Api.js"></script>
     <script src="../static/layui/layui.js" charset="utf-8"></script>
     <link rel="stylesheet" href="../static/layui/css/layui.css" media="all">
-    <title>淘淘电影-支付成功</title>
+    <title>Tao Tao Movie-Payment Completed</title>
 </head>
 <body>
 
@@ -53,34 +53,34 @@
             <div class="step first done">
                 <span class="step-num">1</span>
                 <div class="bar"></div>
-                <span class="step-next">选择影片场次</span>
+                <span class="step-next">Choose movie</span>
             </div>
             <div class="step done">
                 <span class="step-num">2</span>
                 <div class="bar"></div>
-                <span class="step-next">选择座位</span>
+                <span class="step-next">Choose seats</span>
             </div>
             <div class="step done">
                 <span class="step-num">3</span>
                 <div class="bar"></div>
-                <span class="step-next">付款</span>
+                <span class="step-next">Payment</span>
             </div>
             <div class="step last done">
                 <span class="step-num">4</span>
                 <div class="bar"></div>
-                <span class="step-next">影院取票观影</span>
+                <span class="step-next">Watch movie</span>
             </div>
         </div>
         <div class="main-paystatus">
             <img src="../static/images/success.jpg"/>
-            <p class="statustext">已完成支付</p>
+            <p class="statustext">Payment completed</p>
         </div>
         <div class="right">
             <p class="warning">
-                该页面关闭后可以在<span class="attention">个人订单</span>页面查看订单信息
+                View order information on<span class="attention"> personal order page</span>
             </p>
             <div>
-                <div class="pay-btn" onclick="returnCenter()">返回个人订单</div>
+                <div class="pay-btn" onclick="returnCenter()">Return personal order page</div>
             </div>
         </div>
     </div>
