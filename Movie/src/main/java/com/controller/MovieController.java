@@ -142,10 +142,12 @@ public class MovieController {
 		Integer rs = movieService.deleteMovie(movie_id);
 		if(rs > 0) {
 			obj.put("code",0);
-			obj.put("msg","下架成功~");
+//			obj.put("msg","下架成功~");
+			obj.put("msg","Delete Movie successfully");
 		}else {
 			obj.put("code", 200);
-			obj.put("msg", "下架失败~");
+//			obj.put("msg", "下架失败~");
+			obj.put("msg", "Deleted Movie failed");
 		}
 		return obj;
 	}
@@ -154,11 +156,11 @@ public class MovieController {
 	@ResponseBody
 	public JSONObject addMovie(@RequestParam(value="file",required=false) MultipartFile file,Movie movie,HttpServletRequest request) throws IOException  {
 		String str = file.getOriginalFilename();
-		System.out.println("file:" + str);
+//		System.out.println("file:" + str);
 		String name = UUIDUtil.getUUID() + str.substring(str.lastIndexOf("."));
-		System.out.println("name:" + name);
+//		System.out.println("name:" + name);
 		String path = request.getServletContext().getRealPath("/upload/movies") + "/" + name;
-		System.out.println("path:" + path);
+//		System.out.println("path:" + path);
 		String filePath = "../upload/movies/" + name;
 		movie.setMovie_picture(filePath);
 		Date date = new Date();
@@ -173,12 +175,14 @@ public class MovieController {
 		JSONObject obj = new JSONObject();
 		if(rs > 0) {
 			file.transferTo(new File(path));
-			System.out.println("文件写入成功,Path:" + path);
+//			System.out.println("文件写入成功,Path:" + path);
 			obj.put("code", 0);
-			obj.put("msg", "添加成功~");
+//			obj.put("msg", "添加成功~");
+			obj.put("msg", "Add file successfully");
 		}else {
 			obj.put("code", 200);
-			obj.put("msg", "添加失败~");
+//			obj.put("msg", "添加失败~");
+			obj.put("msg", "Add file failed");
 		}
 		return obj;
 	}
@@ -189,14 +193,14 @@ public class MovieController {
 		JSONObject obj = new JSONObject();
 		if(file != null) {
 			String str = file.getOriginalFilename();
-			System.out.println("file:" + str);
+//			System.out.println("file:" + str);
 			String name = UUIDUtil.getUUID() + str.substring(str.lastIndexOf("."));
-			System.out.println("name:" + name);
+//			System.out.println("name:" + name);
 			String path = request.getServletContext().getRealPath("/upload/movies") + "/" + name;
-			System.out.println("path:" + path);
+//			System.out.println("path:" + path);
 			String filePath = "../upload/movies/" + name;
 			file.transferTo(new File(path));
-			System.out.println("文件写入成功,Path:" + path);
+//			System.out.println("文件写入成功,Path:" + path);
 			movie.setMovie_picture(filePath);
 		}else {
 			Movie oldMovie = this.movieService.findMovieById(movie.getMovie_id());
@@ -205,10 +209,12 @@ public class MovieController {
 		Integer rs = movieService.updateMovie(movie);
 		if(rs > 0) {
 			obj.put("code", 0);
-			obj.put("msg", "修改成功~");
+//			obj.put("msg", "修改成功~");
+			obj.put("msg", "Modified successfully");
 		}else {
 			obj.put("code", 200);
-			obj.put("msg", "修改失败~");
+//			obj.put("msg", "修改失败~");
+			obj.put("msg", "Modified failed");
 		}
 		return obj;
 	}

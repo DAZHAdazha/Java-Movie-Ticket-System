@@ -92,7 +92,8 @@ public class CommentController {
 		}
 		if(sign != 1) {
 			obj.put("code",200);
-			obj.put("msg", "您未登录,登录之后才可购票~");
+//			obj.put("msg", "您未登录,登录之后才可购票~");
+			obj.put("msg", "You have not logged in yet, please login to buy ticket");
 		}else {
 			Comment comment = new Comment();
 			comment.setComment_content(comment_content);
@@ -104,14 +105,17 @@ public class CommentController {
 				Integer rs2 = movieService.addCommentCount(comment.getMovie_id());
 				if(rs2 > 0) {
 					obj.put("code", 0);
-					obj.put("msg", "评论成功~");
+//					obj.put("msg", "评论成功~");
+					obj.put("msg", "Comment successfully");
 				}else {
 					obj.put("code",200);
-					obj.put("msg", "评论失败2~");
+//					obj.put("msg", "评论失败2~");
+					obj.put("msg", "Comment failed(1)");
 				}
 			}else {
 				obj.put("code",200);
-				obj.put("msg", "评论失败~");
+//				obj.put("msg", "评论失败~");
+				obj.put("msg", "Comment failed(2)");
 			}
 		}
 		return obj;
@@ -127,10 +131,12 @@ public class CommentController {
 		Integer rs = commentService.updateComment(comment);
 		if(rs > 0) {
 			obj.put("code", 0);
-			obj.put("msg", "修改成功~");
+//			obj.put("msg", "修改成功~");
+			obj.put("msg", "Modified successfully");
 		}else {
 			obj.put("code",200);
-			obj.put("msg", "修改失败~");
+//			obj.put("msg", "修改失败~");
+			obj.put("msg", "Modified failed");
 		}
 		return obj;
 	}
@@ -143,10 +149,12 @@ public class CommentController {
 		Integer rs = commentService.deleteComment(comment_id);
 		if(rs > 0) {
 			obj.put("code", 0);
-			obj.put("msg", "删除成功~");
+//			obj.put("msg", "删除成功~");
+			obj.put("msg", "Deleted successfully");
 		}else {
 			obj.put("code", 200);
-			obj.put("msg", "删除失败~");
+//			obj.put("msg", "删除失败~");
+			obj.put("msg", "Deleted failed");
 		}
 		return obj;
 	}

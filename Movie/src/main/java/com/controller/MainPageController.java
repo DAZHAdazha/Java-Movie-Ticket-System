@@ -49,8 +49,6 @@ public class MainPageController {
             obj.put("count", moviesLikeActor.size());
             obj.put("data", moviesLikeActor);
             return obj;
-//            System.out.println("not implemented yet");
-//            return null;
         }
     }
 
@@ -61,13 +59,10 @@ public class MainPageController {
         response.setHeader("Cache-Control", "no-cache");
         response.setDateHeader("Expires", 0);
         response.setContentType("image/jpeg");
-        //生成随机字符串
         String verifyCode = CheckCodeUtil.generateVerifyCode(4);
         HttpSession session = request.getSession(true);
         session.setAttribute("verifyCode",verifyCode);
-        //将字符串写入输出流 130宽 40高
         CheckCodeUtil.outputImage(130, 40, response.getOutputStream(), verifyCode);
-        //存入Session
     }
 
 }

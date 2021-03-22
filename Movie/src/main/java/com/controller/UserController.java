@@ -45,9 +45,9 @@ public class UserController {
 
 		JSONObject obj = new JSONObject();
 		User user = userService.login(user_name, user_pwd);
-		System.out.println(user_name);
-		System.out.println(user_pwd);
-		System.out.println(user);
+//		System.out.println(user_name);
+//		System.out.println(user_pwd);
+//		System.out.println(user);
 		if(user != null) {
 			Cookie cookie = new Cookie("user",Long.toString(user.getUser_id()));
 			cookie.setMaxAge(60 * 60 * 24 * 30);
@@ -86,10 +86,10 @@ public class UserController {
 
 		HttpSession session = request.getSession();
 		List<User> list = userService.findUserByName(user.getUser_name());
-		System.out.println(test.toUpperCase());
+//		System.out.println(test.toUpperCase());
 		String verifyCode = (String) session.getAttribute("verifyCode");
-		System.out.println(verifyCode);
-		System.out.println(test.toUpperCase().equals(verifyCode));
+//		System.out.println(verifyCode);
+//		System.out.println(test.toUpperCase().equals(verifyCode));
 		if(test.toUpperCase().equals(verifyCode)){
 			if(list.size() > 0) {
 				return "fail";
@@ -178,15 +178,15 @@ public class UserController {
 		JSONObject obj = new JSONObject();
 		if(file != null) {
 			String str = file.getOriginalFilename();
-			System.out.println("file:"+str);
+//			System.out.println("file:"+str);
 			String name = UUIDUtil.getUUID() + str.substring(str.lastIndexOf("."));
-			System.out.println("name:"+name);
+//			System.out.println("name:"+name);
 			String path = request.getServletContext().getRealPath("/upload/head") + "/" + name;
-			System.out.println("path:"+path);
+//			System.out.println("path:"+path);
 			String filePath = "../upload/head/" + name;
 			user.setUser_headImg(filePath);
 			file.transferTo(new File(path));  
-			System.out.println("文件写入成功,Path:" + path);
+//			System.out.println("文件写入成功,Path:" + path);
 		}else {
 			user.setUser_headImg(this.userService.findUserById(user.getUser_id()).getUser_headImg());
 			user.setUser_pwd(this.userService.findUserById(user.getUser_id()).getUser_pwd());
@@ -213,22 +213,22 @@ public class UserController {
 	@RequestMapping("test")
 	@ResponseBody
 	public JSONObject uploadImg(@RequestParam(value="file",required=false) MultipartFile file,@RequestParam("user_name")String user_name,HttpServletRequest request) {
-		System.out.println(file);
+//		System.out.println(file);
 		JSONObject obj = new JSONObject();
 		if(file == null) {
-			System.out.println("null");
+//			System.out.println("null");
 		}else {
 			String str = file.getOriginalFilename();
-			System.out.println("file:"+str);
+//			System.out.println("file:"+str);
 			String name = UUIDUtil.getUUID() + str.substring(str.lastIndexOf("."));
-			System.out.println("name:"+name);
+//			System.out.println("name:"+name);
 			String path = request.getServletContext().getRealPath("/upload/head") + "/" + name;
-			System.out.println("path:"+path);
+//			System.out.println("path:"+path);
 			String filePath = "../upload/head/" + name;
-			System.out.println(filePath);
+//			System.out.println(filePath);
 			try {
 				file.transferTo(new File(path));	
-				System.out.println("文件写入成功,Path:" + path);
+//				System.out.println("文件写入成功,Path:" + path);
 			}catch(IOException ex) {
 				ex.printStackTrace();
 			}

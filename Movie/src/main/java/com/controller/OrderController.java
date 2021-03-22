@@ -163,7 +163,8 @@ public class OrderController {
 		}
 		if(sign != 1) {
 			obj.put("code",200);
-			obj.put("msg", "您未登录,登录之后才可购票~");
+//			obj.put("msg", "您未登录,登录之后才可购票~");
+			obj.put("msg", "You have not logged in yet, please log in to buy ticket");
 		}else {
 			int done = 0;
 			int order_price = price / position.length;
@@ -216,10 +217,12 @@ public class OrderController {
 				float sum = (float)price/10000;
 				Integer rs2 = this.movieService.changeMovieBoxOffice(sum, this.scheduleService.findScheduleById(schedule_id).getMovie_id());
 				obj.put("code",0);
-				obj.put("msg", "购票成功~");
+//				obj.put("msg", "购票成功~");
+				obj.put("msg", "Buy ticket successfully");
 			}else {
 				obj.put("code",200);
-				obj.put("msg", "购票失败~");
+//				obj.put("msg", "购票失败~");
+				obj.put("msg", "Buy ticket failed");
 			}
 		}
 		return obj;
@@ -232,10 +235,12 @@ public class OrderController {
 		Integer rs = orderService.updateOrderStateToRefund(order_id);
 		if(rs > 0) {
 			obj.put("code", 0);
-			obj.put("msg", "退票申请已发送~");
+//			obj.put("msg", "退票申请已发送~");
+			obj.put("msg", "Refund request is already sent");
 		}else {
 			obj.put("code", 200);
-			obj.put("msg", "操作失败~");
+//			obj.put("msg", "操作失败~");
+			obj.put("msg", "Refund request failed");
 		}
 		return obj;
 	}
@@ -252,10 +257,12 @@ public class OrderController {
 			long movie_id = order.getOrder_schedule().getMovie_id();
 			Integer rs2 = this.movieService.changeMovieBoxOffice((float)price/10000, movie_id);
 			obj.put("code", 0);
-			obj.put("msg", "退票成功");
+//			obj.put("msg", "退票成功");
+			obj.put("msg", "Refund successfully");
 		}else {
 			obj.put("code", 200);
-			obj.put("msg", "退票失败");
+//			obj.put("msg", "退票失败");
+			obj.put("msg", "Refund failed");
 		}
 		return obj;
 	}

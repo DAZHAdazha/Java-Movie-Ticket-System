@@ -174,10 +174,12 @@ public class ScheduleController {
 		Integer rs = this.scheduleService.addSchedule(schedule);
 		if(rs > 0) {
 			obj.put("code", 0);
-			obj.put("mgs", "增加成功~");
+//			obj.put("mgs", "增加成功~");
+			obj.put("mgs", "Add successfully");
 		}else {
 			obj.put("code", 200);
-			obj.put("mgs", "增加失败~");
+//			obj.put("mgs", "增加失败~");
+			obj.put("mgs", "Add failed");
 		}
 		return obj;
 	}
@@ -192,10 +194,12 @@ public class ScheduleController {
 		Integer rs = this.scheduleService.updateSchedule(schedule);
 		if(rs > 0) {
 			obj.put("code", 0);
-			obj.put("mgs", "修改成功~");
+//			obj.put("mgs", "修改成功~");
+			obj.put("mgs", "Modified successfully");
 		}else {
 			obj.put("code", 200);
-			obj.put("mgs", "修改失败~");
+//			obj.put("mgs", "修改失败~");
+			obj.put("mgs", "Modified failed");
 		}
 		return obj;
 	} 
@@ -207,10 +211,12 @@ public class ScheduleController {
 		Integer rs = this.scheduleService.deleteSchedule(schedule_id);
 		if(rs > 0) {
 			obj.put("code", 0);
-			obj.put("mgs", "下架成功~");
+//			obj.put("mgs", "下架成功~");
+			obj.put("mgs", "Movie removed successfully");
 		}else {
 			obj.put("code", 200);
-			obj.put("mgs", "下架失败~");
+//			obj.put("mgs", "下架失败~");
+			obj.put("mgs", "Movie removed failed");
 		}
 		return obj;
 	}
