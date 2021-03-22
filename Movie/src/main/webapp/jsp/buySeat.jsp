@@ -20,7 +20,7 @@
 
     <script src="../static/layui/layui.js" charset="utf-8"></script>
     <link rel="stylesheet" href="../static/layui/css/layui.css" media="all">
-    <title>淘淘电影-选位置</title>
+    <title>Tao Tao Movie-Seat Picking</title>
 </head>
 <body>
     <!-- ------------------------------------------------------------------- -->
@@ -36,22 +36,22 @@
             <div class="step first done">
                 <span class="step-num">1</span>
                 <div class="bar"></div>
-                <span class="step-next">选择影片场次</span>
+                <span class="step-next">Choose movie time</span>
             </div>
             <div class="step done">
                 <span class="step-num">2</span>
                 <div class="bar"></div>
-                <span class="step-next">选择座位</span>
+                <span class="step-next">Pick seat</span>
             </div>
             <div class="step">
                 <span class="step-num">3</span>
                 <div class="bar"></div>
-                <span class="step-next">付款</span>
+                <span class="step-next">Pay</span>
             </div>
             <div class="step last">
                 <span class="step-num">4</span>
                 <div class="bar"></div>
-                <span class="step-next">影院取票观影</span>
+                <span class="step-next">Pick tiket in theater</span>
             </div>
         </div>
 
@@ -60,16 +60,16 @@
             <div class="hall">
                 <div class="seat-example">
                     <div class="selectable-example example">
-                        <span>可选座位</span>
+                        <span>Avaliable seats</span>
                     </div>
                     <div class="sold-example example">
-                        <span>已售座位</span>
+                        <span>Sold seats</span>
                     </div>
                     <div class="selected-example example">
-                        <span>已选座位</span>
+                        <span>Picked seats</span>
                     </div>
                     <div class="couple-example example">
-                        <span>情侣座位</span>
+                        <span>Couple seats</span>
                     </div>
                 </div>
                 <div class="seats-block">
@@ -77,7 +77,7 @@
                     </div>
                     <div class="seats-container">
                         <div class="screen-container">
-                            <div class="screen">银幕中央</div>
+                            <div class="screen">Middle Screen</div>
                             <div class="c-screen-line"></div>
                         </div>
                         <div class="seats-wrapper">
@@ -96,23 +96,23 @@
                 </div>
                 <div class="ticket-info">
                     <div class="no-ticket" style="display: block;">
-                        <p class="buy-limit">座位：一次最多选4个座位</p>
+                        <p class="buy-limit">Seat: once four seats at most</p>
                     </div>
                     <div class="has-ticket" style="display: none;">
-                        <span class="text">座位：</span>
+                        <span class="text">Seat:</span>
                         <div class="ticket-container">
                         </div>
                     </div>
                     <div class="total-price">
-                        <span>总价：</span>
+                        <span>Total price:</span>
                         <span class="price"></span>
                     </div>
                 </div>
                 <div class="confirm-order">
                     <div class="email">
-                        <span>邮箱号：</span>
+                        <span>Email:</span>
                     </div>
-                    <div class="confirm-btn disable" onclick="confirm()">确认选座</div>
+                    <div class="confirm-btn disable" onclick="confirm()">Confirm seats</div>
                 </div>
             </div>
         </div>
@@ -141,7 +141,7 @@
         function initEmail(){
             var user_name;
             var email = $(".email");
-            email.append("<span class=\"email-num\">137***325@qq.com</span>");
+            email.append("<span class=\"email-num\">758***984@qq.com</span>");
         }
 
         //点击具体座位事件  
@@ -158,7 +158,7 @@
             if((SeatMax>3) && (row.className == "seat selectable")){
                 layui.use(['layer'], function(){
                 var layer = layui.layer;
-                    layer.alert('一次最多选四个座位！',{icon: 0,offset: clientHeight/5},
+                    layer.alert('once four seats at most',{icon: 0,offset: clientHeight/5},
                         function (){
                             layer.closeAll();
                         }
@@ -219,35 +219,36 @@
                         "<div class=\"content\">" +
                             "<p class=\"name text-ellipsis\">" + obj.data.schedule_movie.movie_cn_name + "</p>" +
                             "<div class=\"info-item\">" +
-                                "<span>类型：</span>" +
+                                "<span>Type:</span>" +
                                 "<span class=\"value\">" + obj.data.schedule_movie.movie_type + "</span>" +
                             "</div>" +
                             "<div class=\"info-item\">" +
-                                "<span>时长：</span>" +
+                                "<span>Time:</span>" +
                                 "<span class=\"value\">" + obj.data.schedule_movie.movie_duration + "</span>" +
                             "</div>" +
                         "</div>"
                     );
                     showInfo.append(
                         "<div class=\"info-item\">" +
-                            "<span>影院：</span>" +
+                            "<span>Theater:</span>" +
                             "<span class=\"value\">" + obj.data.schedule_hall.hall_cinema.cinema_name + "</span>" +
                         "</div>" +
                         "<div class=\"info-item\">" +
-                            "<span>影厅：</span>" +
+                            "<span>Hall:</span>" +
                             "<span class=\"value\">" +  obj.data.schedule_hall.hall_name + "</span>" +
                         "</div>" +
                         "<div class=\"info-item\">" +
-                            "<span>版本：</span>" +
+                            "<span>Version:</span>" +
                             "<span class=\"value\">" +  obj.data.schedule_movie.movie_country + "</span>" +
                         "</div>" +
                         "<div class=\"info-item\">" +
-                            "<span>场次：</span>" +
+                            "<span>Times:</span>" +
+                            "<span></span>" +
                             "<span class=\"value\">" + obj.data.schedule_startTime + "</span>" +
                         "</div>" +
                         "<div class=\"info-item\">" +
-                            "<span>票价：</span>" +
-                            "<span class=\"value\">￥" + obj.data.schedule_price + "/张</span>" +
+                            "<span>Price:</span>" +
+                            "<span class=\"value\">￥" + obj.data.schedule_price + "/ticket</span>" +
                         "</div>"
                     );
                     initSeat();
