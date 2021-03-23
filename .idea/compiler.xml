@@ -8,7 +8,9 @@
         <outputRelativeToContentRoot value="true" />
         <module name="exception" />
         <module name="spring_jdbc" />
+        <module name="spring_tx_anno" />
         <module name="spring_ioc" />
+        <module name="spring_tx" />
         <module name="spring_mvc" />
         <module name="spring_demo" />
         <module name="spring_ioc_anno" />
@@ -25,6 +27,8 @@
       <module name="spring_ioc_anno" target="11" />
       <module name="spring_jdbc" target="11" />
       <module name="spring_mvc" target="11" />
+      <module name="spring_tx" target="11" />
+      <module name="spring_tx_anno" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>
