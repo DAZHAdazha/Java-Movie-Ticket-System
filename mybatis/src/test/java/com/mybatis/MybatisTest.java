@@ -14,7 +14,7 @@ import java.util.List;
 public class MybatisTest {
 
     @Test
-    //修改操作
+    //查询操作
     public void test1() throws Exception{
         //获取核心配置文件
         InputStream resourceAsStream = Resources.getResourceAsStream("sqlMapConfig.xml");
@@ -86,9 +86,25 @@ public class MybatisTest {
         SqlSession sqlSession = sqlSessionFactory.openSession();
         //执行操作 参数：namespace + id
         //传递单个参数可以使用任意字符
-        sqlSession.delete("userMapper.delete",7);
+        sqlSession.delete("userMapper.delete",8);
         //mybatis更新操作需要提交事务
         sqlSession.commit();
+        sqlSession.close();
+    }
+
+    @Test
+    //查询一个对象
+    public void test5() throws Exception{
+        //获取核心配置文件
+        InputStream resourceAsStream = Resources.getResourceAsStream("sqlMapConfig.xml");
+        //获取session工厂
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(resourceAsStream);
+        //获取session对象
+        SqlSession sqlSession = sqlSessionFactory.openSession(true);
+        //执行操作 参数：namespace + id
+        User user = sqlSession.selectOne("userMapper.findOne",2);
+        //打印
+        System.out.println(user);
         sqlSession.close();
     }
 }

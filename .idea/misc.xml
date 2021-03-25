@@ -14,6 +14,7 @@
         <option value="$PROJECT_DIR$/spring_tx/pom.xml" />
         <option value="$PROJECT_DIR$/spring_tx_anno/pom.xml" />
         <option value="$PROJECT_DIR$/mybatis/pom.xml" />
+        <option value="$PROJECT_DIR$/mybatis_dao/pom.xml" />
       </list>
     </option>
   </component>

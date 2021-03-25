@@ -6,7 +6,7 @@
     <properties resource="jdbc.properties"/>
     <!--定义别名-->
     <typeAliases>
-        <typeAlias type="com.mybatis.domain.User" alias="user"/>
+        <typeAlias type="com.mdao.domain.User" alias="user"/>
     </typeAliases>
     <!--数据源环境-->
     <environments default="development">
@@ -22,6 +22,6 @@
     </environments>
     <!--加载映射文件-->
     <mappers>
-        <mapper resource="com/mybatis/mapper/UserMapper.xml"/>
+        <mapper resource="mapper/UserMapper.xml"/>
     </mappers>
 </configuration>
