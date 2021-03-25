@@ -17,6 +17,7 @@ public class ServiceDemo {
         InputStream resourceAsStream = Resources.getResourceAsStream("sqlMapConfig.xml");
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(resourceAsStream);
         SqlSession sqlSession = sqlSessionFactory.openSession();
+        //不需要实现接口，mybatis会代理接口
         UserMapper mapper = sqlSession.getMapper(UserMapper.class);
         List<User> all = mapper.findAll();
         User user = mapper.findById(1);
