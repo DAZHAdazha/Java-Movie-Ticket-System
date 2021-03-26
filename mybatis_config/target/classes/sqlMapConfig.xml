@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <!--配置properties文件-->
+    <properties resource="jdbc.properties"/>
+    <!--定义别名-->
+    <typeAliases>
+        <typeAlias type="com.config.domain.User" alias="user"/>
+    </typeAliases>
+    <!--注册自定义类型处理器-->
+    <typeHandlers>
+        <typeHandler handler="com.config.handler.DateTypeHandler"/>
+    </typeHandlers>
+    <!--配置分页助手插件-->
+    <plugins>
+        <!--4.0.0之后使用PageInterceptor-->
+        <plugin interceptor="com.github.pagehelper.PageInterceptor"/>
+    </plugins>
+    <!--数据源环境-->
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"></transactionManager>
+            <dataSource type="POOLED">
+                <property name="driver" value="${jdbc.driver}"/>
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <!--加载映射文件-->
+    <mappers>
+        <mapper resource="mapper/UserMapper.xml"/>
+    </mappers>
+</configuration>

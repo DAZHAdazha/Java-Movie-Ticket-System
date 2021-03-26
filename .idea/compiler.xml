@@ -8,14 +8,17 @@
         <outputRelativeToContentRoot value="true" />
         <module name="exception" />
         <module name="spring_jdbc" />
-        <module name="spring_tx_anno" />
         <module name="spring_ioc" />
         <module name="spring_tx" />
         <module name="mybatis" />
+        <module name="mybatis_mapper" />
+        <module name="spring_ioc_anno" />
+        <module name="spring_tx_anno" />
+        <module name="mybatis_multi" />
         <module name="spring_mvc" />
         <module name="spring_demo" />
         <module name="mybatis_dao" />
-        <module name="spring_ioc_anno" />
+        <module name="mybatis_config" />
         <module name="spring_interceptor" />
         <module name="spring_aop" />
       </profile>
@@ -24,7 +27,10 @@
       <module name="exception" target="11" />
       <module name="mybatis" target="11" />
       <module name="mybatis_anno" target="11" />
+      <module name="mybatis_config" target="11" />
       <module name="mybatis_dao" target="11" />
+      <module name="mybatis_mapper" target="11" />
+      <module name="mybatis_multi" target="11" />
       <module name="spring_aop" target="11" />
       <module name="spring_demo" target="11" />
       <module name="spring_interceptor" target="11" />
