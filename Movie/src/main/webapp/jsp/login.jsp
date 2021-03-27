@@ -91,13 +91,14 @@
                                 var newDate = new Date().getTime();
                                 var src = "/search/checkCode?"+ newDate.toString();
                                 var img = document.getElementById("checkCode");
-                                console.log(src);
                                 img.src = src;
                             }
                         </script>
 
                         <img id="checkCode" onclick="checkCode()" src="/search/checkCode?"+ ${ date }>
-                        <img onclick="checkCode()" src="../static/images/refresh.png">
+                    </div>
+                    <div style="color: red">
+                        Click the check code image to refresh
                     </div>
                 </div>
                 <div class="re_error">
