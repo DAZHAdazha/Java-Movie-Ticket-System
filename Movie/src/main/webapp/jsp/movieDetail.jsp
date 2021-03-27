@@ -1,5 +1,5 @@
 ﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+         pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,13 +23,13 @@
 
     <script src="../static/layui/layui.js" charset="utf-8"></script>
     <link rel="stylesheet" href="../static/layui/css/layui.css" media="all">
-    <title>淘淘电影-详细</title>
+    <title>Tao Tao Movie-Details</title>
 </head>
 <body>
     <!-- ------------------------------------------------------------------- -->
     <!-- 导航栏 -->
     <jsp:include page="header.jsp"/>
-   
+
     <!-- 占位符 -->
     <div style="margin-top: 80px;"></div>
 
@@ -41,7 +41,7 @@
                     <!-- 图片 -->
                 </div>
             </div>
-            
+
             <div class="celeInfo-right clearfix">
                 <div class="movie-brief-container">
                     <!-- 上 -->
@@ -51,13 +51,13 @@
                         <a class="wish " data-wish="false" onclick="wantSee()">
                             <div>
                                 <i class="icon wish-icon"></i>
-                                <span class="wish-msg" data-act="wish-click">想看</span>
+                                <span class="wish-msg" data-act="wish-click">like</span>
                             </div>
                         </a>
                         <a class="score-btn " data-bid="b_rxxpcgwd" onclick="giveScore()">
                             <div>
                                 <i class="icon score-btn-icon"></i>
-                                <span class="score-btn-msg" data-act="comment-open-click">评分</span>
+                                <span class="score-btn-msg" data-act="comment-open-click">Rating</span>
                             </div>
                         </a>
                     </div>
@@ -65,24 +65,24 @@
 
                 <div class="movie-stats-container">
                     <div class="movie-index">
-                        <p class="movie-index-title">用户评分</p>
+                        <p class="movie-index-title">User ratings</p>
                         <div class="movie-index-content score normal-score">
-                            <span class="index-left info-num ">
-                                <!-- 评分 -->
-                            </span>
+                                <span class="index-left info-num ">
+                                    <!-- 评分 -->
+                                </span>
                             <div class="index-right">
                                 <div class="star-wrapper">
                                     <div id="MovieScore"></div>
                                 </div>
                                 <span class="score-num">
-                                    <!-- 评分数 -->
-                                </span>
+                                        <!-- 评分数 -->
+                                    </span>
                             </div>
                         </div>
-                    </div>   
+                    </div>
 
                     <div class="movie-index">
-                        <p class="movie-index-title">累计票房</p>
+                        <p class="movie-index-title">Accumulative total box office</p>
                         <div class="movie-index-content box stonefont-num">
                             <!-- 票房数 -->
                         </div>
@@ -102,7 +102,7 @@
             <div class="main-content">
                 <div class="tab-container">
                     <div class="tab-title-container clearfix">
-                        <div class="tab-title active" data-act="tab-desc-click">介绍</div>
+                        <div class="tab-title active" data-act="tab-desc-click">Introduction</div>
                     </div>
 
                     <div class="tab-content-container">
@@ -110,13 +110,13 @@
                             <!-- 剧情简介 -->
                             <div class="module introduction">
                                 <div class="mod-title">
-                                    <h3>剧情简介</h3>
+                                    <h3>Synopsis</h3>
                                 </div>
                             </div>
                             <!-- 演职人员 -->
                             <div class="module staringPeople" >
                                 <div class="mod-title">
-                                    <h3>演职人员</h3>
+                                    <h3>Cast list</h3>
                                 </div>
                                 <div class="mod-content">
                                     <div class="celebrity-container clearfix">
@@ -126,7 +126,7 @@
                             <!-- 评论 -->
                             <div class="module">
                                 <div class="mod-title">
-                                    <h3>热门短评</h3>
+                                    <h3>Popular comments</h3>
                                 </div>
 
                                 <div class="mod-content">
@@ -134,7 +134,7 @@
                                         <ul>
                                         </ul>
                                     </div>
-                                    <a class="comment-entry" data-act="comment-no-content-click" onclick="writeComment()">写短评</a>
+                                    <a class="comment-entry" data-act="comment-no-content-click" onclick="writeComment()">Write short comment</a>
                                 </div>
                             </div>
                         </div>
@@ -163,34 +163,34 @@
 
         //初始化HTML
         function initHtml(){
-            ScoreHtml = 
+            ScoreHtml =
                 "<div style=\"text-align:center; margin:30px 0;\">" +
-                    "<div id=\"GiveScore\"></div>" +
-                    "<p style=\"color:#888;\">点击星星进行评分</p>" +
+                "<div id=\"GiveScore\"></div>" +
+                "<p style=\"color:#888;\">点击星星进行评分</p>" +
                 "</div>"
             ;
-            UpdateCommentHtml = 
+            UpdateCommentHtml =
                 "<h3 class=\"commenttitle\">评论信息</h3>" +
                 "<div class=\"layui-form-item\">" +
-                    "<label class=\"layui-form-label usernametext\">用户帐号</label>" +
-                    "<div class=\"layui-input-block username\">" +
-                        "<input id=\"user_name\" type=\"text\" name=\"title\" lay-verify=\"title\" disabled=\"disabled\" style=\"cursor:not-allowed;\" autocomplete=\"off\" placeholder=\"username\" class=\"layui-input\">" +
-                    "</div>" +
+                "<label class=\"layui-form-label usernametext\">用户帐号</label>" +
+                "<div class=\"layui-input-block username\">" +
+                "<input id=\"user_name\" type=\"text\" name=\"title\" lay-verify=\"title\" disabled=\"disabled\" style=\"cursor:not-allowed;\" autocomplete=\"off\" placeholder=\"username\" class=\"layui-input\">" +
+                "</div>" +
                 "</div>" +
                 "<div class=\"layui-form-item\">" +
-                    "<label class=\"layui-form-label commenttimetext\">评论时间</label>" +
-                    "<div class=\"layui-input-block commenttime\">" +
-                        "<input id=\"comment_time\" type=\"text\" name=\"title\" lay-verify=\"title\" disabled=\"disabled\" style=\"cursor:not-allowed;\" autocomplete=\"off\" placeholder=\"commenttime\" class=\"layui-input\">" +
-                    "</div>" +
+                "<label class=\"layui-form-label commenttimetext\">评论时间</label>" +
+                "<div class=\"layui-input-block commenttime\">" +
+                "<input id=\"comment_time\" type=\"text\" name=\"title\" lay-verify=\"title\" disabled=\"disabled\" style=\"cursor:not-allowed;\" autocomplete=\"off\" placeholder=\"commenttime\" class=\"layui-input\">" +
+                "</div>" +
                 "</div>" +
                 "<div class=\"layui-form-item\">" +
-                    "<label class=\"layui-form-label commentcontenttext\">评论内容</label>" +
-                    "<div class=\"layui-input-block commentcontent\">" +
-                        "<textarea id=\"comment_content\" style=\"height:120px;\" placeholder=\"请输入评论内容\" autocomplete=\"off\" class=\"layui-textarea\" name=\"desc\" class=\"layui-input\"></textarea>" +
-                    "</div>" +
+                "<label class=\"layui-form-label commentcontenttext\">评论内容</label>" +
+                "<div class=\"layui-input-block commentcontent\">" +
+                "<textarea id=\"comment_content\" style=\"height:120px;\" placeholder=\"请输入评论内容\" autocomplete=\"off\" class=\"layui-textarea\" name=\"desc\" class=\"layui-input\"></textarea>" +
+                "</div>" +
                 "</div>"
             ;
-            WriteCommentHtml = 
+            WriteCommentHtml =
                 "<h3 class=\"commenttitle\">评论信息</h3>" +
                 // "<div class=\"layui-form-item\">" +
                 //     "<label class=\"layui-form-label usernametext\">用户帐号</label>" +
@@ -199,10 +199,10 @@
                 //     "</div>" +
                 // "</div>" +
                 "<div class=\"layui-form-item\">" +
-                    "<label class=\"layui-form-label commentcontenttext\">评论内容</label>" +
-                    "<div class=\"layui-input-block commentcontent\">" +
-                        "<textarea id=\"comment_content_write\" style=\"height:150px;\" placeholder=\"请输入评论内容\" autocomplete=\"off\" class=\"layui-textarea\" name=\"desc\" class=\"layui-input\"></textarea>" +
-                    "</div>" +
+                "<label class=\"layui-form-label commentcontenttext\">评论内容</label>" +
+                "<div class=\"layui-input-block commentcontent\">" +
+                "<textarea id=\"comment_content_write\" style=\"height:150px;\" placeholder=\"请输入评论内容\" autocomplete=\"off\" class=\"layui-textarea\" name=\"desc\" class=\"layui-input\"></textarea>" +
+                "</div>" +
                 "</div>"
             ;
         }
@@ -218,7 +218,7 @@
             var actionBuyBtn = $(".action-buyBtn");
             var Introduction = $(".introduction");
             var StonefontTemp;
-        
+
             $.ajax({
                 type:'post',
                 url: url + "/movie/findMovieById",
@@ -228,23 +228,23 @@
                 },
                 success:function (obj) {
                     StonefontTemp = obj.data.movie_boxOffice;
-                    StonefontTemp += "亿";
+                    StonefontTemp += "K Million";
                     avatar.append("<img class=\"avatar\" src=\"" + obj.data.movie_picture + "\" alt=\"\">");
                     movieBriefContainer.append(
-                    "<h3 class=\"name\">" + obj.data.movie_cn_name + "</h3>" +
-                    "<div class=\"ename ellipsis\">" + obj.data.movie_fg_name + "</div>" +
-                    "<ul>" +
+                        "<h3 class=\"name\">" + obj.data.movie_cn_name + "</h3>" +
+                        "<div class=\"ename ellipsis\">" + obj.data.movie_fg_name + "</div>" +
+                        "<ul>" +
                         "<li class=\"ellipsis\">" + obj.data.movie_type + "</li>" +
                         "<li class=\"ellipsis\">" + obj.data.movie_duration + " / " + obj.data.movie_country + "</li>" +
                         "<li class=\"ellipsis\">" + obj.data.releaseDate + "</li>" +
-                    "<ul>");
+                        "<ul>");
                     infoNum.append("<span class=\"stonefont\">" + obj.data.movie_score + "</span>");
-                    scoreNum.append("<span class=\"stonefont\">" + obj.data.movie_commentCount + "</span>人评分");
+                    scoreNum.append("<span class=\"stonefont\">" + obj.data.movie_commentCount + "</span> people score");
                     stonefontNum.append("<span class=\"stonefont\">" + StonefontTemp + "</span>");
                     actionBuyBtn.append("<div class=\"moviedetail\"></div>");
                     Introduction.append(
                         "<div class=\"mod-content\">" +
-                            "<span class=\"dra\" style=\"font-size:16px;\">" + obj.data.movie_detail + "</span>" +
+                        "<span class=\"dra\" style=\"font-size:16px;\">" + obj.data.movie_detail + "</span>" +
                         "</div>"
                     );
                     layui.use('rate', function(){
@@ -311,7 +311,7 @@
                 );
             });
         }
-        
+
         //初始化演职人员
         function intitActor(){
             var celebrityContainer = $(".celebrity-container");
@@ -332,19 +332,19 @@
                     // 导演
                     celebrityContainer.prepend(
                         "<div class=\"celebrity-group\">" +
-                            "<div class=\"celebrity-type\">" +
-                                "导演" +
-                            "</div>" +
-                            "<ul class=\"celebrity-list clearfix\">" +
-                                "<li class=\"celebrity\">" +
-                                    "<a class=\"portrait\">" +
-                                        "<img class=\"default-img\" alt=\"\" src=\"" + PictureUrl + "\">" +
-                                    "</a>" +
-                                    "<div>" +
-                                        "<a style=\"text-decoration: none;\" class=\"name\">" + obj.data.movie_director + "</a>" +
-                                    "</div>" +
-                                "</li>" +
-                            "</ul>" +
+                        "<div class=\"celebrity-type\">" +
+                        "Director(s)" +
+                        "</div>" +
+                        "<ul class=\"celebrity-list clearfix\">" +
+                        "<li class=\"celebrity\">" +
+                        "<a class=\"portrait\">" +
+                        "<img class=\"default-img\" alt=\"\" src=\"" + PictureUrl + "\">" +
+                        "</a>" +
+                        "<div>" +
+                        "<a style=\"text-decoration: none;\" class=\"name\">" + obj.data.movie_director + "</a>" +
+                        "</div>" +
+                        "</li>" +
+                        "</ul>" +
                         "</div>" +
                         "<div style=\"width:40px; height:20px; float:left;\"></div>"
                     );
@@ -355,29 +355,29 @@
                         // 演员
                         PosName="&nbsp";
                         if(i==0){
-                            PosName = "演职人员";
+                            PosName = "Actors";
                         }
                         celebrityContainer.append(
                             "<div class=\"celebrity-group\">" +
-                                "<div class=\"celebrity-type\">" +
-                                    PosName +
-                                "</div>" +
-                                "<ul class=\"celebrity-list clearfix\">" +
-                                    "<li class=\"celebrity\">" +
-                                        "<a class=\"portrait\">" +
-                                            "<img class=\"default-img\" alt=\"\" src=\"" + PictureUrl + "\">" +
-                                        "</a>" +
-                                        "<div>" +
-                                            "<a style=\"text-decoration: none;\" class=\"name\">" + StrRole[0] + "&nbsp饰&nbsp" + StrRole[1] + "</a>" +
-                                        "</div>" +
-                                    "</li>" +
-                                "</ul>" +
+                            "<div class=\"celebrity-type\">" +
+                            PosName +
+                            "</div>" +
+                            "<ul class=\"celebrity-list clearfix\">" +
+                            "<li class=\"celebrity\">" +
+                            "<a class=\"portrait\">" +
+                            "<img class=\"default-img\" alt=\"\" src=\"" + PictureUrl + "\">" +
+                            "</a>" +
+                            "<div>" +
+                            "<a style=\"text-decoration: none;\" class=\"name\">" + StrRole[0] + "&nbsp饰&nbsp" + StrRole[1] + "</a>" +
+                            "</div>" +
+                            "</li>" +
+                            "</ul>" +
                             "</div>"
                         );
                     }
                 }
             });
-                            
+
 
         }
 
@@ -459,7 +459,7 @@
             layui.use(['layer'], function(){
                 var layer = layui.layer;
                 layer.alert('确定要删除该条评论信息吗？',{icon: 0,offset: clientHeight/5}
-                    ,function () {   
+                    ,function () {
                         $.ajax({
                             type:'post',
                             url: url + "/comment/deleteComemnt",
@@ -517,10 +517,10 @@
                             console.log(comment_content.length);
                             if(comment_content.length > 150){
                                 layer.alert('字数超过150个，评论失败！',{icon: 0,offset: clientHeight/5},
-                                function (){
-                                    layer.close(layer.index);
-                                }
-                            );
+                                    function (){
+                                        layer.close(layer.index);
+                                    }
+                                );
                             }else{
                                 $.ajax({
                                     type:'post',
@@ -595,7 +595,7 @@
             // 返回结果
             return nameres;
         }
-    
+
     </script>
     <!-- ------------------------------------------------------------------- -->
 
