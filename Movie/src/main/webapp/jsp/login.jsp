@@ -17,36 +17,36 @@
     <link href="../static/css/login.css" rel="stylesheet">
 
     <script></script>
-    <title>淘淘电影-登录注册</title>
+    <title>TaoTao Movie-Login and Register</title>
 </head>
 <body>
 
     <!-- ------------------------------------------------------------------- -->
     <div class="screen">
         <img class="big_logo"><br/>
-        <label class="title">淘 淘 电 影</label><br/>
-        <label class="ineer_one">快来淘你的电影！</label><br/>
+        <label class="title">Tao Tao Movie</label><br/>
+        <label class="ineer_one">Come and Tao your movie！</label><br/>
         <label class="ineer_two"></label>
     </div>
     <!-- 登录页 -->
     <div class="content" style="float: left;">
         <ul class="tab">
-            <li class="login">登录</li>
-            <li class="register">注册</li>
+            <li class="login">Log in</li>
+            <li class="register">Register</li>
         </ul>
         <div class="page">
             <!-- 登录界面 -->
             <div class="childpage" style="display: block">
                 <div>
-                    <label class="login_title">用户登录</label><br/>
+                    <label class="login_title">User Login</label><br/>
                 </div>
                 <div class="login_page">
                     <div>
-                        <label>帐号</label><br/>
+                        <label>Account</label><br/>
                         <input id="loginUserName" type="text"/>
                     </div>
                     <div>
-                        <label>密码</label><br/>
+                        <label>Password</label><br/>
                         <input id="loginPassWord" type="password"/>
                     </div>
                 </div>
@@ -54,32 +54,32 @@
                     <label class="login_error"></label>
                 </div>
                 <div>
-                    <input type="button" value="登录" class="btn btn-success login_btn" onclick="loginbtn()"/>
+                    <input type="button" value="Log in" class="btn btn-success login_btn" onclick="loginbtn()"/>
                 </div>
                 <div>
-                    <label class="login_version">@版权所有</label>
+                    <label class="login_version">@All rights reserved</label>
                 </div>
             </div>
             <!-- 注册界面 -->
             <div class="childpage" style="display: none">
                 <div>
-                    <label class="register_title">用户注册</label><br/>
+                    <label class="register_title">User register</label><br/>
                 </div>
                 <div class="register_page">
                     <div>
-                        <label>帐号</label><br/>
+                        <label>Account</label><br/>
                         <input id="registerUserName" type="text"/>
                     </div>
                     <div>
-                        <label>密码</label><br/>
+                        <label>Password</label><br/>
                         <input id="registerPassWord" type="password"/>
                     </div>
                     <div>
-                        <label>邮箱</label><br/>
+                        <label>Email</label><br/>
                         <input id="Email" type="text"/>
                     </div>
                     <div>
-                        <label>验证码</label><br/>
+                        <label>Verification Code</label><br/>
                         <input id="Test" type="text"/>
                         <%
                             Date date = new Date();
@@ -105,7 +105,7 @@
                     <label class="register_error"></label>
                 </div>
                 <div>
-                    <input type="button" value="注册" class="btn btn-warning register_btn" onclick="registerbtn()"/>
+                    <input type="button" value="Register" class="btn btn-warning register_btn" onclick="registerbtn()"/>
                 </div>
 
             </div>
@@ -175,7 +175,7 @@
             var user_pwd = $(".login_page").find("#loginPassWord").val();
             var login_error = $(".login_error");
             if((user_name == "") || (user_pwd == "")){
-                login_error.text("账号和密码不能为空");
+                login_error.text("Account number and password cannot be empty");
             }
             else{
                 login_error.text("");
@@ -191,7 +191,7 @@
                     success: function(obj){
                         if(obj.msg == "fail"){
                            // sessionStorage.removeItem('userJson');
-                            login_error.text('账号或密码错误!');
+                            login_error.text('Wrong account or password!');
                         }
                         else{
                             localStorage.setItem("userJson",JSON.stringify(obj.data));
@@ -216,7 +216,7 @@
             var register_error = $(".register_error");
             var test = $("#Test").val();
             if((user_name == "") || (user_pwd == "") || (user_email == "")){
-                register_error.text("账号和密码和邮箱不能为空");
+                register_error.text("Account number and password and mailbox cannot be empty");
             }
             else{
                 register_error.text("");
@@ -233,10 +233,10 @@
                     success: function(data){
                         console.log(data);
                         if(data == "success"){
-                            window.alert("注册成功！");
+                            window.alert("Success！");
                             window.location.href="./login.jsp";
                         }else if(data == "fail"){
-                            register_error.text('该账号已被注册!');
+                            register_error.text('The account has registered!');
                         }else {
                             console.log(data);
                         }
