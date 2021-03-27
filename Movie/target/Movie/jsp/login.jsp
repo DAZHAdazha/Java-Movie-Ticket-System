@@ -106,9 +106,7 @@
                 <div>
                     <input type="button" value="注册" class="btn btn-warning register_btn" onclick="registerbtn()"/>
                 </div>
-                <div>
-                    <label class="register_version">@版权所有</label>
-                </div>
+
             </div>
         </div>
         
