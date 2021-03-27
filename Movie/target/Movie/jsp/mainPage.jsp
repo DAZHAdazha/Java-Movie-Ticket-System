@@ -312,11 +312,11 @@
                         htmlHot =
                         "<li>" +
                             "<div class=\"movie-item\">" +
-                                "<a href=\"javascript:void(0)\" target=\"_blank\" data-act=\"playingMovie-click\" data-val=\"" + obj.data[i].movie_id + "\">" +
+                                "<a href=\"./movieDetail.jsp?movie_id=" + obj.data[i].movie_id +"\" data-act=\"playingMovie-click\" data-val=\"" + obj.data[i].movie_id + "\">" +
                                     "<div class=\"movie-poster\" style=\"cursor:default;\">" +
                                         "<img id=\"moive_picture\" src=\"" + obj.data[i].movie_picture + "\">" +
                                         "<div class=\"movie-overlay movie-overlay-bg\">" +
-                                            "<div class=\"movie-info\">" +
+                                            "<div class=\"movie-info\">"+
                                                 "<div class=\"movie-score\"><i id=\"moive_score\" class=\"integer\">" + obj.data[i].movie_score + "</i></div>" +
                                                 "<div class=\"movie-title movie-title-padding\" title=\"" + obj.data[i].movie_cn_name + "\">" + obj.data[i].movie_cn_name + "</div>" +
                                             "</div>" +

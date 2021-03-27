@@ -32,7 +32,7 @@
                         <li><a href="./mainPage.jsp">Main page</a></li>
                         <li class="active"><a href="./movieList.jsp">Movie</a></li>
                         <li><a href="javascript:void(0)">Theater</a></li>
-                        <li><a href="javascript:void(0)">Top List</a></li>
+                        <li><a href="./manage.jsp">Manage</a></li>
                     </ul>
                 </div>
 <%--                <div class="app-download">--%>
@@ -61,7 +61,7 @@
                                     </div>
                                 </div>
                                 <div class="layui-col-md2" style="float: right">
-                                    <input name="searchKeyword" class="search" type="search" maxlength="32" placeholder="Find movie,cinema,performer" autocomplete="off">
+                                    <input name="searchKeyword" class="search" type="search" maxlength="32" placeholder="Search" autocomplete="off">
                                     <input class="submit" type="submit" value="">
                                 </div>
                             </div>
