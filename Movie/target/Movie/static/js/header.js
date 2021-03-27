@@ -5,7 +5,7 @@ function init_manage(){
     var nav = $(".nav").find("ul");
     var html;
     if(user_json.user_role == 1){
-        html = "<li><a href=\"./manage.jsp\" onclick=\"managePage()\">管理</a></li>"
+        html = "<li><a href=\"./manage.jsp\" onclick=\"managePage()\">Manage</a></li>"
         nav.append(html);
     }
     function managePage(){
@@ -40,7 +40,7 @@ function init_comment(){
                                 "<div class=\"main2-header clearfix\">" +
                                     "<div class=\"user\">" +
                                         "<span class=\"name\">" + obj.data.commentList[i].comment_user.user_name + "</span>	" +
-                                        "<span class=\"tag\">购</span>" +
+                                        "<span class=\"tag\">Buy</span>" +
                                     "</div>" +
                                     "<div class=\"time\" title=\"2018-11-16 12:06:10\">" +
                                         "<span title=\"2018-11-16 12:06:10\">" + obj.data.commentList[i].comment_time + "</span>" +
@@ -94,7 +94,7 @@ function init_comment(){
                                 "<div class=\"main2-header clearfix\">" +
                                     "<div class=\"user\">" +
                                         "<span class=\"name\">" + obj.data.commentList[i].comment_user.user_name + "</span>	" +
-                                        "<span class=\"tag\">购</span>" +
+                                        "<span class=\"tag\">Buy</span>" +
                                     "</div>" +
                                     "<div class=\"time\" title=\"2018-11-16 12:06:10\">" +
                                         "<span title=\"2018-11-16 12:06:10\">" + obj.data.commentList[i].comment_time + "</span>" +
@@ -133,7 +133,7 @@ function initHeader(){
         LayuiNavMore.append(
             "<a href=\"javascript:;\" style=\"padding: 0;height: 42px; width: 42px;\"><img src=\"../static/images/head.jpg\" class=\"layui-nav-img\"></a>" +
             "<dl class=\"layui-nav-child nav-image\">" +
-                "<dd><a href=\"./login.jsp\">登录</a></dd>" +
+                "<dd><a href=\"./login.jsp\">Log in</a></dd>" +
             "</dl>"
         );
     }
@@ -147,11 +147,11 @@ function initHeader(){
         LayuiNavMore.append(
             "<a href=\"javascript:;\" style=\"padding: 0;height: 42px; width: 42px;\"><img src=\"" + HeadImg + "\" class=\"layui-nav-img\"></a>" +
             "<dl class=\"layui-nav-child nav-image\">" +
-            "<dd><a href=\"./center.jsp\" onclick=\"mycenter()\">我的订单</a></dd>" +
+            "<dd><a href=\"./center.jsp\" onclick=\"mycenter()\">My order</a></dd>" +
             "<hr/>" +
-            "<dd><a href=\"./center.jsp\" onclick=\"myinformation()\">基本信息</a></dd>" +
+            "<dd><a href=\"./center.jsp\" onclick=\"myinformation()\">Basic information</a></dd>" +
                 "<hr/>" +
-                "<dd><a onclick=\"ReLogin()\" style=\"text-decoration: none; cursor: pointer;\">注销</a></dd>" +
+                "<dd><a onclick=\"ReLogin()\" style=\"text-decoration: none; cursor: pointer;\">log out</a></dd>" +
                 "<hr/>" +
             "</dl>"
         );
@@ -169,7 +169,7 @@ function myinformation(){
 function ReLogin(){
     layui.use(['layer'], function(){
     var layer = layui.layer;
-        layer.alert('确认要注销吗？',{icon: 0,offset: clientHeight/5},
+        layer.alert('Are you sure want to log out?',{icon: 0,offset: clientHeight/5},
             function (){
                 $.ajax({
                     type:'post',
