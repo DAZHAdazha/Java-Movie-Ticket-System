@@ -8,7 +8,7 @@
     Cookie[] cookies = request.getCookies();
     if(cookies != null){
         for (Cookie cookie : cookies){
-            System.out.println(cookie.getName() + ":" + cookie.getValue());
+            // System.out.println(cookie.getName() + ":" + cookie.getValue());
             if(cookie.getName().equals("user")){
                 flag = 1;
                 break;
@@ -181,8 +181,9 @@
                         "<div class=\"order-box\">" +
                             "<div class=\"order-head\">" +
                                     "<span class=\"order-date\">" + obj.data[i].order_time + "</span>" +
-                                    "<span class=\"order-id\">订单号：" + obj.data[i].order_id + "</span>" +
-                                    "<span class=\"order-delete\"><a target='_blank' href=\" " +obj.data[i].qrimage+"\">查看二维码</a></span>" +
+                                    "<span class=\"order-id\">Order ID: " + obj.data[i].order_id + "</span>" +
+                                    "<span><a href=\"/search/pdf?time=" +obj.data[i].order_time + "&orderID=" + obj.data[i].order_id + "&moviePicture=" + obj.data[i].order_schedule.schedule_movie.movie_picture + "&movieName=" + obj.data[i].order_schedule.schedule_movie.movie_cn_name +"&theater=" + obj.data[i].order_schedule.schedule_hall.hall_cinema.cinema_name + "&seat=" + obj.data[i].order_schedule.schedule_hall.hall_name + " " + obj.data[i].order_position +"&startTime=" + obj.data[i].order_schedule.schedule_startTime +"&price=" + obj.data[i].order_schedule.schedule_price +"\" > Print  </a><span>" +
+                                    "<span class=\"order-delete\"><a target='_blank' href=\" " +obj.data[i].qrimage+"\">QR code</a></span>" +
                                     "</div>" +
                             "<div class=\"order-body\">" +
                                 "<div class=\"poster\"><img src=\"" + obj.data[i].order_schedule.schedule_movie.movie_picture + "\"></div>" +
@@ -194,7 +195,7 @@
                                 "</div>" +
                                 "<div class=\"order-price\">￥" + obj.data[i].order_schedule.schedule_price + "</div>" +
                                 "<div class=\"order-status\">" + StateText + "</div>" +
-                                "<div class=\"actions\"><a onclick=\"backticket('" + obj.data[i].order_id + "','" + obj.data[i].order_schedule.schedule_startTime  + "','" + StateText + "')\" style=\"cursor: pointer;\">申请退票</a></div>" +
+                                "<div class=\"actions\"><a onclick=\"backticket('" + obj.data[i].order_id + "','" + obj.data[i].order_schedule.schedule_startTime  + "','" + StateText + "')\" style=\"cursor: pointer;\">Refund</a></div>" +
                             "</div>" +
                         "</div>";
                         order.append(html);
@@ -203,75 +204,74 @@
             });
         }
         //退票申请
-        function backticket(order_id,order_time,order_state){
+        function backticket(order_id,order_time,order_state) {
             var ShowTime = $(".one").find(".show-time");
-            var Year,Month,Day,Hour,Mintue,flag=0;
+            var Year, Month, Day, Hour, Mintue, flag = 0;
             var myDate = new Date();
             var OldTime, NowTime, OldDate, NowDate;
-            if(order_state=="During the process of refund"){
-            if(order_state==""){
-                layui.use(['layer'], function(){
-                var layer = layui.layer;
-                    layer.alert('This order is in the process of refund',{icon: 0,offset: clientHeight/5});
-                });
-            }
-            else if(order_state=="Completed"){
-                layui.use(['layer'], function(){
-                var layer = layui.layer;
-                    layer.alert('This order return refund already',{icon: 0,offset: clientHeight/5});
-                });
-            }
-            else{
-                if(myDate.getHours()==23){
-                    flag=1;
-                }
-                OldTime = order_time;
-                NowTime = myDate.toLocaleDateString() + " " + parseInt(myDate.getHours()+1).toString()  + ":" + myDate.getMinutes();
-                OldDate = new Date(OldTime.replace(/-/g,"\/"));
-                NowDate = new Date(NowTime.replace(/-/g,"\/"));
-                if(flag == 1){
-                    flag = 0;
-                    layui.use(['layer'], function(){
-                    var layer = layui.layer;
-                        layer.alert('23:00 - 00:00 is not working hour!',{icon: 0,offset: clientHeight/5});
+            if (order_state == "During the process of refund") {
+                if (order_state == "") {
+                    layui.use(['layer'], function () {
+                        var layer = layui.layer;
+                        layer.alert('This order is in the process of refund', {icon: 0, offset: clientHeight / 5});
                     });
-                }
-                else if(OldDate<NowDate){
-                    // window.alert("旧时间：" + OldDate + "\n新时间：" + NowDate + "\n退票时间为开场前1小时外，退票申请失败！");
-                    layui.use(['layer'], function(){
-                    var layer = layui.layer;
-                        layer.alert('Refund time should be before 1 hour from the movie starting time!',{icon: 0,offset: clientHeight/5});
+                } else if (order_state == "Completed") {
+                    layui.use(['layer'], function () {
+                        var layer = layui.layer;
+                        layer.alert('This order return refund already', {icon: 0, offset: clientHeight / 5});
                     });
-                }
-                else{
-                    // window.alert("旧时间：" + OldDate + "\n新时间：" + NowDate + "\n退票已申请");
-                    layui.use(['layer'], function(){
-                    var layer = layui.layer;
-                        layer.alert('Are you sure you want a refund?',{icon: 0,offset: clientHeight/5},
-                            function (){
-                                $.ajax({
-                                    type:'post',
-                                    url: url + "/order/applyForRefund",
-                                    dataType:'json',
-                                    data: {
-                                        order_id: order_id
-                                    },
-                                    success:function (obj) {
-                                        if(obj.code == 0){
-                                            window.alert("Refund request have been sent");
+                } else {
+                    if (myDate.getHours() == 23) {
+                        flag = 1;
+                    }
+                    OldTime = order_time;
+                    NowTime = myDate.toLocaleDateString() + " " + parseInt(myDate.getHours() + 1).toString() + ":" + myDate.getMinutes();
+                    OldDate = new Date(OldTime.replace(/-/g, "\/"));
+                    NowDate = new Date(NowTime.replace(/-/g, "\/"));
+                    if (flag == 1) {
+                        flag = 0;
+                        layui.use(['layer'], function () {
+                            var layer = layui.layer;
+                            layer.alert('23:00 - 00:00 is not working hour!', {icon: 0, offset: clientHeight / 5});
+                        });
+                    } else if (OldDate < NowDate) {
+                        // window.alert("旧时间：" + OldDate + "\n新时间：" + NowDate + "\n退票时间为开场前1小时外，退票申请失败！");
+                        layui.use(['layer'], function () {
+                            var layer = layui.layer;
+                            layer.alert('Refund time should be before 1 hour from the movie starting time!', {
+                                icon: 0,
+                                offset: clientHeight / 5
+                            });
+                        });
+                    } else {
+                        // window.alert("旧时间：" + OldDate + "\n新时间：" + NowDate + "\n退票已申请");
+                        layui.use(['layer'], function () {
+                            var layer = layui.layer;
+                            layer.alert('Are you sure you want a refund?', {icon: 0, offset: clientHeight / 5},
+                                function () {
+                                    $.ajax({
+                                        type: 'post',
+                                        url: url + "/order/applyForRefund",
+                                        dataType: 'json',
+                                        data: {
+                                            order_id: order_id
+                                        },
+                                        success: function (obj) {
+                                            if (obj.code == 0) {
+                                                window.alert("Refund request have been sent");
+                                            } else {
+                                                window.alert("Refund request failed");
+                                            }
                                         }
-                                        else{
-                                            window.alert("Refund request failed");
-                                        }
-                                    }
-                                });
-                                layer.closeAll();
-                                location.reload();
-                            }
-                        );
-                    });
+                                    });
+                                    layer.closeAll();
+                                    location.reload();
+                                }
+                            );
+                        });
+                    }
                 }
-            }      
+            }
         }
     
         //初始化基本信息
