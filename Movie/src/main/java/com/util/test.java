@@ -4,6 +4,7 @@ import java.awt.image.BufferedImage;
 import java.io.Console;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.text.DecimalFormat;
@@ -16,15 +17,18 @@ import java.util.Random;
 import com.alibaba.fastjson.JSONObject;
 import com.controller.MovieController;
 import com.controller.ScheduleController;
-import com.entity.Hall;
-import com.entity.Order;
-import com.entity.Schedule;
+import com.entity.*;
 import com.github.pagehelper.PageInfo;
+import com.itextpdf.text.pdf.PdfWriter;
 import com.mapper.*;
 import com.service.IOrderService;
 import com.service.IUserService;
 import com.service.imp.OrderServiceImp;
 import com.service.imp.UserServiceImp;
+import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -45,6 +49,7 @@ public class test {
 	private HallMapper hallMapper;
 	private CinemaMapper cinemaMapper;
 	private MovieMapper movieMapper;
+	private CardMapper cardMapper;
 
 	public static void main(String[] args) {
 //		Date date = new Date();
@@ -191,5 +196,39 @@ public class test {
 		for (Order order:arrayList){
 			System.out.println(order.getQRImage());
 		}
+	}
+
+	@Test
+	public void testCard() throws IOException {
+		ApplicationContext app = new ClassPathXmlApplicationContext("spring.xml");
+		cardMapper = app.getBean(CardMapper.class);
+		Card byUID = cardMapper.findByUID(2);
+		System.out.println(byUID);
+		double money1 = cardMapper.getMoney(2);
+		System.out.println(money1);
+		cardMapper.setMoney(2,10000);
+		double money2 = cardMapper.getMoney(2);
+		System.out.println(money2);
+		cardMapper.deleteCardByUID(1);
+		System.out.println(cardMapper.findByUID(1));
+		Card card = new Card();
+		card.setMoney(2222);
+		card.setUser_id(1);
+		cardMapper.setNewCard(1,222);
+		Card byUID1 = cardMapper.findByUID(1);
+		System.out.println(byUID1);
+	}
+
+	@Test
+	public void testNewCard(){
+		ApplicationContext app = new ClassPathXmlApplicationContext("spring.xml");
+		userMapper = app.getBean(UserMapper.class);
+		cardMapper = app.getBean(CardMapper.class);
+		User user = new User();
+		user.setUser_pwd("123");
+		user.setUser_name("123");
+		user.setUser_email("123");
+		userMapper.addUser(user);
+		cardMapper.setNewCard(user.getUser_id(),0);
 	}
 }

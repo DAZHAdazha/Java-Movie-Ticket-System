@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.CardMapper">
+    <select id="findByUID" parameterType="long" resultType="com.entity.Card">
+        select * from card where user_id=#{uid}
+    </select>
+    <select id="getMoney" parameterType="long" resultType="double">
+        select money from card where user_id=#{uid}
+    </select>
+    <update id="setMoney">
+        UPDATE card SET money = #{money} WHERE user_id=#{user_id}
+    </update>
+    <delete id="deleteCardByUID" parameterType="long">
+        delete from card where user_id=#{user_id}
+    </delete>
+    <insert id="setNewCard">
+        insert into card (user_id, money) values(#{user_id},#{money})
+    </insert>
+</mapper>
