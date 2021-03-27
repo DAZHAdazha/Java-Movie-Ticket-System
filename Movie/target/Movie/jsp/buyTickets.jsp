@@ -23,7 +23,7 @@
 
     <script src="../static/layui/layui.js" charset="utf-8"></script>
     <link rel="stylesheet" href="../static/layui/css/layui.css" media="all">
-    <title>淘淘电影-选影院</title>
+    <title>Tao Tao Movie-Pick Theater</title>
 </head>
 <body>
     <!-- ------------------------------------------------------------------- -->
@@ -51,7 +51,7 @@
                         <a class="wish " data-wish="false" onclick="wantSee()">
                             <div>
                                 <i class="icon wish-icon"></i>
-                                <span class="wish-msg" data-act="wish-click">想看</span>
+                                <span class="wish-msg" data-act="wish-click">Want to see</span>
                             </div>
                         </a>
                         <a class="score-btn " data-bid="b_rxxpcgwd" onclick="giveScore()">
@@ -65,7 +65,7 @@
 
                 <div class="movie-stats-container">
                     <div class="movie-index">
-                        <p class="movie-index-title">用户评分</p>
+                        <p class="movie-index-title">Users ranks</p>
                         <div class="movie-index-content score normal-score">
                             <span class="index-left info-num ">
                                 <!-- 评分 -->
@@ -82,7 +82,7 @@
                     </div>   
 
                     <div class="movie-index">
-                        <p class="movie-index-title">累计票房</p>
+                        <p class="movie-index-title">Total tiket office</p>
                         <div class="movie-index-content box stonefont-num">
                             <!-- 票房数 -->
                         </div>
@@ -103,27 +103,27 @@
             <div class="tags-panel">
                 <ul class="tags-lines">
                     <li class="tags-line">
-                        <div class="tags-title">日期:</div>
+                        <div class="tags-title">Date:</div>
                         <ul class="tags tags-date">
                             <!-- 日期 -->
                         </ul>
                     </li>
                     <li class="tags-line tags-line-border" data-type="brand">
-                        <div class="tags-title">品牌:</div>
+                        <div class="tags-title">Brand:</div>
                         <ul class="tags tags-brand">
                             <!-- 品牌 -->
                         </ul>
                     </li>
 
                     <li class="tags-line tags-line-border" data-type="district">
-                        <div class="tags-title">行政区:</div>
+                        <div class="tags-title">Location:</div>
                         <ul class="tags tags-area">
                             <!-- 行政区 -->
                         </ul>
                     </li>
 
                     <li class="tags-line tags-line-border" data-type="hallType">
-                        <div class="tags-title">特殊厅:</div>
+                        <div class="tags-title">Special hall:</div>
                         <ul class="tags tags-hall">
                             <!-- 特殊厅 -->
                         </ul>
@@ -133,7 +133,7 @@
             </div>	
             <!-- 列表 -->
             <div class="cinemas-list">
-                <h2 class="cinemas-list-header">影院列表</h2>   
+                <h2 class="cinemas-list-header">Theater list</h2>
             </div>
             <!-- 分页 -->
             <div class="cinema-pager">
@@ -171,7 +171,7 @@
             ScoreHtml = 
                 "<div style=\"text-align:center; margin:30px 0;\">" +
                     "<div id=\"GiveScore\"></div>" +
-                    "<p style=\"color:#888;\">点击星星进行评分</p>" +
+                    "<p style=\"color:#888;\">Click star to rank</p>" +
                 "</div>"
             ;
         }
@@ -196,7 +196,7 @@
                 },
                 success:function (obj) {
                     StonefontTemp = obj.data.movie_boxOffice;
-                    StonefontTemp += "亿";
+                    StonefontTemp += "(one hundred million)";
                     avatar.append("<img class=\"avatar\" src=\"" + obj.data.movie_picture + "\" alt=\"\">");
                     movieBriefContainer.append(
                     "<h3 class=\"name\">" + obj.data.movie_cn_name + "</h3>" +
@@ -230,15 +230,15 @@
                 var rate = layui.rate;
                 layer.open({
                     type: 1
-                    ,title: "电影评分"
+                    ,title: "Movie ranks"
                     ,closeBtn: false
                     ,area: '400px;'
                     ,shade: 0.8
                     ,offset: clientHeight/5
                     ,id: 'LAY_layuipro' //设定一个id，防止重复弹出
-                    ,btn: ['确认评分', '取消']
+                    ,btn: ['Confirm ranking', 'cancel']
                     ,yes: function(){
-                        layer.alert('感谢你的评价,祝你生活愉快！',{icon: 0,offset: clientHeight/5},
+                        layer.alert('Thanks for your comment!',{icon: 0,offset: clientHeight/5},
                             function (){
                                 layer.closeAll();
                                 location.reload();
@@ -255,7 +255,7 @@
                             ,half: true
                             ,text: true
                             ,setText: function(value){
-                                this.span.text(value*2+"分");
+                                this.span.text(value*2+"star");
                             }
                         })
                     }
@@ -267,7 +267,7 @@
             layui.use(['rate','layer'], function(){
                 var layer = layui.layer;
                 var rate = layui.rate;
-                layer.alert('感谢你的支持！',{icon: 0,offset: clientHeight/5},
+                layer.alert('Thanks for your support!',{icon: 0,offset: clientHeight/5},
                     function (){
                         layer.closeAll();
                         location.reload();
@@ -438,7 +438,7 @@
                     "<div class=\"cinema-cell\">" +
                         "<div class=\"cinema-info\">" +
                             "<a class=\"cinema-name\">" + obj.cinemaList[i].cinema_name + "</a>" +
-                            "<p class=\"cinema-address\">地址：" + obj.cinemaList[i].cinema_address + "</p>" +
+                            "<p class=\"cinema-address\">Address" + obj.cinemaList[i].cinema_address + "</p>" +
                         "</div>" +
                         "<div class=\"buy-btn\">" +
                             "<a href=\"./selectSeat.jsp?cinema_id=" + obj.cinemaList[i].cinema_id + "&movie_id=" + obj.data.movie_id + "\">选座购票</a>" +
@@ -446,7 +446,7 @@
                         "<div class=\"price\">" +
                             "<span class=\"rmb red\">￥</span>" +
                             "<span class=\"price-num red\"><span class=\"stonefont\">"+ MinPrice[i].shift() +"</span></span>" +
-                            "<span style=\"margin-left:5px;\">起</span>" +
+                            "<span style=\"margin-left:5px;\">above</span>" +
                         "</div>" +
                     "</div>"
                 );

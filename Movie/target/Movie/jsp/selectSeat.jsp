@@ -22,7 +22,7 @@
     <script src="../static/js/Api.js"></script>
     <script src="../static/layui/layui.js" charset="utf-8"></script>
     <link rel="stylesheet" href="../static/layui/css/layui.css" media="all">
-    <title>淘淘电影-选场次</title>
+    <title>Tao Tao Movie-Choose Movie</title>
 </head>
 <body>
     <!-- ------------------------------------------------------------------- -->
@@ -43,17 +43,17 @@
 
             <div class="cinema-main clearfix">
                 <div class="cinema-brief-container">
-                    <div class="telphone">电话：0335-2661222</div>
+                    <div class="telphone">Tele：0335-2661222</div>
                     <div class="features-group">
-                        <div class="group-title">影院服务</div>
+                        <div class="group-title">Service</div>
 
                         <div class="feature">
-                            <span class="tag ">3D眼镜</span>
-                            <p class="desc text-ellipsis" title="免押金">免押金</p>
+                            <span class="tag ">3D </span>
+                            <p class="desc text-ellipsis" title="免押金">No deposit</p>
                         </div>
                         <div class="feature">
-                            <span class="tag ">可停车</span>
-                            <p class="desc text-ellipsis" title="可停车">停车场可凭电影票在影城票台领取3小时内免停权益</p>
+                            <span class="tag ">Parking</span>
+                            <p class="desc text-ellipsis" title="可停车">Free within 3 hours</p>
                         </div>
                     </div>
                 </div>
@@ -83,18 +83,18 @@
                 </div>
                 <!-- 观影时间 -->
                 <div class="show-date">
-                    <span>观影时间 :</span>  
+                    <span>Viewing time:</span>
                 </div>
                 <!-- 场次列表 -->
                 <div class="plist-container active">
                     <table class="plist">
                         <thead>
                             <tr>
-                                <th>放映时间</th>
-                                <th>语言版本</th>
-                                <th>放映厅</th>
-                                <th>售价（元）</th>
-                                <th>选座购票</th>
+                                <th>Runtime</th>
+                                <th>Language</th>
+                                <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Hall</th>
+                                <th>Price(CNY)</th>
+                                <th>&nbsp;&nbsp;Ticket</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -138,7 +138,7 @@
                     );
                     avatarShadow.append(
                         "<img class=\"avatar\" src=\"../static/images/cinemas/" + obj.data[0].schedule_hall.hall_cinema.cinema_name + ".jpg\">" +
-                        "<div class=\"avatar-num\">查看全部21张图片</div>"
+                        "<div class=\"avatar-num\">See all pictures</div>"
                     );
                     initMoive(obj); //初始化电影信息
                     initSchedule(obj); //初始化场次信息
@@ -170,20 +170,20 @@
                 "</div>" +
                 "<div class=\"movie-desc\">" +
                     "<div>" +
-                        "<span class=\"key\">时长 : </span>" +
+                        "<span class=\"key\">Length: </span>" +
                         "<span class=\"value\">"+ obj.data[0].schedule_movie.movie_duration +"</span>" +
                     "</div>" +
                     "<div>" +
-                        "<span class=\"key\">类型 :</span>" +
+                        "<span class=\"key\">Type: </span>" +
                         "<span class=\"value\">"+ obj.data[0].schedule_movie.movie_type +"</span>" +
                     "</div>" +
                     "<div>" +
-                        "<span class=\"key\">导演 :</span>" +
+                        "<span class=\"key\">Director: </span>" +
                         "<span class=\"value\">"+ obj.data[0].schedule_movie.movie_director+"</span>" +
                     "</div>" +
                 "</div>"
             )
-            showDate.append("<span class=\"date-item active\" data-index=\"${status.index}\">今天" + Month + "月" + (Day+i) + "</span>  ");
+            showDate.append("<span class=\"date-item active\" data-index=\"${status.index}\">Today " + Month + "-" + (Day+i) + "</span>  ");
         }
 
         //初始化场次信息
@@ -197,7 +197,7 @@
                         "<td> <span class=\"lang\">" + obj.data[i].schedule_movie.movie_country +"</span> </td>" +
                         "<td> <span class=\"hall\">" + obj.data[i].schedule_hall.hall_name + "</span> </td>" +
                         "<td> <span class=\"sell-price\"> <span class=\"stonefont\">" + obj.data[i].schedule_price + "</span> </span> </td>" +
-                        "<td> <a href=\"./buySeat.jsp?schedule_id="+ obj.data[i].schedule_id +"\" class=\"buy-btn normal\">选座购票</a> </td>" +
+                        "<td> <a href=\"./buySeat.jsp?schedule_id="+ obj.data[i].schedule_id +"\" class=\"buy-btn normal\">Purchase</a> </td>" +
                     "</tr>"   
                             );
             }

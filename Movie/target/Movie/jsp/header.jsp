@@ -17,7 +17,7 @@
 
     <script src="../static/layui/layui.js" charset="utf-8"></script>
     <link rel="stylesheet" href="../static/layui/css/layui.css" media="all">
-    <title>淘淘电影</title>
+    <title>Tao Tao Movie</title>
 </head>
 <body>
  	<!-- 导航栏 -->
@@ -29,10 +29,10 @@
                 </h1>
                 <div class="nav" style="width: 25%">
                     <ul>
-                        <li><a href="./mainPage.jsp">首页</a></li>
-                        <li class="active"><a href="./movieList.jsp">电影</a></li>
-                        <li><a href="javascript:void(0)">影院</a></li>
-                        <li><a href="javascript:void(0)">榜单</a></li>
+                        <li><a href="./mainPage.jsp">Main page</a></li>
+                        <li class="active"><a href="./movieList.jsp">Movie</a></li>
+                        <li><a href="javascript:void(0)">Theater</a></li>
+                        <li><a href="javascript:void(0)">Top List</a></li>
                     </ul>
                 </div>
 <%--                <div class="app-download">--%>
@@ -61,7 +61,7 @@
                                     </div>
                                 </div>
                                 <div class="layui-col-md2" style="float: right">
-                                    <input name="searchKeyword" class="search" type="search" maxlength="32" placeholder="找影视剧、影人、影院" autocomplete="off">
+                                    <input name="searchKeyword" class="search" type="search" maxlength="32" placeholder="Find movie,cinema,performer" autocomplete="off">
                                     <input class="submit" type="submit" value="">
                                 </div>
                             </div>

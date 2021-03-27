@@ -37,7 +37,7 @@
     <script src="../static/js/Api.js"></script>
     <script src="../static/layui/layui.js" charset="utf-8"></script>
     <link rel="stylesheet" href="../static/layui/css/layui.css" media="all">
-    <title>淘淘电影-个人中心</title>
+    <title>Tao Tao Movie-personal center</title>
 </head>
 <body>
     <!-- ------------------------------------------------------------------- -->
@@ -54,22 +54,22 @@
                 <div class="nav-title">
                     <h3>个人中心</h3>
                 </div>
-                <a class="cardId">我的订单</a>
-				<a class="cardId">基本信息</a>
-				<a class="cardId">修改密码</a>
+                <a class="cardId">My Order</a>
+				<a class="cardId">Basic Information</a>
+				<a class="cardId">Modified password</a>
             </div>
             <div class="nav-body">
                 <!-- 我的订单 -->
                 <div class="one card" style="display: block;">
                     <div>
-                        <div class="title">我的订单</div>
+                        <div class="title">My Order</div>
                         <hr/>
                     </div>
                 </div>
                 <!-- 基本信息 账号、邮箱、角色、头像 -->
                 <div class="two card" style="display: none;">
                     <div>
-                        <div class="title">基本信息</div>
+                        <div class="title">Basic Information</div>
                         <hr/>
                     </div>
                     <div class="avatar-container layui-upload">
@@ -77,10 +77,10 @@
                             <img class="layui-upload-img" id="demo1">
                             <p id="demoText"></p>
                         </div>
-                        <a href="javascript:;" class="file">选择文件
+                        <a href="javascript:;" class="file">Choose File
                             <input type="file" name="file" id="file">
                         </a>
-                        <div class="tips">支持JPG,JPEG,PNG格式，且文件需小于1000KB</div>
+                        <div class="tips">Support JPG,JPEG,PNG format, and file size should less than 1000KB</div>
                     </div>
 
                     <div class="avatar-body">
@@ -89,7 +89,7 @@
                 <!-- 修改密码 -->
                 <div class="three card" style="display: none;">
                     <div>
-                        <div class="title">修改密码</div>
+                        <div class="title">Modifiy password</div>
                         <hr/>
                     </div>
                     <div class="avatar-body">
@@ -168,13 +168,13 @@
                         var StateText;
                         switch(obj.data[i].order_state){
                             case 0:
-                                StateText = "退票中";
+                                StateText = "During the process of refund";
                             break;
                             case 1:
-                                StateText = "已完成";
+                                StateText = "Completed";
                             break;
                             case 2:
-                                StateText = "已退票";
+                                StateText = "Return refund already";
                             break;
                         }
                         html = 
@@ -208,16 +208,17 @@
             var Year,Month,Day,Hour,Mintue,flag=0;
             var myDate = new Date();
             var OldTime, NowTime, OldDate, NowDate;
-            if(order_state=="退票中"){
+            if(order_state=="During the process of refund"){
+            if(order_state==""){
                 layui.use(['layer'], function(){
                 var layer = layui.layer;
-                    layer.alert('该订单正处于退票状态！',{icon: 0,offset: clientHeight/5});
+                    layer.alert('This order is in the process of refund',{icon: 0,offset: clientHeight/5});
                 });
             }
-            else if(order_state=="已退票"){
+            else if(order_state=="Completed"){
                 layui.use(['layer'], function(){
                 var layer = layui.layer;
-                    layer.alert('该订单已完成退票！',{icon: 0,offset: clientHeight/5});
+                    layer.alert('This order return refund already',{icon: 0,offset: clientHeight/5});
                 });
             }
             else{
@@ -232,21 +233,21 @@
                     flag = 0;
                     layui.use(['layer'], function(){
                     var layer = layui.layer;
-                        layer.alert('23：00 - 00：00不给予退票操作！',{icon: 0,offset: clientHeight/5});
+                        layer.alert('23:00 - 00:00 is not working hour!',{icon: 0,offset: clientHeight/5});
                     });
                 }
                 else if(OldDate<NowDate){
                     // window.alert("旧时间：" + OldDate + "\n新时间：" + NowDate + "\n退票时间为开场前1小时外，退票申请失败！");
                     layui.use(['layer'], function(){
                     var layer = layui.layer;
-                        layer.alert('退票时间为开场前1小时外，退票申请失败！',{icon: 0,offset: clientHeight/5});
+                        layer.alert('Refund time should be before 1 hour from the movie starting time!',{icon: 0,offset: clientHeight/5});
                     });
                 }
                 else{
                     // window.alert("旧时间：" + OldDate + "\n新时间：" + NowDate + "\n退票已申请");
                     layui.use(['layer'], function(){
                     var layer = layui.layer;
-                        layer.alert('是否确认要申请退票！',{icon: 0,offset: clientHeight/5},
+                        layer.alert('Are you sure you want a refund?',{icon: 0,offset: clientHeight/5},
                             function (){
                                 $.ajax({
                                     type:'post',
@@ -257,10 +258,10 @@
                                     },
                                     success:function (obj) {
                                         if(obj.code == 0){
-                                            window.alert("退票已申请");
+                                            window.alert("Refund request have been sent");
                                         }
                                         else{
-                                            window.alert("退票申请失败！");
+                                            window.alert("Refund request failed");
                                         }
                                     }
                                 });
@@ -278,27 +279,27 @@
             var avatarBody = $(".two").find(".avatar-body");
             var roletext;
             if(user.user_role==1){
-                roletext = "管理员";
+                roletext = "Administer";
             }
             else{
-                roletext = "会员";
+                roletext = "VIP";
             }
 
             avatarBody.append(
                 "<div class=\"userexinfo-form-section\">" +
-                    "<p>账号：</p>" +
+                    "<p>Account:</p>" +
                     "<span>" +
                         "<input type=\"text\" name=\"userName\" id=\"userName\" value=\"" + user.user_name + "\" disabled=\"false\">" +
                     "</span>" +
                 "</div>" +
                 "<div class=\"userexinfo-form-section\">" +
-                    "<p>身份：</p>" +
+                    "<p>Identity:</p>" +
                     "<span>" +
                         "<input type=\"text\" name=\"role\" id=\"role\" value=\"" + roletext + "\" disabled=\"false\">" +
                     "</span>" +
                 "</div>" +
                 "<div class=\"userexinfo-form-section\">" +
-                    "<p>邮箱：</p>" +
+                    "<p>Email:</p>" +
                     "<span>" +
                         "<input type=\"text\" name=\"email\" id=\"email\" value=\"" + user.user_email + "\">" +
                     "</span>" +
@@ -346,7 +347,7 @@
                 user_email = $('#email').val();
             console.log(file);
             console.log(user_name+ "," + user_role + "," + user_email);
-            if(user_role == "会员"){
+            if(user_role == "VIP"){
                 user_role = 0;
             }else{
                 user_role = 1;
@@ -354,7 +355,7 @@
             if(user_email == ""){
                 layui.use(['layer'], function(){
                 var layer = layui.layer;
-                    layer.alert('邮箱信息不能为空，修改失败！',{icon: 0,offset: clientHeight/5},
+                    layer.alert('Email field can not be empty!',{icon: 0,offset: clientHeight/5},
                         function (){
                             layer.close(layer.index);
                         }
@@ -377,7 +378,7 @@
                     success:function (result) {
                         var obj = eval('(' + result + ')');
                         if(obj.code == 0){
-                            layer.alert('修改成功！',{icon: 0,offset: clientHeight/5},
+                            layer.alert('Modified successfully!',{icon: 0,offset: clientHeight/5},
                                 function (){
                                     localStorage.removeItem("userJson");
                                     layer.closeAll();
@@ -386,7 +387,7 @@
                                 }
                             );
                         }else{
-                            layer.alert('修改失败！',{icon: 0,offset: clientHeight/5},
+                            layer.alert('Modified failed!',{icon: 0,offset: clientHeight/5},
                                 function (){
                                     layer.closeAll();
                                 }
@@ -403,19 +404,19 @@
 
             avatarBody.append(
                 "<div class=\"userexinfo-form-section\">" +
-                    "<p>旧密码：</p>" +
+                    "<p>Old password:</p>" +
                     "<span>" +
                         "<input type=\"password\" name=\"oldPassword\" id=\"oldPassword\" value=\"\">" +
                     "</span>" +
                 "</div>" +
                 "<div class=\"userexinfo-form-section\">" +
-                    "<p>新密码：</p>" +
+                    "<p>New password:</p>" +
                     "<span>" +
                         "<input type=\"password\" name=\"newPassword\" id=\"newPassword\" value=\"\">" +
                     "</span>" +
                 "</div>" +
                 "<div class=\"userexinfo-form-section\">" +
-                    "<p>确认密码：</p>" +
+                    "<p>Confirm password:</p>" +
                     "<span>" +
                         "<input type=\"password\" name=\"repeatPassword\" id=\"repeatPassword\" value=\"\">" +
                     "</span>" +
@@ -435,7 +436,7 @@
             if(user_old_password == "" || user_new_password == "" || user_repeat_password == ""){
                 layui.use(['layer'], function(){
                 var layer = layui.layer;
-                    layer.alert('密码修改信息不能为空，修改失败！',{icon: 0,offset: clientHeight/5},
+                    layer.alert('Password modification can not be empty!',{icon: 0,offset: clientHeight/5},
                         function (){
                             layer.close(layer.index);
                         }
@@ -445,7 +446,7 @@
             else if(user_new_password != user_repeat_password){
                 layui.use(['layer'], function(){
                 var layer = layui.layer;
-                    layer.alert('新密码和确认密码不匹配！',{icon: 0,offset: clientHeight/5},
+                    layer.alert('New password is not matched with confirmed password!',{icon: 0,offset: clientHeight/5},
                         function (){
                             layer.close(layer.index);
                         }
@@ -464,7 +465,7 @@
                     },
                     success:function (obj) {
                         if(obj == "success"){
-                            layer.alert('修改成功，请重新登陆！',{icon: 0,offset: clientHeight/5},
+                            layer.alert('Modified successfully, please log in!',{icon: 0,offset: clientHeight/5},
                                 function (){
                                     layer.closeAll();
                                     localStorage.removeItem("userJson");
@@ -472,7 +473,7 @@
                                 }
                             );
                         }else{
-                            layer.alert('旧密码输入错误！',{icon: 0,offset: clientHeight/5},
+                            layer.alert('Old password is wrong!',{icon: 0,offset: clientHeight/5},
                                 function (){
                                     layer.closeAll();
                                 }
