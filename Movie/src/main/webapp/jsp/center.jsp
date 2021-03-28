@@ -193,6 +193,7 @@
                             "<div class=\"order-head\">" +
                                     "<span class=\"order-date\">" + obj.data[i].order_time + "</span>" +
                                     "<span class=\"order-id\">Order ID: " + obj.data[i].order_id + "</span>" +
+                                    "<span><a href=\"/search/pdf?time=" +obj.data[i].order_time + "&orderID=" + obj.data[i].order_id + "&moviePicture=" + obj.data[i].order_schedule.schedule_movie.movie_picture + "&movieName=" + obj.data[i].order_schedule.schedule_movie.movie_cn_name +"&theater=" + obj.data[i].order_schedule.schedule_hall.hall_cinema.cinema_name + "&seat=" + obj.data[i].order_schedule.schedule_hall.hall_name + " " + obj.data[i].order_position +"&startTime=" + obj.data[i].order_schedule.schedule_startTime +"&price=" + obj.data[i].order_schedule.schedule_price +"\" > Print  </a><span>" +
                                     "<span class=\"order-delete\"><a target='_blank' href=\" " +obj.data[i].qrimage+"\">QR code</a></span>" +
                                     "</div>" +
                             "<div class=\"order-body\">" +
