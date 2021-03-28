@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.entity.Card;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
@@ -200,6 +201,20 @@ public class UserController {
 			obj.put("code", 200);
 			obj.put("msg", "");
 		}
+		return obj;
+	}
+
+	@RequestMapping("/findCardByUID")
+	@ResponseBody
+	public JSONObject findCardByUID(@RequestParam("user_id")int user_id) {
+		JSONObject obj = new JSONObject();
+		Card card = userService.findCardByUID(user_id);
+		System.out.println(card);
+		obj.put("msg","");
+		obj.put("code",0);
+		obj.put("count",1);
+		obj.put("data", card);
+		System.out.println("OBJ: " + obj);
 		return obj;
 	}
 	

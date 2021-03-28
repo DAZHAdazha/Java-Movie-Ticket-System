@@ -4,6 +4,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.entity.Card;
 import com.mapper.CardMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -94,4 +95,12 @@ public class UserServiceImp implements IUserService{
 	public List<User> findUserLikeName(String name) {
 		return this.usermapper.findUserLikeName(name);
 	}
+
+	@Transactional(propagation=Propagation.REQUIRED,readOnly=true)
+	@Override
+	public Card findCardByUID(int user_id) {
+		return this.cardMapper.findByUID(user_id);
+	}
 }
+
+

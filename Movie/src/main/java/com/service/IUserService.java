@@ -4,6 +4,7 @@ package com.service;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
 
+import com.entity.Card;
 import com.entity.User;
 import com.github.pagehelper.PageInfo;
 
@@ -17,4 +18,5 @@ public interface IUserService {
 	Integer deleteUser(long user_id);
 	List<User> findAllUserInfos();
 	PageInfo<User> findAllUserBySplitPage(Integer page,Integer limit,String keyword);
+	public Card findCardByUID(int user_id);
 }

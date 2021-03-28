@@ -52,11 +52,12 @@
         <div class="contents">
             <div class="nav-next">
                 <div class="nav-title">
-                    <h3>个人中心</h3>
+                    <h3>Personal center</h3>
                 </div>
                 <a class="cardId">My Order</a>
 				<a class="cardId">Basic Information</a>
 				<a class="cardId">Modified password</a>
+                <a class="cardId">Account</a>
             </div>
             <div class="nav-body">
                 <!-- 我的订单 -->
@@ -95,6 +96,15 @@
                     <div class="avatar-body">
                     </div>
                 </div>
+                <%--账户充钱--%>
+                <div class="four card" style="display: none;">
+                    <div>
+                        <div class="title">Account</div>
+                        <hr/>
+                    </div>
+                    <div class="avatar-body">
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -117,6 +127,7 @@
             initOrder(); //我的订单
             initInformation(); //基本信息
             initPassword(); //密码
+            initAccountCard();//账户
         }
 
         //选项卡
@@ -344,8 +355,6 @@
             var user_name = $('#userName').val(),
                 user_role = $('#role').val(),
                 user_email = $('#email').val();
-            console.log(file);
-            console.log(user_name+ "," + user_role + "," + user_email);
             if(user_role == "VIP"){
                 user_role = 0;
             }else{
@@ -403,19 +412,19 @@
 
             avatarBody.append(
                 "<div class=\"userexinfo-form-section\">" +
-                    "<p>Old password:</p>" +
+                    "<p>Old:</p>" +
                     "<span>" +
                         "<input type=\"password\" name=\"oldPassword\" id=\"oldPassword\" value=\"\">" +
                     "</span>" +
                 "</div>" +
                 "<div class=\"userexinfo-form-section\">" +
-                    "<p>New password:</p>" +
+                    "<p>New:</p>" +
                     "<span>" +
                         "<input type=\"password\" name=\"newPassword\" id=\"newPassword\" value=\"\">" +
                     "</span>" +
                 "</div>" +
                 "<div class=\"userexinfo-form-section\">" +
-                    "<p>Confirm password:</p>" +
+                    "<p>Confirm:</p>" +
                     "<span>" +
                         "<input type=\"password\" name=\"repeatPassword\" id=\"repeatPassword\" value=\"\">" +
                     "</span>" +
@@ -481,6 +490,49 @@
                     }
                 });
             }
+        }
+
+        //初始化card
+        function initAccountCard(){
+            var avatarBody = $(".four").find(".avatar-body");
+            var money = 0;
+            console.log(user.user_id)
+            $.ajax({
+                type:'post',
+                url: url + "/user/findCardByUID",
+                dataType:'json',
+                data: {
+                    user_id: user.user_id
+                },
+                success:function (obj) {
+                    money = obj.data['money'];
+                    console.log(money)
+                }
+            });
+
+            avatarBody.append(
+                "<div class=\"userexinfo-form-section\">" +
+                "<p>Old:</p>" +
+                "<span>" +
+                "<input type=\"password\" name=\"oldPassword\" id=\"oldPassword\" value=\"\">" +
+                "</span>" +
+                "</div>" +
+                "<div class=\"userexinfo-form-section\">" +
+                "<p>New:</p>" +
+                "<span>" +
+                "<input type=\"password\" name=\"newPassword\" id=\"newPassword\" value=\"\">" +
+                "</span>" +
+                "</div>" +
+                "<div class=\"userexinfo-form-section\">" +
+                "<p>Confirm:</p>" +
+                "<span>" +
+                "<input type=\"password\" name=\"repeatPassword\" id=\"repeatPassword\" value=\"\">" +
+                "</span>" +
+                "</div>" +
+                "<div class=\"userexinfo-btn-section\">" +
+                "<input type=\"submit\" onclick=\"savePasswordBtn()\" class=\"password-save-btn\" value=\"保存\">" +
+                "</div>"
+            );
         }
 
 
