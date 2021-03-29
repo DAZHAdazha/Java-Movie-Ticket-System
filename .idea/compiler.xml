@@ -17,6 +17,7 @@
         <module name="mybatis_multi" />
         <module name="spring_mvc" />
         <module name="spring_demo" />
+        <module name="mybatis_anno" />
         <module name="mybatis_dao" />
         <module name="mybatis_config" />
         <module name="spring_interceptor" />
