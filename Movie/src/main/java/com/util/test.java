@@ -231,4 +231,11 @@ public class test {
 		userMapper.addUser(user);
 		cardMapper.setNewCard(user.getUser_id(),0);
 	}
+
+	@Test
+	public void testSetMoney(){
+		ApplicationContext app = new ClassPathXmlApplicationContext("spring.xml");
+		cardMapper = app.getBean(CardMapper.class);
+		cardMapper.setMoney(47,120);
+	}
 }

@@ -209,12 +209,22 @@ public class UserController {
 	public JSONObject findCardByUID(@RequestParam("user_id")int user_id) {
 		JSONObject obj = new JSONObject();
 		Card card = userService.findCardByUID(user_id);
-		System.out.println(card);
 		obj.put("msg","");
 		obj.put("code",0);
 		obj.put("count",1);
 		obj.put("data", card);
-		System.out.println("OBJ: " + obj);
+		return obj;
+	}
+
+	@RequestMapping("/topUp")
+	@ResponseBody
+	public JSONObject topUp(@RequestParam("user_id")int user_id, @RequestParam("money") double money) {
+		JSONObject obj = new JSONObject();
+		double res = this.userService.topUp(user_id,money);
+		obj.put("msg","");
+		obj.put("code",0);
+		obj.put("count",1);
+		obj.put("data", res);
 		return obj;
 	}
 	

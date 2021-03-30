@@ -306,6 +306,62 @@
 }
 
 
+
+.container .contents .nav-body .four .title{
+	font-size: 18px;
+	color: #ec443f;
+	padding: 26px 0;
+}
+.container .contents .nav-body .four hr{
+	margin-bottom: 30px;
+}
+.container .contents .nav-body .four .avatar-body{
+	margin-left: 30%;
+}
+.container .contents .nav-body .four .avatar-body .userexinfo-form-section{
+	color: #666;
+    position: relative;
+    margin: 20px 0;
+    padding-left: 90px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 14px;
+}
+.container .contents .nav-body .four .avatar-body .userexinfo-form-section p{
+	position: absolute;
+    top: 0;
+    left: 0;
+    width: 80px;
+    text-align: right;
+    color: #333;
+    padding: 0;
+	margin: 0;
+	font-size: 16px;
+}
+.container .contents .nav-body .four .avatar-body .userexinfo-btn-section{
+	color: #666;
+    position: relative;
+    margin-top: 40px;
+    line-height: 30px;
+	font-size: 14px;
+	margin-left: 15% !important;
+}
+.container .contents .nav-body .four .avatar-body .userexinfo-btn-section .password-save-btn{
+	cursor: pointer;
+    border-radius: 5px;
+    width: 100px;
+    height: 40px;
+    color: #fff;
+    font-size: 18px;
+    line-height: 40px;
+    border: none;
+    background-color: #ed3931;
+	padding: 0;
+	text-align: center;
+}
+
+
+
 .two .file {
 	margin-top: 20px; 
     position: relative;

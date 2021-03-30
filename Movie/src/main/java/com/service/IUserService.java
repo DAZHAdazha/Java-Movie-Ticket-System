@@ -7,6 +7,8 @@ import java.util.List;
 import com.entity.Card;
 import com.entity.User;
 import com.github.pagehelper.PageInfo;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 public interface IUserService {
 	User login(String user_name,String user_pwd) throws UnsupportedEncodingException;
@@ -19,4 +21,5 @@ public interface IUserService {
 	List<User> findAllUserInfos();
 	PageInfo<User> findAllUserBySplitPage(Integer page,Integer limit,String keyword);
 	public Card findCardByUID(int user_id);
+	public double topUp(int user_id, double money);
 }

@@ -173,7 +173,6 @@
                     user_name: user.user_name
                 },
                 success:function (obj) {
-                    console.log(obj);
                     for(var i=0;i<obj.data.length;i++){
                       //  var order_time = obj.data[i].order_schedule.schedule_startTime.slice(0,10);
                         var StateText;
@@ -441,7 +440,6 @@
                 user_new_password = $('#newPassword').val(),
                 user_repeat_password = $('#repeatPassword').val();
             var user_id = user.user_id;
-            console.log(user_old_password+ "," + user_new_password + "," + user_repeat_password);
             if(user_old_password == "" || user_new_password == "" || user_repeat_password == ""){
                 layui.use(['layer'], function(){
                 var layer = layui.layer;
@@ -497,7 +495,6 @@
         function initAccountCard(){
             var avatarBody = $(".four").find(".avatar-body");
             var money = 0;
-            console.log(user.user_id)
             $.ajax({
                 type:'post',
                 url: url + "/user/findCardByUID",
@@ -507,33 +504,38 @@
                 },
                 success:function (obj) {
                     money = obj.data['money'];
-                    console.log(money)
+                    $('#money').html("Balance: " + money + " $");
                 }
             });
 
             avatarBody.append(
                 "<div class=\"userexinfo-form-section\">" +
-                "<p>Old:</p>" +
-                "<span>" +
-                "<input type=\"password\" name=\"oldPassword\" id=\"oldPassword\" value=\"\">" +
-                "</span>" +
-                "</div>" +
+                "<span style='font-size: 26px;color: black' id='money'></span>" +
                 "<div class=\"userexinfo-form-section\">" +
-                "<p>New:</p>" +
+                "<p>TOP UP: </p>" +
                 "<span>" +
-                "<input type=\"password\" name=\"newPassword\" id=\"newPassword\" value=\"\">" +
-                "</span>" +
-                "</div>" +
-                "<div class=\"userexinfo-form-section\">" +
-                "<p>Confirm:</p>" +
-                "<span>" +
-                "<input type=\"password\" name=\"repeatPassword\" id=\"repeatPassword\" value=\"\">" +
+                "<input onkeyup=\"if(isNaN(value))execCommand('undo')\" name=\"money\" id=\"topUp\" value=\"\">" +
                 "</span>" +
                 "</div>" +
                 "<div class=\"userexinfo-btn-section\">" +
-                "<input type=\"submit\" onclick=\"savePasswordBtn()\" class=\"password-save-btn\" value=\"保存\">" +
+                "<input type=\"submit\" onclick=\"topUpIt()\" class=\"password-save-btn\" value=\"Recharge\">" +
                 "</div>"
             );
+        }
+        function topUpIt(){
+            var money = $("#topUp").val();
+            $.ajax({
+                type:'post',
+                url: url + "/user/topUp",
+                dataType:'json',
+                data: {
+                    user_id: user.user_id,
+                    money:money
+                },
+                success:function (obj) {
+                    $('#money').html("Balance: " + obj.data + " $");
+                }
+            })
         }
 
 

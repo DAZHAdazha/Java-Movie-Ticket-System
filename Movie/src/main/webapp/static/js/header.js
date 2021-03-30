@@ -118,9 +118,7 @@ function init_comment(){
 //初始化
 function initHeader(){
     var LayuiNavMore = $(".header-li");
-    console.log(LayuiNavMore);
     var user_json = JSON.parse(localStorage.getItem("userJson"));
-    console.log(user_json);
     layui.use('element', function(){
         var element = layui.element; //导航的hover效果、二级菜单等功能，需要依赖element模块
         //监听导航点击

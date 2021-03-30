@@ -59,7 +59,7 @@ public class UserServiceImp implements IUserService{
 	@Override
 	public Integer addUser(User user) {
 		int rs = this.usermapper.addUser(user);
-		this.cardMapper.setNewCard(user.getUser_id(),10101);
+		this.cardMapper.setNewCard(user.getUser_id(),100);
 		return rs;
 	}
 
@@ -100,6 +100,14 @@ public class UserServiceImp implements IUserService{
 	@Override
 	public Card findCardByUID(int user_id) {
 		return this.cardMapper.findByUID(user_id);
+	}
+
+	@Transactional(propagation=Propagation.REQUIRED,rollbackFor=Exception.class)
+	@Override
+	public double topUp(int user_id, double money) {
+		money += this.cardMapper.getMoney(user_id);
+		this.cardMapper.setMoney(user_id,money);
+		return this.cardMapper.getMoney(user_id);
 	}
 }
 
