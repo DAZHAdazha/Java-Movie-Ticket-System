@@ -82,6 +82,8 @@ public class UserController {
 	@ResponseBody
 	public String register(User user,String test,HttpServletRequest request) throws UnsupportedEncodingException {
 
+
+
 		String base64encodedString = Base64.getEncoder().encodeToString(user.getUser_pwd().getBytes("utf-8"));
 		user.setUser_pwd(base64encodedString);
 

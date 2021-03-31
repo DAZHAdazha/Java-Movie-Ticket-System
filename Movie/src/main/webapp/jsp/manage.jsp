@@ -154,9 +154,9 @@
         <a class="layui-btn layui-btn-xs" lay-event="edit">Save</a>
     </script>
     <script type="text/html" id="usertoolbar">
-        <div class="layui-btn-container adduserbtn">
-            <button class="layui-btn layui-btn-warm layui-btn-sm" lay-event="useradd">Add User</button>
-        </div>
+<%--        <div class="layui-btn-container adduserbtn">--%>
+<%--            <button class="layui-btn layui-btn-warm layui-btn-sm" lay-event="useradd">Add User</button>--%>
+<%--        </div>--%>
         <div class="usercheck">
             <input id="userfindtext" type="text" name="title" lay-verify="title" autocomplete="off" placeholder="Please Enter Username" class="layui-input">
             <button class="layui-btn layui-btn-sm" lay-event="finduserbtn">Search</button>
@@ -510,68 +510,68 @@
                 table.on('toolbar(UserTable)', function(obj){
                     var checkStatus = table.checkStatus(obj.config.id);
                     switch(obj.event){
-                        case 'useradd':
-                            //添加用户
-                            layer.open({
-                                type: 1
-                                ,title: "Add User" //不显示标题栏
-                                ,closeBtn: false
-                                ,area: '400px;'
-                                ,shade: 0.8
-                                ,offset: clientHeight/5
-                                ,id: 'LAY_layuipro' //设定一个id，防止重复弹出
-                                ,btn: ['Add', 'Cancel']
-                                ,yes: function(){
-                                    var user_name = $('#user_name').val(),
-                                        user_pwd = $('#user_pwd').val()
-                                        user_email = $('#user_email').val();
-                                    if((user_name == "") || (user_pwd == "") || (user_email == "")){
-                                        layer.alert('Add information cannot be null, add failed!',{icon: 0,offset: clientHeight/5},
-                                            function (){
-                                                layer.close(layer.index);
-                                            }
-                                        );
-                                    }
-                                    else{
-                                        $.ajax({
-                                            type:'post',
-                                            url: url + "/user/register",
-                                            dataType:'json',
-                                            data: {
-                                                user_name: user_name,
-                                                user_pwd: user_pwd,
-                                                user_email: user_email,
-                                            },
-                                            success:function (date) {
-                                                if(date == "success"){
-                                                    layer.alert('Add successfully!',{icon: 0,offset: clientHeight/5},
-                                                        function (){
-                                                            layer.closeAll();
-                                                            location.reload();
-                                                        }
-                                                    );
-                                                }else{
-                                                    layer.alert('Username is already existed, please try a different name!',{icon: 0,offset: clientHeight/5},
-                                                        function (){
-                                                            layer.closeAll();
-                                                        }
-                                                    );
-                                                }
-                                            }
-                                        });
-                                    }
-
-                                }
-                                ,btnAlign: 'c'
-                                ,moveType: 0 //拖拽模式，0或者1
-                                ,content: AddUserHtml
-                                ,success: function(layero){
-                                    var btn = layero.find('.layui-layer-btn');
-                                    btn.find('.layui-layer-btn0').attr({
-                                    });
-                                }
-                            });
-                        break;
+                        // case 'useradd':
+                        //     //添加用户
+                        //     layer.open({
+                        //         type: 1
+                        //         ,title: "Add User" //不显示标题栏
+                        //         ,closeBtn: false
+                        //         ,area: '400px;'
+                        //         ,shade: 0.8
+                        //         ,offset: clientHeight/5
+                        //         ,id: 'LAY_layuipro' //设定一个id，防止重复弹出
+                        //         ,btn: ['Add', 'Cancel']
+                        //         ,yes: function(){
+                        //             var user_name = $('#user_name').val(),
+                        //                 user_pwd = $('#user_pwd').val()
+                        //                 user_email = $('#user_email').val();
+                        //             if((user_name == "") || (user_pwd == "") || (user_email == "")){
+                        //                 layer.alert('Add information cannot be null, add failed!',{icon: 0,offset: clientHeight/5},
+                        //                     function (){
+                        //                         layer.close(layer.index);
+                        //                     }
+                        //                 );
+                        //             }
+                        //             else{
+                        //                 $.ajax({
+                        //                     type:'post',
+                        //                     url: url + "/user/register",
+                        //                     dataType:'json',
+                        //                     data: {
+                        //                         user_name: user_name,
+                        //                         user_pwd: user_pwd,
+                        //                         user_email: user_email,
+                        //                     },
+                        //                     success:function (date) {
+                        //                         if(date == "success"){
+                        //                             layer.alert('Add successfully!',{icon: 0,offset: clientHeight/5},
+                        //                                 function (){
+                        //                                     layer.closeAll();
+                        //                                     location.reload();
+                        //                                 }
+                        //                             );
+                        //                         }else{
+                        //                             layer.alert('Username is already existed, please try a different name!',{icon: 0,offset: clientHeight/5},
+                        //                                 function (){
+                        //                                     layer.closeAll();
+                        //                                 }
+                        //                             );
+                        //                         }
+                        //                     }
+                        //                 });
+                        //             }
+                        //
+                        //         }
+                        //         ,btnAlign: 'c'
+                        //         ,moveType: 0 //拖拽模式，0或者1
+                        //         ,content: AddUserHtml
+                        //         ,success: function(layero){
+                        //             var btn = layero.find('.layui-layer-btn');
+                        //             btn.find('.layui-layer-btn0').attr({
+                        //             });
+                        //         }
+                        //     });
+                        // break;
                         case 'finduserbtn':
                             var user_name = $('#userfindtext').val();
                             table.reload('user_table_id', {
