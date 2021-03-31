@@ -19,6 +19,7 @@
         <option value="$PROJECT_DIR$/mybatis_config/pom.xml" />
         <option value="$PROJECT_DIR$/mybatis_multi/pom.xml" />
         <option value="$PROJECT_DIR$/mybatis_anno/pom.xml" />
+        <option value="$PROJECT_DIR$/ssm/pom.xml" />
       </list>
     </option>
   </component>

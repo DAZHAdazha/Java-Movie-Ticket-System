@@ -12,6 +12,7 @@
         <module name="spring_tx" />
         <module name="mybatis" />
         <module name="mybatis_mapper" />
+        <module name="ssm" />
         <module name="spring_ioc_anno" />
         <module name="spring_tx_anno" />
         <module name="mybatis_multi" />
@@ -41,6 +42,7 @@
       <module name="spring_mvc" target="11" />
       <module name="spring_tx" target="11" />
       <module name="spring_tx_anno" target="11" />
+      <module name="ssm" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>
