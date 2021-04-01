@@ -31,7 +31,7 @@
                     <ul>
                         <li><a href="./mainPage.jsp">Main page</a></li>
                         <li class="active"><a href="./movieList.jsp">Movie</a></li>
-                        <li><a href="javascript:void(0)">Theater</a></li>
+<%--                        <li><a href="javascript:void(0)">Theater</a></li>--%>
                         <li><a href="./manage.jsp">Manage</a></li>
                     </ul>
                 </div>
