@@ -219,7 +219,7 @@
                     if(obj.code == 0){
                         layui.use(['layer'], function(){
                             var layer = layui.layer;
-                            layer.alert('Successful purchase！',{icon: 0,offset: clientHeight/5},
+                            layer.alert('Successful purchase！' + "\nBalance: " + obj.data + "$",{icon: 0,offset: clientHeight/5},
                                  function (){
                                     layer.closeAll();
                                     document.location.href = "./payStatus.jsp";
@@ -229,7 +229,7 @@
                     }else{
                         layui.use(['layer'], function(){
                             var layer = layui.layer;
-                            layer.alert(obj.msg,{icon: 0,offset: clientHeight/5},
+                            layer.alert(obj.msg + "\nBalance: " + obj.data + "$",{icon: 0,offset: clientHeight/5},
                                  function (){
                                     layer.closeAll();
                                  }

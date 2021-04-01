@@ -158,7 +158,16 @@ public class OrderController {
 			obj.put("code",200);
 //			obj.put("msg", "您未登录,登录之后才可购票~");
 			obj.put("msg", "You have not logged in yet, please log in to buy ticket");
-		}else {
+		} else {
+			double money = userService.findCardByUID((int)user.getUser_id()).getMoney();
+			if (money<price){
+				obj.put("code",200);
+//				obj.put("msg", "购票失败~");
+				obj.put("msg", "Not sufficient funds");
+				obj.put("data", money);
+				return obj;
+			}
+
 			int done = 0;
 			int order_price = price / position.length;
 			String user_id = "";
@@ -209,9 +218,11 @@ public class OrderController {
 			if(done == position.length) {
 				float sum = (float)price/10000;
 				Integer rs2 = this.movieService.changeMovieBoxOffice(sum, this.scheduleService.findScheduleById(schedule_id).getMovie_id());
+				money = userService.withhold((int)user.getUser_id(),price);
 				obj.put("code",0);
 //				obj.put("msg", "购票成功~");
 				obj.put("msg", "Buy ticket successfully");
+				obj.put("data", money);
 			}else {
 				obj.put("code",200);
 //				obj.put("msg", "购票失败~");

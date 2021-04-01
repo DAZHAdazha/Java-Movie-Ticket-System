@@ -22,4 +22,5 @@ public interface IUserService {
 	PageInfo<User> findAllUserBySplitPage(Integer page,Integer limit,String keyword);
 	public Card findCardByUID(int user_id);
 	public double topUp(int user_id, double money);
+	public double withhold(int user_id, double price);
 }

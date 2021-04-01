@@ -109,6 +109,17 @@ public class UserServiceImp implements IUserService{
 		this.cardMapper.setMoney(user_id,money);
 		return this.cardMapper.getMoney(user_id);
 	}
+
+	@Transactional(propagation=Propagation.REQUIRED,rollbackFor=Exception.class)
+	@Override
+	public double withhold(int user_id, double price) {
+		double money = this.cardMapper.getMoney(user_id) - price;
+		if (money>=0){
+			this.cardMapper.setMoney(user_id,money);
+		}
+		return this.cardMapper.getMoney(user_id);
+	}
+
 }
 
 
