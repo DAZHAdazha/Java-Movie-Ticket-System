@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="exception" />
         <module name="spring_jdbc" />
+        <module name="ssmweb" />
         <module name="spring_ioc" />
         <module name="spring_tx" />
         <module name="mybatis" />
@@ -15,6 +16,7 @@
         <module name="ssm" />
         <module name="spring_ioc_anno" />
         <module name="spring_tx_anno" />
+        <module name="mavenDemo" />
         <module name="mybatis_multi" />
         <module name="spring_mvc" />
         <module name="spring_demo" />
@@ -27,6 +29,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="exception" target="11" />
+      <module name="mavenDemo" target="11" />
       <module name="mybatis" target="11" />
       <module name="mybatis_anno" target="11" />
       <module name="mybatis_config" target="11" />
@@ -43,6 +46,7 @@
       <module name="spring_tx" target="11" />
       <module name="spring_tx_anno" target="11" />
       <module name="ssm" target="11" />
+      <module name="ssmweb" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

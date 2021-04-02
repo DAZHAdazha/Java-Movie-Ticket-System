@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.example</groupId>
+    <artifactId>mavenDemo</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+    </properties>
+
+    <dependencyManagement>
+        <!--将jar包进行版本锁定，不引入jar包-->
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-core</artifactId>
+                <version>5.1.6.RELEASE</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+
+
+    <dependencies>
+        <dependency>
+            <!--spring-core已经被版本锁定，导入时无需再指定版本-->
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>5.1.6.RELEASE</version>
+            <!--排除jar包 排除依赖-->
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>spring-beans</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+    <!--spring-webmvc包含spring其他包，只导入webmvc就导入了其他jar包  是依赖传递 传递依赖beans-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-aop</artifactId>
+            <version>5.0.5.RELEASE</version>
+        </dependency>
+        <dependency>
+            <!--路径近者优先，直接声明beans优先于间接依赖-->
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-beans</artifactId>
+            <version>5.1.6.RELEASE</version>
+        </dependency>
+    <!--导入相同jar但是版本不相同的是依赖冲突-->
+    <!--        解决方法
+            1.使用maven提供的依赖调节原则:
+                第一声明者优先
+                路径近者优先
+            2.排除依赖
+            3.锁定版本
+    -->
+    </dependencies>
+
+</project>
