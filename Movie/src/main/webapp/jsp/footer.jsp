@@ -44,7 +44,6 @@
 <%--                    ,moveType: 0 //拖拽模式，0或者1--%>
 <%--                    ,content: --%>
 <%--                        "<div style=\"text-align: center; margin: 20px 0 10px 0;\">" +--%>
-<%--                            "<img src=\"../static/images/美女客服.jpg\" style=\"width:320px;\">" +--%>
 <%--                        "</div>"--%>
 <%--                });--%>
 <%--            });--%>
