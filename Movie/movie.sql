@@ -689,4 +689,49 @@ INSERT INTO `user` VALUES (26, 'if48648411', '8411', 'u365484741@163.com', 0, '.
 INSERT INTO `user` VALUES (27, 'od1561487', '1487', '1564562314@qq.com', 0, NULL);
 INSERT INTO `user` VALUES (28, 'jd54687233', '7233', '165484754@qq.com', 0, NULL);
 
+-- ----------------------------
+-- Table structure for card
+-- ----------------------------
+DROP TABLE IF EXISTS `card`;
+CREATE TABLE `card`  (
+                         `id` int(0) NOT NULL AUTO_INCREMENT,
+                         `user_id` bigint(0) NULL DEFAULT NULL,
+                         `money` double(255, 0) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of card
+-- ----------------------------
+
+INSERT INTO movie.card (id, user_id, money) VALUES (1, 1, 10000);
+INSERT INTO movie.card (id, user_id, money) VALUES (2, 2, 10101);
+INSERT INTO movie.card (id, user_id, money) VALUES (3, 3, 10101);
+INSERT INTO movie.card (id, user_id, money) VALUES (4, 4, 3000);
+INSERT INTO movie.card (id, user_id, money) VALUES (5, 5, 3000);
+INSERT INTO movie.card (id, user_id, money) VALUES (6, 6, 3000);
+INSERT INTO movie.card (id, user_id, money) VALUES (7, 7, 3000);
+INSERT INTO movie.card (id, user_id, money) VALUES (8, 8, 3000);
+INSERT INTO movie.card (id, user_id, money) VALUES (9, 9, 3000);
+INSERT INTO movie.card (id, user_id, money) VALUES (10, 10, 3000);
+INSERT INTO movie.card (id, user_id, money) VALUES (11, 11, 3000);
+INSERT INTO movie.card (id, user_id, money) VALUES (12, 12, 3000);
+INSERT INTO movie.card (id, user_id, money) VALUES (13, 13, 3000);
+INSERT INTO movie.card (id, user_id, money) VALUES (14, 14, 3000);
+INSERT INTO movie.card (id, user_id, money) VALUES (15, 15, 3000);
+INSERT INTO movie.card (id, user_id, money) VALUES (16, 16, 3000);
+INSERT INTO movie.card (id, user_id, money) VALUES (17, 17, 3000);
+INSERT INTO movie.card (id, user_id, money) VALUES (18, 18, 3000);
+INSERT INTO movie.card (id, user_id, money) VALUES (19, 19, 3000);
+INSERT INTO movie.card (id, user_id, money) VALUES (20, 20, 3000);
+INSERT INTO movie.card (id, user_id, money) VALUES (21, 21, 3000);
+INSERT INTO movie.card (id, user_id, money) VALUES (22, 22, 3000);
+INSERT INTO movie.card (id, user_id, money) VALUES (23, 23, 3000);
+INSERT INTO movie.card (id, user_id, money) VALUES (24, 24, 3000);
+INSERT INTO movie.card (id, user_id, money) VALUES (25, 25, 3000);
+INSERT INTO movie.card (id, user_id, money) VALUES (26, 26, 3000);
+INSERT INTO movie.card (id, user_id, money) VALUES (27, 27, 3000);
+INSERT INTO movie.card (id, user_id, money) VALUES (28, 28, 3000);
+
+
 SET FOREIGN_KEY_CHECKS = 1;

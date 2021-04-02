@@ -504,7 +504,7 @@
                 },
                 success:function (obj) {
                     money = obj.data['money'];
-                    $('#money').html("Balance: " + money + " $");
+                    $('#money').html("Balance:￥" + money );
                 }
             });
 

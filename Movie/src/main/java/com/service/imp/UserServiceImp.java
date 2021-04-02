@@ -59,7 +59,7 @@ public class UserServiceImp implements IUserService{
 	@Override
 	public Integer addUser(User user) {
 		int rs = this.usermapper.addUser(user);
-		this.cardMapper.setNewCard(user.getUser_id(),100);
+		this.cardMapper.setNewCard(user.getUser_id(),3000);
 		return rs;
 	}
 
