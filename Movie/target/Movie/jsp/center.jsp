@@ -52,11 +52,12 @@
         <div class="contents">
             <div class="nav-next">
                 <div class="nav-title">
-                    <h3>个人中心</h3>
+                    <h3>Personal center</h3>
                 </div>
                 <a class="cardId">My Order</a>
 				<a class="cardId">Basic Information</a>
 				<a class="cardId">Modified password</a>
+                <a class="cardId">Account</a>
             </div>
             <div class="nav-body">
                 <!-- 我的订单 -->
@@ -95,6 +96,15 @@
                     <div class="avatar-body">
                     </div>
                 </div>
+                <%--账户充钱--%>
+                <div class="four card" style="display: none;">
+                    <div>
+                        <div class="title">Account</div>
+                        <hr/>
+                    </div>
+                    <div class="avatar-body">
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -117,6 +127,7 @@
             initOrder(); //我的订单
             initInformation(); //基本信息
             initPassword(); //密码
+            initAccountCard();//账户
         }
 
         //选项卡
@@ -162,7 +173,6 @@
                     user_name: user.user_name
                 },
                 success:function (obj) {
-                    console.log(obj);
                     for(var i=0;i<obj.data.length;i++){
                       //  var order_time = obj.data[i].order_schedule.schedule_startTime.slice(0,10);
                         var StateText;
@@ -182,7 +192,7 @@
                             "<div class=\"order-head\">" +
                                     "<span class=\"order-date\">" + obj.data[i].order_time + "</span>" +
                                     "<span class=\"order-id\">Order ID: " + obj.data[i].order_id + "</span>" +
-                                    "<span><a href=\"/search/pdf?time=" +obj.data[i].order_time + "&orderID=" + obj.data[i].order_id + "&moviePicture=" + obj.data[i].order_schedule.schedule_movie.movie_picture + "&movieName=" + obj.data[i].order_schedule.schedule_movie.movie_cn_name +"&theater=" + obj.data[i].order_schedule.schedule_hall.hall_cinema.cinema_name + "&seat=" + obj.data[i].order_schedule.schedule_hall.hall_name + " " + obj.data[i].order_position +"&startTime=" + obj.data[i].order_schedule.schedule_startTime +"&price=" + obj.data[i].order_schedule.schedule_price +"\" > Print  </a><span>" +
+                                    "<span><a style='margin-left: 30px' href=\"/search/pdf?time=" +obj.data[i].order_time + "&orderID=" + obj.data[i].order_id + "&moviePicture=" + obj.data[i].order_schedule.schedule_movie.movie_picture + "&movieName=" + obj.data[i].order_schedule.schedule_movie.movie_cn_name +"&theater=" + obj.data[i].order_schedule.schedule_hall.hall_cinema.cinema_name + "&seat=" + obj.data[i].order_schedule.schedule_hall.hall_name + " " + obj.data[i].order_position +"&startTime=" + obj.data[i].order_schedule.schedule_startTime +"&price=" + obj.data[i].order_schedule.schedule_price +"\" > Print  </a><span>" +
                                     "<span class=\"order-delete\"><a target='_blank' href=\" " +obj.data[i].qrimage+"\">QR code</a></span>" +
                                     "</div>" +
                             "<div class=\"order-body\">" +
@@ -345,8 +355,6 @@
             var user_name = $('#userName').val(),
                 user_role = $('#role').val(),
                 user_email = $('#email').val();
-            console.log(file);
-            console.log(user_name+ "," + user_role + "," + user_email);
             if(user_role == "VIP"){
                 user_role = 0;
             }else{
@@ -404,19 +412,19 @@
 
             avatarBody.append(
                 "<div class=\"userexinfo-form-section\">" +
-                    "<p>Old password:</p>" +
+                    "<p>Old:</p>" +
                     "<span>" +
                         "<input type=\"password\" name=\"oldPassword\" id=\"oldPassword\" value=\"\">" +
                     "</span>" +
                 "</div>" +
                 "<div class=\"userexinfo-form-section\">" +
-                    "<p>New password:</p>" +
+                    "<p>New:</p>" +
                     "<span>" +
                         "<input type=\"password\" name=\"newPassword\" id=\"newPassword\" value=\"\">" +
                     "</span>" +
                 "</div>" +
                 "<div class=\"userexinfo-form-section\">" +
-                    "<p>Confirm password:</p>" +
+                    "<p>Confirm:</p>" +
                     "<span>" +
                         "<input type=\"password\" name=\"repeatPassword\" id=\"repeatPassword\" value=\"\">" +
                     "</span>" +
@@ -432,7 +440,6 @@
                 user_new_password = $('#newPassword').val(),
                 user_repeat_password = $('#repeatPassword').val();
             var user_id = user.user_id;
-            console.log(user_old_password+ "," + user_new_password + "," + user_repeat_password);
             if(user_old_password == "" || user_new_password == "" || user_repeat_password == ""){
                 layui.use(['layer'], function(){
                 var layer = layui.layer;
@@ -482,6 +489,53 @@
                     }
                 });
             }
+        }
+
+        //初始化card
+        function initAccountCard(){
+            var avatarBody = $(".four").find(".avatar-body");
+            var money = 0;
+            $.ajax({
+                type:'post',
+                url: url + "/user/findCardByUID",
+                dataType:'json',
+                data: {
+                    user_id: user.user_id
+                },
+                success:function (obj) {
+                    money = obj.data['money'];
+                    $('#money').html("Balance:￥" + money );
+                }
+            });
+
+            avatarBody.append(
+                "<div class=\"userexinfo-form-section\">" +
+                "<span style='font-size: 26px;color: black' id='money'></span>" +
+                "<div class=\"userexinfo-form-section\">" +
+                "<p>TOP UP: </p>" +
+                "<span>" +
+                "<input onkeyup=\"if(isNaN(value))execCommand('undo')\" name=\"money\" id=\"topUp\" value=\"\">" +
+                "</span>" +
+                "</div>" +
+                "<div class=\"userexinfo-btn-section\">" +
+                "<input type=\"submit\" onclick=\"topUpIt()\" class=\"password-save-btn\" value=\"Recharge\">" +
+                "</div>"
+            );
+        }
+        function topUpIt(){
+            var money = $("#topUp").val();
+            $.ajax({
+                type:'post',
+                url: url + "/user/topUp",
+                dataType:'json',
+                data: {
+                    user_id: user.user_id,
+                    money:money
+                },
+                success:function (obj) {
+                    $('#money').html("Balance: " + obj.data + " $");
+                }
+            })
         }
 
 

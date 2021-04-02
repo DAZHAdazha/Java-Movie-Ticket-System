@@ -65,12 +65,8 @@
           <element id="library" level="project" name="Maven: org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.4.20" />
           <element id="library" level="project" name="Maven: org.testng:testng:7.4.0" />
           <element id="library" level="project" name="Maven: org.webjars:jquery:3.5.1" />
-          <element id="library" level="project" name="itextpdf-5.5.13.2" />
-          <element id="library" level="project" name="Java EE 6-Java EE 6" />
-          <element id="library" level="project" name="lib" />
-          <element id="library" level="module" name="Maven: com.alibaba:jconsole:1.8.0" module-name="Movie" />
-          <element id="library" level="module" name="Maven: com.alibaba:tools:1.8.0" module-name="Movie" />
-          <element id="library" level="project" name="servlet-api" />
+          <element id="library" level="project" name="Maven: com.itextpdf:itextpdf:5.5.13" />
+          <element id="library" level="project" name="Maven: com.itextpdf:itext-asian:5.2.0" />
         </element>
       </element>
       <element id="directory" name="META-INF">

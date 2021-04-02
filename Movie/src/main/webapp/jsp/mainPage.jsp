@@ -318,7 +318,7 @@
                             "<div class=\"movie-item\">" +
                             "<a style='cursor: pointer' href=\"./movieDetail.jsp?movie_id=" + obj.data[i].movie_id + "\" data-act=\"playingMovie-click\" data-val=\"" + obj.data[i].movie_id + "\">" +
                             "<div class=\"movie-poster\" style=\"cursor:default;\">" +
-                            "<img id=\"moive_picture\" src=\"" + obj.data[i].movie_picture + "\">" +
+                            "<img style='cursor: pointer' id=\"moive_picture\" src=\"" + obj.data[i].movie_picture + "\">" +
                             "<div class=\"movie-overlay movie-overlay-bg\">" +
                             "<div class=\"movie-info\">" +
                             "<div class=\"movie-score\"><i id=\"moive_score\" class=\"integer\">" + obj.data[i].movie_score + "</i></div>" +

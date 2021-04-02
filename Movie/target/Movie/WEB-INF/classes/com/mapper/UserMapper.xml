@@ -23,9 +23,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="findUserLikeName" parameterType="java.lang.String" resultMap="BaseResultMap">
 		select * from user where user_name like '%${value}%'
 	</select>
-	<insert id="addUser" parameterType="com.entity.User">
+	<insert id="addUser" useGeneratedKeys="true" keyProperty="user_id" parameterType="com.entity.User">
 		insert into user(user_name,user_pwd,user_email)
-		values(#{user_name},#{user_pwd},#{user_email})
+		values(#{user_name},#{user_pwd},#{user_email});
 	</insert>
 	<update id="updateUser" parameterType="com.entity.User">
 		update user 
