@@ -322,8 +322,8 @@
                             "<div class=\"movie-overlay movie-overlay-bg\">" +
                             "<div class=\"movie-info\">" +
                             "<div class=\"movie-score\"><i id=\"moive_score\" class=\"integer\">" + obj.data[i].movie_score + "</i></div>" +
-                            // "<div class=\"movie-title movie-title-padding\" title=\"" + obj.data[i].movie_cn_name + "\">" + obj.data[i].movie_cn_name + "</div>" +
-                            "<div class=\"movie-title movie-title-padding\" title=\"" + obj.data[i].movie_cn_name + "\">" + obj.data[i].movie_fg_name + "</div>" +
+                            "<div class=\"movie-title movie-title-padding\" title=\"" + obj.data[i].movie_cn_name + "\">" + obj.data[i].movie_cn_name + "</div>" +
+                            // "<div class=\"movie-title movie-title-padding\" title=\"" + obj.data[i].movie_cn_name + "\">" + obj.data[i].movie_fg_name + "</div>" +
                             "</div>" +
                             "</div>" +
                             "</div>" +
@@ -408,7 +408,7 @@
                         "<a href=\"./movieDetail.jsp?movie_id=" + obj.sort[i].movie_id + "\" target=\"_blank\">" +
                         "<div class=\"ranking-top-left\">" +
                         "<i class=\"ranking-top-icon\"></i>" +
-                        "<img class=\"ranking-imgs  default-img\" src=\"" + obj.sort[i].movie_picture + "\">" +
+                        "<img style='height: 90px' class=\"ranking-imgs  default-img\" src=\"" + obj.sort[i].movie_picture + "\">" +
                         "</div>" +
                         "<div class=\"ranking-top-right\">" +
                         "<div class=\"ranking-top-right-main\">" +

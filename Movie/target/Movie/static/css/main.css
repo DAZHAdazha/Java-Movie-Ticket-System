@@ -21,6 +21,15 @@
 	/* height: 1414px; */
 	margin-right: 40px;
 }
+
+.main .movie-grid2{
+	margin-top: 10px;
+	float: left;
+	/*width: 738px;*/
+	width: 1400px;
+	/* height: 1414px; */
+	margin-right: 40px;
+}
 .main .main-page{
 	width: 1271px !important;
 	height: 1760px !important;
@@ -51,7 +60,7 @@
 }
 .panel-content{
 	height: 550px;
-	
+
 }
 .textcolor_red {
 	color: #ef4238!important;

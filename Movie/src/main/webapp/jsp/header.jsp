@@ -31,12 +31,11 @@
                     <ul>
                         <li><a href="./mainPage.jsp">Main page</a></li>
                         <li class="active"><a href="./movieList.jsp">Movie</a></li>
-<%--                        <li><a href="javascript:void(0)">Theater</a></li>--%>
+
                         <li><a href="./manage.jsp">Manage</a></li>
                     </ul>
                 </div>
-<%--                <div class="app-download">--%>
-<%--                </div>--%>
+
                 <div class="user-info">
                 <div class="user-avatar J-login">
                     <ul class="layui-nav" style="background-color: #fff;">
@@ -53,10 +52,10 @@
                                     <div class="layui-col-md4">
                                         <input type="radio" name="searchType" value="movie" title="movie" checked>
                                     </div>
-                                    <div class="layui-col-md4">
+                                    <div  class="layui-col-md4">
                                         <input type="radio" name="searchType" value="star" title="star">
                                     </div>
-                                    <div class="layui-col-md4">
+                                    <div  class="layui-col-md4">
                                         <input type="radio" name="searchType" value="theater" title="theater">
                                     </div>
                                 </div>

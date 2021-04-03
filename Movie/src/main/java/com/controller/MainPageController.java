@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -30,28 +31,32 @@ public class MainPageController {
 
     @RequestMapping("all")
     @ResponseBody
-    public JSONObject searchAll(@RequestParam("searchKeyword") String searchKeyword,@RequestParam("searchType") String searchType) {
-//        System.out.println(searchType);
+    public void searchAll(@RequestParam("searchKeyword") String searchKeyword,@RequestParam("searchType") String searchType, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         if (searchType.equals("movie")){
             JSONObject obj = new JSONObject();
             List<Movie> list = movieService.findMoviesLikeName(searchKeyword);
             obj.put("code", 0);
             obj.put("count", list.size());
             obj.put("data", list);
-            return obj;
+            request.setAttribute("searchObj",obj);
+            request.getRequestDispatcher("../jsp/searchMovie.jsp").forward(request,response);
         } else  if(searchType.equals("theater")){
             JSONObject obj = new JSONObject();
             List<Cinema> cinemasLikeName = cinemaService.findCinemasLikeName(searchKeyword);obj.put("code", 0);
             obj.put("count", cinemasLikeName.size());
             obj.put("data", cinemasLikeName);
-            return obj;
+            request.setAttribute("searchObj",obj);
+            request.getRequestDispatcher("../jsp/searchTheater.jsp").forward(request,response);
         } else {
             JSONObject obj = new JSONObject();
             List<Movie> moviesLikeActor = movieService.findMoviesLikeActor(searchKeyword);obj.put("code", 0);
             obj.put("count", moviesLikeActor.size());
             obj.put("data", moviesLikeActor);
-            return obj;
+            request.setAttribute("searchObj",obj);
+            request.getRequestDispatcher("../jsp/searchMovie.jsp").forward(request,response);
         }
+
     }
 
     @RequestMapping("checkCode")
@@ -71,23 +76,15 @@ public class MainPageController {
     @ResponseBody
     public void pdf(HttpServletResponse response, HttpServletRequest request) throws IOException, DocumentException {
         String time = request.getParameter("time");
-        System.out.println(time);
         String orderID = request.getParameter("orderID");
-        System.out.println(orderID);
         String moviePicture = request.getParameter("moviePicture");
-        System.out.println(moviePicture);
         String movieName = request.getParameter("movieName");
-        System.out.println(movieName);
         String theater = request.getParameter("theater");
-        System.out.println(theater);
         String seat = request.getParameter("seat");
-        System.out.println(seat);
         String startTime = request.getParameter("startTime");
-        System.out.println(startTime);
         String price = request.getParameter("price");
-        System.out.println(price);
         String path = request.getServletContext().getRealPath(moviePicture.replace("..",""));
-        System.out.println(path);
+
 
         String contextPath = request.getServletContext().getRealPath("/upload/movies");
 

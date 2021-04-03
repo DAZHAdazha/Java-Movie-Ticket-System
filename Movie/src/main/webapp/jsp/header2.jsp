@@ -12,7 +12,7 @@
     <script src="../static/bootstrap/js/bootstrap.min.js"></script>
     <link rel="icon" type="image/x-icon" href="../static/images/logo.ico"/>
     <link rel="stylesheet" type="text/css" href="../static/css/header.css">
-    <script src="../static/js/header.js" charset="utf-8"></script>
+    <script src="../static/js/header2.js" charset="utf-8"></script>
     <script src="../static/js/Api.js"></script>
 
     <script src="../static/layui/layui.js" charset="utf-8"></script>
@@ -29,10 +29,10 @@
                 </h1>
                 <div class="nav" style="width: 25%">
                     <ul>
-                        <li><a href="./mainPage.jsp">Main page</a></li>
-                        <li class="active"><a href="./movieList.jsp">Movie</a></li>
+                        <li><a href="../jsp/mainPage.jsp">Main page</a></li>
+                        <li class="active"><a href="../jsp/movieList.jsp">Movie</a></li>
 
-                        <li><a href="./manage.jsp">Manage</a></li>
+                        <li><a href="../jsp/manage.jsp">Manage</a></li>
                     </ul>
                 </div>
 
