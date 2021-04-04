@@ -5,12 +5,19 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/StudySpring.iml" filepath="$PROJECT_DIR$/.idea/StudySpring.iml" />
       <module fileurl="file://$PROJECT_DIR$/exception/exception.iml" filepath="$PROJECT_DIR$/exception/exception.iml" />
       <module fileurl="file://$PROJECT_DIR$/mavenDemo/mavenDemo.iml" filepath="$PROJECT_DIR$/mavenDemo/mavenDemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/maven_parent/maven_controller/maven_controller.iml" filepath="$PROJECT_DIR$/maven_parent/maven_controller/maven_controller.iml" />
+      <module fileurl="file://$PROJECT_DIR$/maven_parent/maven_dao/maven_dao.iml" filepath="$PROJECT_DIR$/maven_parent/maven_dao/maven_dao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/maven_parent/maven_parent.iml" filepath="$PROJECT_DIR$/maven_parent/maven_parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/maven_parent/maven_pojo/maven_pojo.iml" filepath="$PROJECT_DIR$/maven_parent/maven_pojo/maven_pojo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/maven_parent/maven_service/maven_service.iml" filepath="$PROJECT_DIR$/maven_parent/maven_service/maven_service.iml" />
       <module fileurl="file://$PROJECT_DIR$/mybatis/mybatis.iml" filepath="$PROJECT_DIR$/mybatis/mybatis.iml" />
       <module fileurl="file://$PROJECT_DIR$/mybatis_anno/mybatis_anno.iml" filepath="$PROJECT_DIR$/mybatis_anno/mybatis_anno.iml" />
       <module fileurl="file://$PROJECT_DIR$/mybatis_config/mybatis_config.iml" filepath="$PROJECT_DIR$/mybatis_config/mybatis_config.iml" />
       <module fileurl="file://$PROJECT_DIR$/mybatis_dao/mybatis_dao.iml" filepath="$PROJECT_DIR$/mybatis_dao/mybatis_dao.iml" />
       <module fileurl="file://$PROJECT_DIR$/mybatis_mapper/mybatis_mapper.iml" filepath="$PROJECT_DIR$/mybatis_mapper/mybatis_mapper.iml" />
       <module fileurl="file://$PROJECT_DIR$/mybatis_multi/mybatis_multi.iml" filepath="$PROJECT_DIR$/mybatis_multi/mybatis_multi.iml" />
+      <module fileurl="file://$PROJECT_DIR$/parent/parent.iml" filepath="$PROJECT_DIR$/parent/parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/son/son.iml" filepath="$PROJECT_DIR$/son/son.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring_aop/spring_aop.iml" filepath="$PROJECT_DIR$/spring_aop/spring_aop.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring_demo/spring_demo.iml" filepath="$PROJECT_DIR$/spring_demo/spring_demo.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring_interceptor/spring_interceptor.iml" filepath="$PROJECT_DIR$/spring_interceptor/spring_interceptor.iml" />

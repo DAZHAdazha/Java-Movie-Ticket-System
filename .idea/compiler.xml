@@ -14,13 +14,18 @@
         <module name="mybatis" />
         <module name="mybatis_mapper" />
         <module name="ssm" />
+        <module name="maven_controller" />
         <module name="spring_ioc_anno" />
+        <module name="maven_pojo" />
         <module name="spring_tx_anno" />
         <module name="mavenDemo" />
         <module name="mybatis_multi" />
+        <module name="son" />
+        <module name="maven_dao" />
         <module name="spring_mvc" />
         <module name="spring_demo" />
         <module name="mybatis_anno" />
+        <module name="maven_service" />
         <module name="mybatis_dao" />
         <module name="mybatis_config" />
         <module name="spring_interceptor" />
@@ -29,6 +34,11 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="exception" target="11" />
+      <module name="maven_controller" target="11" />
+      <module name="maven_dao" target="11" />
+      <module name="maven_parent" target="11" />
+      <module name="maven_pojo" target="11" />
+      <module name="maven_service" target="11" />
       <module name="mavenDemo" target="11" />
       <module name="mybatis" target="11" />
       <module name="mybatis_anno" target="11" />
@@ -36,6 +46,8 @@
       <module name="mybatis_dao" target="11" />
       <module name="mybatis_mapper" target="11" />
       <module name="mybatis_multi" target="11" />
+      <module name="parent" target="11" />
+      <module name="son" target="11" />
       <module name="spring_aop" target="11" />
       <module name="spring_demo" target="11" />
       <module name="spring_interceptor" target="11" />
