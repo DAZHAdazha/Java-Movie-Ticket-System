@@ -46,9 +46,6 @@ public class UserController {
 
 		JSONObject obj = new JSONObject();
 		User user = userService.login(user_name, user_pwd);
-//		System.out.println(user_name);
-//		System.out.println(user_pwd);
-//		System.out.println(user);
 		if(user != null) {
 			Cookie cookie = new Cookie("user",Long.toString(user.getUser_id()));
 			cookie.setMaxAge(60 * 60 * 24 * 30);
@@ -80,7 +77,7 @@ public class UserController {
 	
 	@RequestMapping("register")
 	@ResponseBody
-	public String register(User user,String test,HttpServletRequest request) throws UnsupportedEncodingException {
+	public String register(User user,String test,HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException {
 
 
 
@@ -89,10 +86,7 @@ public class UserController {
 
 		HttpSession session = request.getSession();
 		List<User> list = userService.findUserByName(user.getUser_name());
-//		System.out.println(test.toUpperCase());
 		String verifyCode = (String) session.getAttribute("verifyCode");
-//		System.out.println(verifyCode);
-//		System.out.println(test.toUpperCase().equals(verifyCode));
 		if(test.toUpperCase().equals(verifyCode)){
 			if(list.size() > 0) {
 				return "fail";

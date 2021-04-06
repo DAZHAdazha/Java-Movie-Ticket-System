@@ -234,7 +234,32 @@
                         console.log(data);
                         if(data == "success"){
                             window.alert("Success！");
-                            window.location.href="./login.jsp";
+
+                            $.ajax({
+                                type: "post",
+                                url: url + "/user/login",
+                                data: {
+                                    user_name: user_name,
+                                    user_pwd: user_pwd
+                                },
+                                dataType: "json",
+                                success: function(obj){
+                                    if(obj.msg == "fail"){
+                                        // sessionStorage.removeItem('userJson');
+                                        login_error.text('Wrong account or password!');
+                                    }
+                                    else{
+                                        localStorage.setItem("userJson",JSON.stringify(obj.data));
+                                        // sessionStorage.set
+                                        window.location.href="./mainPage.jsp";
+                                    }
+                                },
+                                error:function(){
+                                    alert("network error!");
+                                }
+                            });
+
+                            window.location.href="./mainPage.jsp";
                         }else if(data == "fail"){
                             register_error.text('The account has registered!');
                         }else {
