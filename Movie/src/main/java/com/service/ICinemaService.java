@@ -12,4 +12,5 @@ public interface ICinemaService {
 	List<Cinema> findAllCinemas();
 	List<Cinema> findCinemasLikeName(String cinema_name);
 	List<Cinema> findCinemasByMovieId(long movie_id);
+	List<Cinema> findCinemasLikeNameAndMovie(String cinema_name, int movie_id);
 }

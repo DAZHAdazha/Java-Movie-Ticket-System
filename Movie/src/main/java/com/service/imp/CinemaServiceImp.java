@@ -86,5 +86,20 @@ public class CinemaServiceImp implements ICinemaService{
 		}
 		return list;
 	}
+
+	@Transactional(propagation=Propagation.REQUIRED,readOnly=true)
+	@Override
+	public List<Cinema> findCinemasLikeNameAndMovie(String cinema_name, int movie_id) {
+		List<Cinema> cinemaList = this.cinemaMapper.findCinemasLikeName(cinema_name);
+		for(Cinema cinema : cinemaList) {
+			List<Hall> hallList = this.hallMapper.findHallByCinemaId(cinema.getCinema_id());
+			for(Hall hall : hallList) {
+				hall.setScheduleList(this.scheduleMapper.findScheduleByCinemaAndMovieAndHall(hall.getHall_id(), hall.getCinema_id(), movie_id));
+			}
+			cinema.setHallList(hallList);
+		}
+		return cinemaList;
+
+	}
 	
 }

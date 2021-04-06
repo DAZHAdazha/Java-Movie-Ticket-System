@@ -218,5 +218,40 @@ public class MovieController {
 		}
 		return obj;
 	}
-	
+	@RequestMapping("findMovieByDB")
+	@ResponseBody
+	public JSONObject findMovieByDB(@RequestParam("movie_id") int movie_id,@RequestParam("date") int date,@RequestParam("brand") int brand) {
+		String[] dateStr = {"今天","明天","后天","大后天"};
+		String[] brandStr = {"全部","万达影城（蜀都万达广场店）",
+		"太平洋影城（时代豪廷店）",
+		"太平洋影城（龙城国际店）",
+		"横店电影城（郫县店）",
+		"SFC上影影城（成都龙湖IMAX店）",
+		"越界影城（郫县店）",
+		"中影星美国际影城（犀浦百伦店）",
+		"C+影城（双铁广场RealD店）",
+		"CGV影城（犀浦IMAX店）",
+		"EVO艺威影院（龙湖时代天街店）",
+		"中影文星影城（郫都店）",
+		"嘉裕国际影城（郫县店）",
+		"团结九州星辰电影城（传媒店）",
+		"天智国际影城（红光店）",
+		"太平洋院线影城（安靖店）",
+		"德源菁创影城",
+		"星光影城（美乐广场店）",
+		"水乡记忆电影院"};
+
+		JSONObject obj = new JSONObject();
+		Movie movie = this.movieService.findMovieById(movie_id);
+		System.out.println(movie.getMovie_id());
+		System.out.println("-----------------");
+		List<Cinema> list = this.cinemaService.findCinemasLikeNameAndMovie(brandStr[brand],movie_id);
+		System.out.println(list);
+		obj.put("code", 0);
+		obj.put("data", movie);
+		obj.put("cinemaList",list);
+		obj.put("cinemaCount",list.size());
+		System.out.println(obj);
+		return obj;
+	}
 }

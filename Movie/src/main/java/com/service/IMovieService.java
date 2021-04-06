@@ -25,4 +25,6 @@ public interface IMovieService {
 	List<Movie> findMoviesLikeTAY(String type,String area,String year);
 
 	List<Movie> findMoviesLikeActor(String searchKeyword);
+
+	List<Movie> findMoviesLikeDB(int mid,String date,String brand);
 }
