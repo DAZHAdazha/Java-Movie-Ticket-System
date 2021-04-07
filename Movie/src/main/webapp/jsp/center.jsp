@@ -533,7 +533,7 @@
                     money:money
                 },
                 success:function (obj) {
-                    $('#money').html("Balance: " + obj.data + " $");
+                    $('#money').html("Balance: ￥" + obj.data );
                 }
             })
         }

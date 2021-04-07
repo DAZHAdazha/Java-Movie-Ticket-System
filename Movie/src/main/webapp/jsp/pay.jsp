@@ -166,7 +166,7 @@
             for(var i=0;i<TempLength.length;i++){
                 choiceSeat.append("<span class=\"border\" style=\"font-size: 15px;\">" + TempLength[i] + "</span>");
             }
-            $(".price").html(price);
+            $(".price").html("￥" + price);
         }
 
         //计时器
