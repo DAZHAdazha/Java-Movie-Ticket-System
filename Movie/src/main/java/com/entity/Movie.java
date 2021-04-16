@@ -6,7 +6,7 @@ import java.util.List;
  * 电影信息实体对象
  * @author Wxj
  */
-public class Movie {
+public class Movie implements Comparable < Movie >{
 	private long movie_id;
 	private String movie_cn_name;
 	private String movie_fg_name;
@@ -120,6 +120,18 @@ public class Movie {
 	public void setCommentList(List<Comment> commentList) {
 		this.commentList = commentList;
 	}
-	
-	
+
+	@Override public int compareTo(Movie movie) {
+		if (this.getMovie_score() < movie.getMovie_score()) {
+			return 1;
+
+		} else if (this.getMovie_score() > movie.getMovie_score()) {
+			return - 1;
+		} else {
+			return 0;
+		}
+	}
+
+
+
 }

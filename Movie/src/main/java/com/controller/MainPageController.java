@@ -3,11 +3,13 @@ package com.controller;
 import com.alibaba.fastjson.JSONObject;
 import com.entity.Cinema;
 import com.entity.Movie;
+import com.entity.User;
 import com.itextpdf.text.DocumentException;
 import com.service.ICinemaService;
 import com.service.IMovieService;
 import com.util.CheckCodeUtil;
 import com.util.PDF;
+import com.util.Recommend;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,6 +21,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.LinkedList;
 import java.util.List;
 
 @Controller
@@ -56,7 +59,20 @@ public class MainPageController {
             request.setAttribute("searchObj",obj);
             request.getRequestDispatcher("../jsp/searchMovie.jsp").forward(request,response);
         }
+    }
 
+    @RequestMapping("recommend")
+    @ResponseBody
+    public void recommend(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        User user = (User)request.getSession().getAttribute("user");
+        JSONObject obj = new JSONObject();
+        LinkedList<Movie> list = Recommend.returnMovies(user);
+
+        obj.put("code", 0);
+        obj.put("count", list.size());
+        obj.put("data", list);
+        request.setAttribute("searchObj",obj);
+        request.getRequestDispatcher("../jsp/recommend.jsp").forward(request,response);
     }
 
     @RequestMapping("checkCode")

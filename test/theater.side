@@ -1,0 +1,292 @@
+{
+  "id": "0871fab8-47db-4b5a-b944-f2b82afd005c",
+  "version": "2.0",
+  "name": "theater",
+  "url": "http://localhost:8080",
+  "tests": [{
+    "id": "0a8e5e26-7867-4994-8c87-1b8b0bb0dba6",
+    "name": "search movie",
+    "commands": [{
+      "id": "611cafbd-e626-4e3c-b2f2-22219033d8ca",
+      "comment": "",
+      "command": "open",
+      "target": "/jsp/mainPage.jsp",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "977f0b8b-84ab-4f52-ae91-f0b6d83dcefe",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1936x1056",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "3abf1a1b-4028-4c26-b4e9-51f238468f33",
+      "comment": "",
+      "command": "click",
+      "target": "name=searchKeyword",
+      "targets": [
+        ["name=searchKeyword", "name"],
+        ["css=.search", "css:finder"],
+        ["xpath=//input[@name='searchKeyword']", "xpath:attributes"],
+        ["xpath=//form/div/div/div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "70383ffa-082a-4445-a649-d707b8c80e5d",
+      "comment": "",
+      "command": "type",
+      "target": "name=searchKeyword",
+      "targets": [
+        ["name=searchKeyword", "name"],
+        ["css=.search", "css:finder"],
+        ["xpath=//input[@name='searchKeyword']", "xpath:attributes"],
+        ["xpath=//form/div/div/div[2]/input", "xpath:position"]
+      ],
+      "value": "阿"
+    }, {
+      "id": "a66a9113-ed6f-4d71-82c9-c45ad39d6966",
+      "comment": "",
+      "command": "click",
+      "target": "css=.submit",
+      "targets": [
+        ["css=.submit", "css:finder"],
+        ["xpath=//input[@value='']", "xpath:attributes"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "9aa97d48-4bb1-4140-bb09-6f69bdac86dd",
+      "comment": "",
+      "command": "click",
+      "target": "id=moive_picture",
+      "targets": [
+        ["id=moive_picture", "id"],
+        ["css=li:nth-child(1) #moive_picture", "css:finder"],
+        ["xpath=//img[@id='moive_picture']", "xpath:attributes"],
+        ["xpath=//div/img", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "fe460110-581c-4d6b-b057-b7ee5eb4d7a4",
+    "name": "buyTicket",
+    "commands": [{
+      "id": "0f32829e-52ae-4fbc-afbc-f3f3f31b404c",
+      "comment": "",
+      "command": "open",
+      "target": "/jsp/mainPage.jsp",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "36499c80-70e3-4026-8adf-eb30dbe1b9ee",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1936x1056",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "62441b86-b221-4f6a-a264-5aae3c50ad75",
+      "comment": "",
+      "command": "click",
+      "target": "css=li:nth-child(3) .active",
+      "targets": [
+        ["css=li:nth-child(3) .active", "css:finder"],
+        ["xpath=(//a[contains(text(),'Buy Tickets')])[3]", "xpath:link"],
+        ["xpath=//a[contains(@href, './buyTickets.jsp?movie_id=3')]", "xpath:href"],
+        ["xpath=//li[3]/div/div/a", "xpath:position"]
+      ],
+      "value": "",
+      "opensWindow": true,
+      "windowHandleName": "win7306",
+      "windowTimeout": 2000
+    }, {
+      "id": "257868cc-63d5-4c39-a6b5-fe75231c6ab6",
+      "comment": "",
+      "command": "selectWindow",
+      "target": "handle=${win7306}",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "e6ffdb5c-4f4f-4fe2-b476-3b31ca6f9279",
+      "comment": "",
+      "command": "click",
+      "target": "css=.cinema-cell:nth-child(6) > .buy-btn > a",
+      "targets": [
+        ["css=.cinema-cell:nth-child(6) > .buy-btn > a", "css:finder"],
+        ["xpath=(//a[contains(text(),'选座购票')])[5]", "xpath:link"],
+        ["xpath=//a[contains(@href, './selectSeat.jsp?cinema_id=13&movie_id=3')]", "xpath:href"],
+        ["xpath=//div[5]/div[2]/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "9f3fc7ef-928f-4b61-b97d-f9eb0e87c44d",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(2) .buy-btn",
+      "targets": [
+        ["css=tr:nth-child(2) .buy-btn", "css:finder"],
+        ["xpath=(//a[contains(text(),'Purchase')])[2]", "xpath:link"],
+        ["xpath=//a[contains(@href, './buySeat.jsp?schedule_id=176')]", "xpath:href"],
+        ["xpath=//tr[2]/td[5]/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "9590f3e4-1e82-46ad-bf36-e3fd580b6210",
+      "comment": "",
+      "command": "click",
+      "target": "css=.row:nth-child(1) > .seat:nth-child(12)",
+      "targets": [
+        ["css=.row:nth-child(1) > .seat:nth-child(12)", "css:finder"],
+        ["xpath=//span[@onclick='buySeat(0,11)']", "xpath:attributes"],
+        ["xpath=//div[2]/div[2]/div/span[12]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "c9c86f10-abfb-4a25-a9ed-b8f230bc5be8",
+      "comment": "",
+      "command": "click",
+      "target": "css=.row:nth-child(2) > .seat:nth-child(11)",
+      "targets": [
+        ["css=.row:nth-child(2) > .seat:nth-child(11)", "css:finder"],
+        ["xpath=//span[@onclick='buySeat(1,10)']", "xpath:attributes"],
+        ["xpath=//div[2]/span[11]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "9320c1f7-5341-426a-8692-5a5f9c630b0c",
+      "comment": "",
+      "command": "chooseCancelOnNextConfirmation",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "2ef969d9-003e-4f68-ace0-02f3e7db40b0",
+      "comment": "",
+      "command": "click",
+      "target": "css=.confirm-btn",
+      "targets": [
+        ["css=.confirm-btn", "css:finder"],
+        ["xpath=//div[@onclick='confirm()']", "xpath:attributes"],
+        ["xpath=//div[4]/div[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "940e963b-2fd8-4473-9668-807bc17db574",
+      "comment": "",
+      "command": "assertConfirmation",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "42368493-e106-43a4-920a-0bb8b9beacc2",
+      "comment": "",
+      "command": "webdriverChooseCancelOnVisibleConfirmation",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "56158c73-a0f4-4db1-b3d4-e039f6e0104f",
+      "comment": "",
+      "command": "click",
+      "target": "css=.pay-btn",
+      "targets": [
+        ["css=.pay-btn", "css:finder"],
+        ["xpath=//div[3]/div[3]/div[2]/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "290997e8-37b0-4ab5-9048-3218081c0c55",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=确定",
+      "targets": [
+        ["linkText=确定", "linkText"],
+        ["css=.layui-layer-btn0", "css:finder"],
+        ["xpath=//a[contains(text(),'确定')]", "xpath:link"],
+        ["xpath=//div[@id='layui-layer1']/div[3]/a", "xpath:idRelative"],
+        ["xpath=//div[3]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'确定')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "50b2dd8d-a674-4b78-a419-b3617d7c0870",
+      "comment": "",
+      "command": "click",
+      "target": "css=.pay-btn",
+      "targets": [
+        ["css=.pay-btn", "css:finder"],
+        ["xpath=//div[@onclick='returnCenter()']", "xpath:attributes"],
+        ["xpath=//div[3]/div[3]/div/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "b448aaaf-0648-4746-911a-9b8d4bdd8ab8",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=My Order",
+      "targets": [
+        ["linkText=My Order", "linkText"],
+        ["css=.cardId:nth-child(2)", "css:finder"],
+        ["xpath=//a[contains(text(),'My Order')]", "xpath:link"],
+        ["xpath=//div/a", "xpath:position"],
+        ["xpath=//a[contains(.,'My Order')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "0bf54aed-fc7d-42c2-a654-9db11d069e7d",
+    "name": "topup",
+    "commands": []
+  }, {
+    "id": "8e604db6-e7db-4fb5-9a4d-a124db8e69e2",
+    "name": "print ticket",
+    "commands": []
+  }, {
+    "id": "90a5e7c0-8a85-463e-a529-f9642282fdb6",
+    "name": "change password",
+    "commands": []
+  }, {
+    "id": "5b371fda-9506-46b1-ada3-7a8cfada5d76",
+    "name": "registration",
+    "commands": []
+  }, {
+    "id": "7da4550c-cebd-4fa8-b763-492ae2a4f4ea",
+    "name": "login",
+    "commands": []
+  }, {
+    "id": "a8e2b99f-96c4-4f61-9f3e-50801587dc0d",
+    "name": "add movie",
+    "commands": []
+  }, {
+    "id": "6f2eb2ae-99e4-4f16-bde5-ed4550def0e6",
+    "name": "manage user",
+    "commands": []
+  }, {
+    "id": "b882ef97-078a-4cb9-9dad-08ac8b386318",
+    "name": "manage comment",
+    "commands": []
+  }, {
+    "id": "d36d6dbb-6646-4bd1-b636-56a2a406f316",
+    "name": "ticket office",
+    "commands": []
+  }, {
+    "id": "f3926ac2-6a45-4430-8e30-cf28a9b197c7",
+    "name": "search star",
+    "commands": []
+  }, {
+    "id": "27e8de4b-3751-4405-ae64-eb81933f7f00",
+    "name": "search theater",
+    "commands": []
+  }],
+  "suites": [{
+    "id": "f1ed7c5c-ae29-4ea2-8837-563907dc3589",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["0a8e5e26-7867-4994-8c87-1b8b0bb0dba6"]
+  }],
+  "urls": ["http://localhost:8080/"],
+  "plugins": []
+}

@@ -603,7 +603,7 @@
                 data: {},
                 success:function (obj) {
                     console.log(obj);
-                    MoviesNum.append("<span class=\"textcolor_red\">Now all" + obj.data.length + "films</span>");
+                    MoviesNum.append("<span class=\"textcolor_red\">Now all " + obj.data.length + "films</span>");
                     for(var i=0;i<obj.data.length;i++){
                         MoviesListHtml =
                         "<li>" +
@@ -621,11 +621,11 @@
                                 "</a>" +
                                 "<div class=\"moive-btn\">" +
                                     "<div class=\"movies-detail movie-detail-strong movie-sale\">" +
-                                        "<a class=\"active\" onclick=\"addConfirm("+ obj.data[i].movie_id +")\" target=\"_blank\" data-act=\"salePlayingMovie-click\" data-val=\"\">修改</a>" +
+                                        "<a class=\"active\" onclick=\"addConfirm("+ obj.data[i].movie_id +")\" target=\"_blank\" data-act=\"salePlayingMovie-click\" data-val=\"\">Modifiy</a>" +
                                     "</div>" +
                                     "<div class=\"movies-detail movie-detail-strong movie-sale\">" +
                                         "<span id=\"deleteId\" style=\"display:none;\">${u.id}</span>" +
-                                        "<a class=\"active\" onclick=\"deleteConfirm("+ obj.data[i].movie_id +")\" data-act=\"salePlayingMovie-click\" id=\"delete\">下架</a>" +
+                                        "<a class=\"active\" onclick=\"deleteConfirm("+ obj.data[i].movie_id +")\" data-act=\"salePlayingMovie-click\" id=\"delete\">Drop Off</a>" +
                                     "</div>" +
                                 "</div>" +
                             "</div>" +
@@ -1309,7 +1309,7 @@
                         ,{field:'order_schedule',title:'Movie',width:240,unresize:true,templet:'<div>{{d.order_schedule.schedule_movie.movie_cn_name}}</div>'}
                         ,{field:'order_schedule', title:'Hall', width:100, unresize: true, templet:'<div>{{d.order_schedule.schedule_hall.hall_name}}</div>'}
                         ,{field:'order_schedule',title:'Theater',width:240,unresize:true,templet:'<div>{{d.order_schedule.schedule_hall.hall_cinema.cinema_name}}</div>'}
-                        ,{field:'order_state',title:'Order Status',width:100,unresize:true,align:'center',templet:function(d){if(d.order_state == 1) return '<div style="color:#337ab7">完成</div>';else if(d.order_state == 0) return '<div style="color:#ef4238">申请退票</div>';else return '<div style="color:#5cb85c">已退票</div>';}}
+                        ,{field:'order_state',title:'Order Status',width:100,unresize:true,align:'center',templet:function(d){if(d.order_state == 1) return '<div style="color:#337ab7">Completed</div>';else if(d.order_state == 0) return '<div style="color:#ef4238">Request for refund</div>';else return '<div style="color:#5cb85c">Refunded</div>';}}
                         ,{title:'Command', width:100, unresize: true, align:'center', toolbar: '#ticketbar'}
                     ]]
                     ,page: {layout: ['limit', 'count', 'prev', 'page', 'next', 'skip'] //自定义分页布局
