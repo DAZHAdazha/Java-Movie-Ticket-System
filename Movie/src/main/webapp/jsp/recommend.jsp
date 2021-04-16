@@ -20,7 +20,7 @@
 
     <script src="../static/layui/layui.js" charset="utf-8"></script>
     <link rel="stylesheet" href="../static/layui/css/layui.css" media="all">
-    <title>Tao Tao Search Page</title>
+    <title>Tao Tao Recommend Page</title>
 </head>
 <body>
     <!-- ------------------------------------------------------------------- -->

@@ -33,6 +33,24 @@
                         <li class="active"><a href="./movieList.jsp">Movie</a></li>
 
                         <li><a href="./manage.jsp">Manage</a></li>
+
+                        <script>
+                            function recommend(){
+                                var user = localStorage.getItem("userJson");
+                                user = eval('(' + user + ')');
+                                var userId;
+                                if(user!=null){
+                                    userId = user.user_id;
+                                }
+                                else{
+                                    userId = 7;
+                                }
+                                window.location.replace("../search/recommend?userId=" + userId);
+
+                            }
+                        </script>
+
+                        <li><a style="cursor: pointer" onclick="recommend()" >Try?</a></li>
                     </ul>
                 </div>
 
