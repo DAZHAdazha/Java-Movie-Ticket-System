@@ -63,7 +63,6 @@ public class RecommendServiceImp implements IRecommendService {
         for (String recentStar : recentStars) {
             for (String currentStar : currentStars) {
                 if(recentStar.split(":")[0].equals(currentStar.split(":")[0])){
-                    System.out.println(currentStar + "hit!");
                     return true;
                 }
             }
@@ -75,7 +74,6 @@ public class RecommendServiceImp implements IRecommendService {
         String recentDirector = recent.getMovie_director();
         String currentDirector = current.getMovie_director();
         if(recentDirector.equals(currentDirector)){
-            System.out.println(currentDirector + "hit!");
             return true;
         }
         return false;
@@ -87,7 +85,7 @@ public class RecommendServiceImp implements IRecommendService {
         for(int i=0;i<count && i<=recommendList.size();i++){
             newList.addLast(recommendList.get(i));
         }
-        Collections.sort(newList);
+//        Collections.sort(newList);
         return newList;
     }
     @Override
