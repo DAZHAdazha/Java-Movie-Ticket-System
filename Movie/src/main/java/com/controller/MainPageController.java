@@ -8,6 +8,7 @@ import com.itextpdf.text.DocumentException;
 import com.mapper.UserMapper;
 import com.service.ICinemaService;
 import com.service.IMovieService;
+import com.service.IRecommendService;
 import com.service.IUserService;
 import com.service.imp.UserServiceImp;
 import com.util.CheckCodeUtil;
@@ -36,6 +37,8 @@ public class MainPageController {
     private ICinemaService cinemaService;
     @Resource
     private IUserService userService;
+    @Resource
+    private IRecommendService recommendService;
 
     @RequestMapping("all")
     @ResponseBody
@@ -71,7 +74,7 @@ public class MainPageController {
     public void recommend(@RequestParam("userId") long userId, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         User user = userService.findUserById(userId);
         JSONObject obj = new JSONObject();
-        LinkedList<Movie> list = Recommend.returnMovies(user);
+        LinkedList<Movie> list = recommendService.returnMovies(user);
 
         obj.put("code", 0);
         obj.put("count", list.size());

@@ -8,46 +8,42 @@ import com.mapper.MovieMapper;
 import com.mapper.OrderMapper;
 import com.mapper.ScheduleMapper;
 import com.mapper.UserMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.stereotype.Service;
 
 import java.util.*;
 
-
+@Service
 public class Recommend {
+    @Autowired
     private  UserMapper userMapper;
+    @Autowired
     private  MovieMapper movieMapper;
+    @Autowired
     private  OrderMapper orderMapper;
+    @Autowired
     private  ScheduleMapper scheduleMapper;
 
 
     public User getUser(){
-        ApplicationContext app = new ClassPathXmlApplicationContext("spring.xml");
-        userMapper = app.getBean(UserMapper.class);
         return userMapper.findUserById(6);
     }
 
     public List<Movie> getMovieList(){
-        ApplicationContext app = new ClassPathXmlApplicationContext("spring.xml");
-        movieMapper = app.getBean(MovieMapper.class);
         return movieMapper.findAllMovies(1);
     }
 
     public List<Order> getRecentMovieList(String username){
-        ApplicationContext app = new ClassPathXmlApplicationContext("spring.xml");
-        orderMapper = app.getBean(OrderMapper.class);
         return orderMapper.findOrdersByUserName(username);
     }
 
     public Movie getMovieById(long id){
-        ApplicationContext app = new ClassPathXmlApplicationContext("spring.xml");
-        movieMapper = app.getBean(MovieMapper.class);
         return movieMapper.findMovieById(id);
     }
 
     public Schedule getScheduleById(long id){
-        ApplicationContext app = new ClassPathXmlApplicationContext("spring.xml");
-        scheduleMapper = app.getBean(ScheduleMapper.class);
         return scheduleMapper.findScheduleById(id);
     }
 
@@ -100,7 +96,8 @@ public class Recommend {
 
     public static LinkedList<Movie> returnMovies(User user){
         Recommend recommend = new Recommend();
-//        User user = recommend.getUser();
+//        user = recommend.getUser();
+//        System.out.println(user.getUser_id());
         List<Movie> movieList = recommend.getMovieList();
         List<Order> recentOrderList = recommend.getRecentMovieList(user.getUser_name());
         Movie recentMovie = null;
