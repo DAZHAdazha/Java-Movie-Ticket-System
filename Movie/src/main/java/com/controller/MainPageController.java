@@ -5,8 +5,11 @@ import com.entity.Cinema;
 import com.entity.Movie;
 import com.entity.User;
 import com.itextpdf.text.DocumentException;
+import com.mapper.UserMapper;
 import com.service.ICinemaService;
 import com.service.IMovieService;
+import com.service.IUserService;
+import com.service.imp.UserServiceImp;
 import com.util.CheckCodeUtil;
 import com.util.PDF;
 import com.util.Recommend;
@@ -31,6 +34,8 @@ public class MainPageController {
     private IMovieService movieService;
     @Resource
     private ICinemaService cinemaService;
+    @Resource
+    private IUserService userService;
 
     @RequestMapping("all")
     @ResponseBody
@@ -63,8 +68,8 @@ public class MainPageController {
 
     @RequestMapping("recommend")
     @ResponseBody
-    public void recommend(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        User user = (User)request.getSession().getAttribute("user");
+    public void recommend(@RequestParam("userId") long userId, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        User user = userService.findUserById(userId);
         JSONObject obj = new JSONObject();
         LinkedList<Movie> list = Recommend.returnMovies(user);
 
