@@ -181,6 +181,7 @@
                 if(second==0 && minute==0){
                     window.alert("Overtime order!!");
                     localStorage.clear();
+                    window.location.replace("./mainPage.jsp");
                 }
                 if((localStorage.second == "NaN") || (localStorage.second == 0 && localStorage.minute == 0))
                 {
