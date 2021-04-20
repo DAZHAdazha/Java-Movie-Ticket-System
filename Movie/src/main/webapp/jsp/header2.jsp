@@ -54,7 +54,7 @@
                 </div>
 
                 <div class="app-download" style="margin-left: -200px">
-                    <a target="_blank" href="http://192.168.1.106:8080/jsp/getApp.jsp">
+                    <a target="_blank" href="http://localhost:8080/jsp/getApp.jsp">
                         <span class="apptext">APP</span>
                         <span class="caret"></span>
                         <div class="download-icon">

@@ -367,7 +367,7 @@
             <div class="line pngfix"></div>
             <div class="download">
 
-                <a class="android pngfix" href="http://192.168.1.106:8080/App/movie.apk" onclick="_gaq.push(['_trackEvent', 'InnerLink', 'Click', 'web/download/android'])">
+                <a class="android pngfix" href="http://localhost:8080/App/movie.apk" onclick="_gaq.push(['_trackEvent', 'InnerLink', 'Click', 'web/download/android'])">
                 </a>
                 <a class="qrcode pngfix" href="javascript:;"></a>
                 <div class="line pngfix"></div>
