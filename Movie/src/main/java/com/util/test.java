@@ -1,5 +1,6 @@
 package com.util;
 
+import redis.clients.jedis.*;
 import java.awt.image.BufferedImage;
 import java.io.Console;
 import java.io.File;

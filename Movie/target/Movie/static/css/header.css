@@ -65,12 +65,91 @@
 	color: #fff;
 	background-color: #ef4238;
 }
-.header .app-download{
-	float: left;
-	background: url("../images/app.jpg");
-	width: 162px;
+.app-download {
+	float: right;
+	width: 132px;
 	height: 80px;
-}  
+	margin-right: 10px;
+	position: relative;
+}
+.app-download a {
+	cursor: pointer;
+	text-decoration: none;
+	display: block;
+	padding-top: 28px;
+	padding-left: 14px;
+	width: 100%;
+	height: 100%;
+	box-sizing: border-box;
+	border-left: 1px solid transparent;
+	border-right: 1px solid transparent;
+}
+.app-download a .iphone-icon {
+	float: left;
+	display: inline-block;
+	width: 15px;
+	height: 24px;
+	background-size: cover;
+}
+.app-download a .apptext {
+	float: left;
+	display: inline-block;
+	font-size: 16px;
+	color: #000;
+	height: 24px;
+	line-height: 24px;
+	margin: 0 7px;
+}
+
+.app-download a .caret {
+	display: inline-block;
+	width: 0;
+	height: 0;
+	margin-left: 2px;
+	vertical-align: middle;
+	border-top: 5px solid #666;
+	border-right: 5px solid transparent;
+	border-left: 5px solid transparent;
+	-webkit-transition: all .2s ease;
+	transition: all .2s ease;
+	transition-property: all;
+	transition-duration: 0.2s;
+	transition-timing-function: ease;
+	transition-delay: 0s;
+	float: left;
+	position: relative;
+	top: 8px;
+}
+.app-download a .download-icon {
+	display: none;
+	width: 130px;
+	height: 165px;
+	position: absolute;
+	left: 0;
+	top: 80px;
+	background-color: #fff;
+	background-image: url(../../App/APP.png);
+	background-position: 24px 14px;
+	background-size: 82px 82px;
+	background-repeat: no-repeat;
+	border: 1px solid #dcd4d7;
+	border-top: 0;
+}
+
+.app-download a:hover .download-icon {
+	display: block;
+}
+.app-download a .download-icon .down-title {
+	margin-top: 115px;
+	margin-bottom: 3px;
+	color: #000;
+}
+.app-download a .download-icon p {
+	text-align: center;
+	font-size: 14px;
+	color: #999;
+	margin: 0;
+}
 .header form{
 	width: 260px;
 	height: 40px;
