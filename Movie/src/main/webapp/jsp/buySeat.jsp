@@ -15,6 +15,7 @@
     <link rel="stylesheet" type="text/css" href="../static/css/header.css">
     <link rel="stylesheet" type="text/css" href="../static/css/buySeat.css">
     <link rel="stylesheet" type="text/css" href="../static/css/footer.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/pay.css">
     <script src="../static/js/header.js" charset="utf-8"></script>
     <script src="../static/js/Api.js"></script>
 
@@ -32,6 +33,16 @@
 
     <!-- 主体 -->
     <div class="container">
+
+        <div class="count-down-wrapper">
+            <div class="count-down">
+                <p class="time-left">
+                    Please complete the seat-picking in <span class="minute"></span> minutes and <span class="second"></span> seconds
+                </p>
+                <p class="tip">The overtime order will be cancelled automatically</p>
+            </div>
+        </div>
+
         <div class="order-progress-bar">
             <div class="step first done">
                 <span class="step-num">1</span>
@@ -135,6 +146,39 @@
             initHeader();
             initEmail(); //邮箱
             initInformation(); //信息
+            timeDown();
+        }
+
+        function timeDown(){
+            var timeMinute = $(".minute");
+            var timeSecond = $(".second");
+            var minute;
+            var second;
+            timeMinute.text(localStorage.seatMinute);
+            timeSecond.text(localStorage.seatSecond);
+            setInterval(function(){
+                if(second==0 && minute==0){
+                    window.alert("Overtime order!!");
+                    localStorage.clear();
+                    window.location.replace("./mainPage.jsp");
+                }
+                if((localStorage.seatSecond == "NaN") || (localStorage.seatSecond == 0 && localStorage.seatMinute == 0))
+                {
+                    localStorage.seatMinute = 1;
+                    localStorage.seatSecond = 59;
+                }
+                second = localStorage.seatSecond;
+                minute = localStorage.seatMinute;
+                if(second==0){
+                    minute--;
+                    second = 60;
+                }
+                second--;
+                timeMinute.text(minute);
+                timeSecond.text(second);
+                localStorage.seatSecond = second;
+                localStorage.seatMinute = minute;
+            },1000);
         }
 
         //初始化邮箱
