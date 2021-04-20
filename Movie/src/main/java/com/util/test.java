@@ -182,7 +182,7 @@ public class test {
 
 	@Test
 	public void testQR() throws IOException {
-		BufferedImage image= QrcodeGenerator.encode("123",350,350);
+		BufferedImage image= QrcodeGenerator.encode("http://192.168.1.106:8080/jsp/getApp.jsp",350,350);
 		File file =new File("QRImage");
 		ImageIO.write(image, "png",file);
 	}

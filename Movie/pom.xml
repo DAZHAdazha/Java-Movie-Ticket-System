@@ -3,9 +3,12 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.movie</groupId>
   <artifactId>Movie</artifactId>
-  <packaging>war</packaging>
+  <packaging>pom</packaging>
   <version>0.0.1-SNAPSHOT</version>
-  <name>Movie Maven Webapp</name>
+    <modules>
+        <module>DLApp</module>
+    </modules>
+    <name>Movie Maven Webapp</name>
   <url>http://maven.apache.org</url>
   <dependencies>
     <dependency>
