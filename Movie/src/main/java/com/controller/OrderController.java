@@ -22,6 +22,7 @@ import com.github.pagehelper.PageInfo;
 import com.service.IMovieService;
 import com.service.IOrderService;
 import com.service.IScheduleService;
+import redis.clients.jedis.Jedis;
 
 @Controller
 @RequestMapping("/order")
@@ -229,6 +230,10 @@ public class OrderController {
 				obj.put("msg", "Buy ticket failed");
 			}
 		}
+		Jedis jedis = new Jedis();
+		String key = schedule_id + "-" + "i" +"-" + "j";
+		jedis.del(key);
+		jedis.close();
 		return obj;
 	}
 

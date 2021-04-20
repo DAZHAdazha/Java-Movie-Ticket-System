@@ -22,6 +22,7 @@ import com.service.ICinemaService;
 import com.service.IHallService;
 import com.service.IMovieService;
 import com.service.IScheduleService;
+import redis.clients.jedis.Jedis;
 
 @Controller
 @RequestMapping("/schedule")
@@ -42,6 +43,12 @@ public class ScheduleController {
 		Schedule schedule = scheduleService.findScheduleById(schedule_id);
 		obj.put("code", 0);
 		obj.put("data",schedule);
+
+		Jedis jedis = new Jedis();
+		String key = schedule_id + "-" + "i" +"-" + "j";
+		jedis.setex(key,60*15,"userId");
+		jedis.close();
+
 		return obj;
 	}
 	

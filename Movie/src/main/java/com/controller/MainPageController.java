@@ -18,6 +18,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import redis.clients.jedis.Jedis;
 
 import javax.annotation.Resource;
 import javax.servlet.ServletException;
@@ -81,6 +82,42 @@ public class MainPageController {
         obj.put("data", list);
         request.setAttribute("searchObj",obj);
         request.getRequestDispatcher("../jsp/recommend.jsp").forward(request,response);
+    }
+
+    @RequestMapping("myRedis")
+    @ResponseBody
+    public String myRedis(@RequestParam("scheduleId") int scheduleId,@RequestParam("i") int i,@RequestParam("j") int j, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        System.out.println(i);
+        System.out.println(j);
+        System.out.println(scheduleId);
+
+        //1.获取链接 默认6379端口
+        Jedis jedis = new Jedis("localhost",6379);
+        //2.操作
+        String key = String.valueOf(scheduleId) + "-" +  String.valueOf(i) + "-" + String.valueOf(j);
+
+
+        String seat = jedis.get(key);
+        System.out.println(seat);
+
+        if(seat!=null){
+            jedis.close();
+            if(seat.equals("userId")){
+                // cancel seat
+                jedis.del(key);
+                return "cancel";
+            }
+            //seat had been taken
+            return "no";
+        } else {
+            jedis.setex(key,120,"userId");
+            jedis.close();
+            //seat available
+            return "yes";
+        }
+
+        //3.关闭链接
+
     }
 
     @RequestMapping("checkCode")

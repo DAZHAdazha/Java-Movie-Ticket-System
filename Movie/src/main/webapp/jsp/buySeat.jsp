@@ -190,6 +190,34 @@
 
         //点击具体座位事件  
         function buySeat(i,j){
+
+            $.ajax({
+                type:'post',
+                url: "../search/myRedis",
+                dataType:'json',
+                data: {
+                    i:i,
+                    j:j,
+                    scheduleId:schedule_id
+                },
+                success:function (obj) {
+                    alert(obj);
+
+                    if(obj=="no"){
+                        //seat had been taken
+
+                    } else if(obj=="yes"){
+                        //seat available
+
+                    } else if(obj == "cancel"){
+
+                    }
+
+                }
+            });
+
+
+
             var row = $(".seats-wrapper").find(".row")[i].children[j];
             var flag = 0;
             var NoTicket = $(".no-ticket")[0];
