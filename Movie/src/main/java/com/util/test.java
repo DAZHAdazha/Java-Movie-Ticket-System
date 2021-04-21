@@ -50,6 +50,7 @@ public class test {
 	private CinemaMapper cinemaMapper;
 	private MovieMapper movieMapper;
 	private CardMapper cardMapper;
+	private Zedis zedis;
 
 	public static void main(String[] args) {
 //		Date date = new Date();
@@ -237,5 +238,27 @@ public class test {
 		ApplicationContext app = new ClassPathXmlApplicationContext("spring.xml");
 		cardMapper = app.getBean(CardMapper.class);
 		cardMapper.setMoney(47,120);
+	}
+
+	@Test
+	public void testZedis(){
+		ApplicationContext app = new ClassPathXmlApplicationContext("spring.xml");
+		zedis = app.getBean(Zedis.class);
+		System.out.println(zedis.get("123"));
+		zedis.set("name",29);
+		System.out.println(zedis.get("name"));
+		zedis.set("name",60);
+		System.out.println(zedis.all());
+		zedis.remove("name");
+		System.out.println(zedis.get("name"));
+		zedis.set("time",5);
+		System.out.println(zedis.get("time"));
+		zedis.setTime("time",5);
+		try {
+			Thread.sleep(5*1000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		System.out.println(zedis.get("time"));
 	}
 }

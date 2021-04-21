@@ -53,6 +53,18 @@
                     </ul>
                 </div>
 
+                <div class="app-download" style="margin-left: -200px">
+                    <a target="_blank" href="http://localhost:8080/jsp/getApp.jsp">
+                        <span class="apptext">APP</span>
+                        <span class="caret"></span>
+                        <div class="download-icon">
+                            <p class="down-title">扫码下载APP</p>
+                            <p class="down-content">选座更优惠</p>
+                        </div>
+                    </a>
+
+                </div>
+
                 <div class="user-info">
                 <div class="user-avatar J-login">
                     <ul class="layui-nav" style="background-color: #fff;">

@@ -22,20 +22,22 @@ public class Client {
 
     public void connect() {
         try {
-            Socket socket = new Socket("localhost", 8888);
-            BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-            PrintWriter writer = new PrintWriter(socket.getOutputStream(), true);
             Scanner in = new Scanner(System.in);
-            String command = in.nextLine();
-            writer.println(command);
-            if (command.split(" ")[0].compareTo("get") == 0) {
-                String msg = reader.readLine();
-                if (msg.compareTo("B") == 0) {
-                    for(msg = reader.readLine(); msg.compareTo("E") != 0; msg = reader.readLine()) {
+            while (true){
+                Socket socket = new Socket("localhost", 8888);
+                BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+                PrintWriter writer = new PrintWriter(socket.getOutputStream(), true);
+                String command = in.nextLine();
+                writer.println(command);
+                if (command.split(" ")[0].compareTo("get") == 0) {
+                    String msg = reader.readLine();
+                    if (msg.compareTo("B") == 0) {
+                        for(msg = reader.readLine(); msg.compareTo("E") != 0; msg = reader.readLine()) {
+                            System.out.println(msg);
+                        }
+                    } else {
                         System.out.println(msg);
                     }
-                } else {
-                    System.out.println(msg);
                 }
             }
         } catch (IOException var7) {

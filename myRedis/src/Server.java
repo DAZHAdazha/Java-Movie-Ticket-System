@@ -32,52 +32,51 @@ public class Server {
         try {
             this.serverSocket = new ServerSocket(this.port);
             this.locked = new HashMap();
-
-            while(true) {
                 while(true) {
                     try {
                         Socket socket = this.serverSocket.accept();
+                        System.out.println(socket.getInetAddress()+" connect");
                         BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
                         PrintWriter writer = new PrintWriter(socket.getOutputStream(), true);
-                        String command = reader.readLine();
-                        String[] args = command.split(" ");
-                        if (args[0].compareTo("get") != 0) {
-                            if (args[0].compareTo("set") == 0) {
-                                this.set(args[1], args[2]);
-                            } else if (args[0].compareTo("time") == 0) {
-                                int seconds = Integer.parseInt(args[2]);
-                                this.setTimeout(args[1], seconds);
-                            } else if (args[0].compareTo("remove") == 0) {
-                                this.remove(args[1]);
-                            }
-                        } else {
-                            String key = args[1];
-                            if (key.compareTo("*") != 0) {
-                                writer.println(this.get(key));
+                        while (true){
+                            String command = reader.readLine();
+                            String[] args = command.split(" ");
+                            if (args[0].compareTo("get") != 0) {
+                                if (args[0].compareTo("set") == 0) {
+                                    this.set(args[1], args[2]);
+                                } else if (args[0].compareTo("time") == 0) {
+                                    int seconds = Integer.parseInt(args[2]);
+                                    this.setTimeout(args[1], seconds);
+                                } else if (args[0].compareTo("remove") == 0) {
+                                    this.remove(args[1]);
+                                } else if (args[0].compareTo("clean")==0){
+                                    this.clean();
+                                }
                             } else {
-                                Set<String> keySet = this.locked.keySet();
-                                writer.println("B");
-                                Iterator var8 = keySet.iterator();
+                                String key = args[1];
+                                if (key.compareTo("*") != 0) {
+                                    writer.println(this.get(key));
+                                } else {
+                                    Set<String> keySet = this.locked.keySet();
+                                    writer.println("B");
+                                    Iterator var8 = keySet.iterator();
+                                    while(var8.hasNext()) {
+                                        String k = (String)var8.next();
+                                        writer.println(k + " " + (String)this.locked.get(k));
+                                    }
 
-                                while(var8.hasNext()) {
-                                    String k = (String)var8.next();
-                                    writer.println(k + " " + (String)this.locked.get(k));
+                                    if (keySet.size() == 0) {
+                                        writer.println("null");
+                                    }
+
+                                    writer.println("E");
                                 }
-
-                                if (keySet.size() == 0) {
-                                    writer.println("null");
-                                }
-
-                                writer.println("E");
                             }
                         }
-
-                        socket.close();
                     } catch (Exception var10) {
                         var10.printStackTrace();
                     }
                 }
-            }
         } catch (IOException var11) {
             var11.printStackTrace();
         }
@@ -102,6 +101,10 @@ public class Server {
 
     public void remove(String key) {
         this.locked.remove(key);
+    }
+
+    public void clean(){
+        locked.clear();
     }
 
     public static void main(String[] args) {
