@@ -166,7 +166,7 @@
                 }
                 if((localStorage.seatSecond == "NaN") || (localStorage.seatSecond == 0 && localStorage.seatMinute == 0))
                 {
-                    localStorage.seatMinute = 1;
+                    localStorage.seatMinute = 4;
                     localStorage.seatSecond = 59;
                 }
                 second = localStorage.seatSecond;
