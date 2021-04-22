@@ -193,7 +193,7 @@
 
             $.ajax({
                 type:'post',
-                url: "../search/myRedis",
+                url: "../search/myZedis",
                 dataType:'json',
                 data: {
                     i:i,

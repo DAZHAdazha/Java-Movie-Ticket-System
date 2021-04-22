@@ -14,6 +14,8 @@ import com.service.imp.UserServiceImp;
 import com.util.CheckCodeUtil;
 import com.util.PDF;
 import com.util.Recommend;
+import com.util.Zedis;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -40,6 +42,8 @@ public class MainPageController {
     private IUserService userService;
     @Resource
     private IRecommendService recommendService;
+    @Autowired
+    private Zedis zedis;
 
     @RequestMapping("all")
     @ResponseBody
@@ -154,6 +158,44 @@ public class MainPageController {
 
 
         response.sendRedirect("../upload/movies/ticket.pdf");
+
+    }
+
+    @RequestMapping("myZedis")
+    @ResponseBody
+    public String myZedis(@RequestParam("scheduleId") int scheduleId,@RequestParam("i") int i,@RequestParam("j") int j, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        System.out.println(i);
+        System.out.println(j);
+        System.out.println(scheduleId);
+
+        //1.连接
+        zedis.connect();
+
+        //2.操作
+        String key = String.valueOf(scheduleId) + "-" +  String.valueOf(i) + "-" + String.valueOf(j);
+        System.out.println(key);
+        System.out.println(zedis.get(key));
+        String seat = zedis.get(key);
+        System.out.println("1");
+        if(seat!=null){
+            if(seat.equals("userId")){
+                // cancel seat
+                zedis.remove(key);
+                zedis.close();
+                return "cancel";
+            }
+            zedis.close();
+            //seat had been taken
+            return "no";
+        } else {
+            zedis.set(key,123);
+            zedis.setTime(key,120);
+            zedis.close();
+            //seat available
+            return "yes";
+        }
+
+        //3.关闭链接
 
     }
 
