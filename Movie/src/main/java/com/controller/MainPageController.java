@@ -126,22 +126,17 @@ public class MainPageController {
 
     @RequestMapping("myZedis")
     @ResponseBody
-    public String myZedis(@RequestParam("scheduleId") int scheduleId,@RequestParam("i") int i,@RequestParam("j") int j, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println(i);
-        System.out.println(j);
-        System.out.println(scheduleId);
+    public String myZedis(@RequestParam("scheduleId") int scheduleId,@RequestParam("i") int i,@RequestParam("j") int j, @RequestParam("user_id")int user_id ,HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         //1.连接
         zedis.connect();
 
         //2.操作
         String key = String.valueOf(scheduleId) + "-" +  String.valueOf(i) + "-" + String.valueOf(j);
-        System.out.println(key);
         System.out.println(zedis.get(key));
         String seat = zedis.get(key);
-        System.out.println("1");
         if(seat!=null){
-            if(seat.equals("userId")){
+            if(seat.compareTo(String.valueOf(user_id))==0){
                 // cancel seat
                 zedis.remove(key);
                 zedis.close();
@@ -151,7 +146,7 @@ public class MainPageController {
             //seat had been taken
             return "no";
         } else {
-            zedis.set(key,123);
+            zedis.set(key,user_id);
             zedis.setTime(key,120);
             zedis.close();
             //seat available

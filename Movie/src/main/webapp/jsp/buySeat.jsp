@@ -141,6 +141,8 @@
         var TempLength;
         var TempSeat = "";
         var Seatrow = [], Seatcol = [];
+        var user = localStorage.getItem("userJson");
+        user = eval('(' + user + ')');
 
         window.onload = function(){
             initHeader();
@@ -198,7 +200,8 @@
                 data: {
                     i:i,
                     j:j,
-                    scheduleId:schedule_id
+                    scheduleId:schedule_id,
+                    user_id:user.user_id
                 },
                 success:function (obj) {
                     alert(obj);
@@ -384,6 +387,7 @@
             json.TicketSeat = TicketSeat;
             json.price = price;
             localStorage.setItem("order",JSON.stringify(json));
+            console.log(json);
             window.location.href="./pay.jsp";
            // window.location.href="./pay.jsp?schedule_id=" + schedule_id + "&TicketSeat=" + TicketSeat + "&price=" + price;
         }
