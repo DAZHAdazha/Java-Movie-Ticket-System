@@ -204,16 +204,58 @@
                     user_id:user.user_id
                 },
                 success:function (obj) {
-                    alert(obj);
+
 
                     if(obj=="no"){
                         //seat had been taken
+                        alert("This seat had been taken by others, please choose another");
 
-                    } else if(obj=="yes"){
-                        //seat available
-
-                    } else if(obj == "cancel"){
-
+                    } else {
+                        var row = $(".seats-wrapper").find(".row")[i].children[j];
+                        var flag = 0;
+                        var NoTicket = $(".no-ticket")[0];
+                        var HasTicket = $(".has-ticket")[0];
+                        var Ticket = $(".has-ticket").find(".ticket-container");
+                        var TicketRemove;
+                        var TicketPrice = $(".price");
+                        var ConfirmBtn = $(".confirm-btn")[0];
+                        //座位不能大于四
+                        if((SeatMax>3) && (row.className == "seat selectable")){
+                            layui.use(['layer'], function(){
+                                var layer = layui.layer;
+                                layer.alert('once four seats at most',{icon: 0,offset: clientHeight/5},
+                                    function (){
+                                        layer.closeAll();
+                                    }
+                                );
+                            });
+                        }
+                        //确定
+                        if((SeatMax<4) && (row.className == "seat selectable")){
+                            row.className = "seat selected";
+                            SeatMax++;
+                            flag = 1;
+                            Ticket.append("<span class=\"ticket\" data-index=\"" + (i+1) + "-" + (j+1) + "\">" + (i+1) + "排" + (j+1) + "座</span>");
+                            TicketPrice.text("￥"+PriceTemp*SeatMax);
+                        }
+                        //取消
+                        if((row.className == "seat selected") && (flag==0)){
+                            TicketRemove = $("[data-index=" + (i+1) + "-" + (j+1) + "]");
+                            row.className = "seat selectable";
+                            SeatMax--;
+                            TicketRemove[0].remove();
+                            TicketPrice.text("￥"+PriceTemp*SeatMax);
+                        }
+                        if(SeatMax==0){
+                            NoTicket.style.display = "block";
+                            HasTicket.style.display = "none";
+                            ConfirmBtn.className = "confirm-btn disable";
+                        }
+                        else{
+                            NoTicket.style.display = "none";
+                            HasTicket.style.display = "block";
+                            ConfirmBtn.className = "confirm-btn";
+                        }
                     }
 
                 }
@@ -221,51 +263,7 @@
 
 
 
-            var row = $(".seats-wrapper").find(".row")[i].children[j];
-            var flag = 0;
-            var NoTicket = $(".no-ticket")[0];
-            var HasTicket = $(".has-ticket")[0];
-            var Ticket = $(".has-ticket").find(".ticket-container");
-            var TicketRemove;
-            var TicketPrice = $(".price");
-            var ConfirmBtn = $(".confirm-btn")[0];
-            //座位不能大于四
-            if((SeatMax>3) && (row.className == "seat selectable")){
-                layui.use(['layer'], function(){
-                var layer = layui.layer;
-                    layer.alert('once four seats at most',{icon: 0,offset: clientHeight/5},
-                        function (){
-                            layer.closeAll();
-                        }
-                    );
-                });
-            }
-            //确定
-            if((SeatMax<4) && (row.className == "seat selectable")){
-                row.className = "seat selected";
-                SeatMax++;
-                flag = 1;
-                Ticket.append("<span class=\"ticket\" data-index=\"" + (i+1) + "-" + (j+1) + "\">" + (i+1) + "排" + (j+1) + "座</span>");
-                TicketPrice.text("￥"+PriceTemp*SeatMax);
-            }
-            //取消
-            if((row.className == "seat selected") && (flag==0)){
-                TicketRemove = $("[data-index=" + (i+1) + "-" + (j+1) + "]");
-                row.className = "seat selectable";
-                SeatMax--;
-                TicketRemove[0].remove();
-                TicketPrice.text("￥"+PriceTemp*SeatMax);
-            }
-            if(SeatMax==0){
-                NoTicket.style.display = "block";
-                HasTicket.style.display = "none";
-                ConfirmBtn.className = "confirm-btn disable";
-            }
-            else{
-                NoTicket.style.display = "none";
-                HasTicket.style.display = "block";
-                ConfirmBtn.className = "confirm-btn";
-            }
+
         }
     
         //初始化信息
@@ -388,6 +386,16 @@
             json.price = price;
             localStorage.setItem("order",JSON.stringify(json));
             console.log(json);
+            $.ajax({
+                type:'post',
+                url: url + "/schedule/changeTime",
+                dataType:'json',
+                data: {
+                    schedule_id: schedule_id,
+                    seats:json,
+                    user_id: user.user_id
+                }
+            })
             window.location.href="./pay.jsp";
            // window.location.href="./pay.jsp?schedule_id=" + schedule_id + "&TicketSeat=" + TicketSeat + "&price=" + price;
         }
