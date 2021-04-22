@@ -388,6 +388,16 @@
             json.price = price;
             localStorage.setItem("order",JSON.stringify(json));
             console.log(json);
+            $.ajax({
+                type:'post',
+                url: url + "/schedule/changeTime",
+                dataType:'json',
+                data: {
+                    schedule_id: schedule_id,
+                    seats:json,
+                    user_id: user.user_id
+                }
+            })
             window.location.href="./pay.jsp";
            // window.location.href="./pay.jsp?schedule_id=" + schedule_id + "&TicketSeat=" + TicketSeat + "&price=" + price;
         }

@@ -157,4 +157,27 @@ public class MainPageController {
 
     }
 
+    @RequestMapping("changeTime")
+    @ResponseBody
+    public void myZedis(@RequestParam("scheduleId") int scheduleId,@RequestParam("seats")String[] seats, @RequestParam("user_id")int user_id ,HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        //1.连接
+        zedis.connect();
+
+        //清楚所有未选择的
+
+        for (int i=0;i<12;i++){
+            for (int j=0;j<12;j++){
+                String key = scheduleId + "-" + i+"-"+j;
+                if (zedis.get(key).compareTo(String.valueOf(user_id))==0)
+                    zedis.remove(key);
+            }
+        }
+        for (String seat:seats){
+            String key = scheduleId + "-" + seat.charAt(0) + "-" + seat.charAt(2);
+            zedis.set(key,user_id);
+            zedis.setTime(key,15*60);
+        }
+        zedis.close();
+    }
+
 }
