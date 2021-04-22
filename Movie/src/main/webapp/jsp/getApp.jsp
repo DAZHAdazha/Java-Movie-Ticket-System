@@ -367,7 +367,8 @@
             <div class="line pngfix"></div>
             <div class="download">
 
-                <a class="android pngfix" href="http://localhost:8080/App/movie.apk" onclick="_gaq.push(['_trackEvent', 'InnerLink', 'Click', 'web/download/android'])">
+<%--                <a class="android pngfix" href="http://localhost:8080/App/movie.apk" onclick="_gaq.push(['_trackEvent', 'InnerLink', 'Click', 'web/download/android'])">--%>
+                <a class="android pngfix" href="https://github.com/tqhtqhtqhgo/mobileMovie/releases/download/v1.1/TTMovie_v1.1.apk" onclick="_gaq.push(['_trackEvent', 'InnerLink', 'Click', 'web/download/android'])">
                 </a>
                 <a class="qrcode pngfix" href="javascript:;"></a>
                 <div class="line pngfix"></div>

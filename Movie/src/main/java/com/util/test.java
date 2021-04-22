@@ -183,8 +183,8 @@ public class test {
 
 	@Test
 	public void testQR() throws IOException {
-		BufferedImage image= QrcodeGenerator.encode("123",350,350);
-		File file =new File("QRImage");
+		BufferedImage image= QrcodeGenerator.encode("https://github.com/tqhtqhtqhgo/mobileMovie/releases/download/v1.1/TTMovie_v1.1.apk",350,350);
+		File file =new File("App.png");
 		ImageIO.write(image, "png",file);
 	}
 

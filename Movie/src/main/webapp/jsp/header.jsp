@@ -59,8 +59,7 @@
                         <span class="apptext">APP</span>
                         <span class="caret"></span>
                         <div class="download-icon">
-                            <p class="down-title">扫码下载APP</p>
-                            <p class="down-content">选座更优惠</p>
+                            <p class="down-title">Scan QR COde to Download</p>
                         </div>
                     </a>
                 </div>

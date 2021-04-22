@@ -122,15 +122,17 @@
 }
 .app-download a .download-icon {
 	display: none;
-	width: 130px;
-	height: 165px;
+	/*width: 130px;*/
+	/*height: 165px;	*/
+	width: 260px;
+	height: 330px;
 	position: absolute;
 	left: 0;
 	top: 80px;
 	background-color: #fff;
-	background-image: url(../../App/APP.png);
-	background-position: 24px 14px;
-	background-size: 82px 82px;
+	background-image: url(../../App/App.png);
+	background-position: 30px 14px;
+	background-size: 200px 200px;
 	background-repeat: no-repeat;
 	border: 1px solid #dcd4d7;
 	border-top: 0;
@@ -140,7 +142,7 @@
 	display: block;
 }
 .app-download a .download-icon .down-title {
-	margin-top: 115px;
+	margin-top: 215px;
 	margin-bottom: 3px;
 	color: #000;
 }
