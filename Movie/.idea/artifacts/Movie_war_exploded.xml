@@ -1,13 +1,6 @@
 <component name="ArtifactManager">
   <artifact type="exploded-war" name="Movie:war exploded">
-    <output-path>$PROJECT_DIR$/target/Movie</output-path>
-    <properties id="maven-jee-properties">
-      <options>
-        <exploded>true</exploded>
-        <module>Movie</module>
-        <packaging>war</packaging>
-      </options>
-    </properties>
+    <output-path>$PROJECT_DIR$/out/artifacts/Movie_war_exploded</output-path>
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
@@ -69,9 +62,7 @@
           <element id="library" level="project" name="Maven: com.itextpdf:itext-asian:5.2.0" />
         </element>
       </element>
-      <element id="directory" name="META-INF">
-        <element id="file-copy" path="$PROJECT_DIR$/target/Movie/META-INF/MANIFEST.MF" />
-      </element>
+      <element id="library" level="project" name="servlet-api" />
       <element id="javaee-facet-resources" facet="Movie/web/Web" />
     </root>
   </artifact>

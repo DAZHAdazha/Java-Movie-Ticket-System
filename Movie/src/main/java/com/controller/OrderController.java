@@ -56,7 +56,7 @@ public class OrderController {
 	@ResponseBody
 	public JSONObject findOrderByUserName(@RequestParam(value="page",defaultValue="1")Integer page,@RequestParam(value="limit",defaultValue="10")Integer limit,@RequestParam("user_name")String user_name, HttpServletRequest request) {
 		PageInfo<Order> info = orderService.findOrdersByUserName(page, limit, user_name);
-		String path = request.getServletContext().getRealPath("/upload/App.png/");
+		String path = request.getServletContext().getRealPath("/upload/QRImage/");
 		for(Order order:info.getList()){
 			order.setQRImage(path);
 		}
@@ -72,7 +72,7 @@ public class OrderController {
 	@RequestMapping("findRefundOrderByUser")
 	@ResponseBody
 	public JSONObject findRefundOrderByUser(@RequestParam("user_name")String user_name, HttpServletRequest request) {
-		String path = request.getServletContext().getRealPath("/upload/App.png/");
+		String path = request.getServletContext().getRealPath("/upload/QRImage/");
 		JSONObject obj = new JSONObject();
 		List<Order> list = this.orderService.findRefundOrderByUserName(user_name);
 		for (Order order:list){
@@ -88,7 +88,7 @@ public class OrderController {
 	@RequestMapping("findAllOrders")
 	@ResponseBody
 	public JSONObject findAllOrders(HttpServletRequest request) {
-		String path = request.getServletContext().getRealPath("/upload/App.png/");
+		String path = request.getServletContext().getRealPath("/upload/QRImage/");
 		JSONObject obj = new JSONObject();
 		List<Order> list = orderService.findAllOrders();
 		for (Order order:list){
@@ -105,7 +105,7 @@ public class OrderController {
 	@ResponseBody
 	public JSONObject findAllOrdersPage(@RequestParam(value="page",defaultValue="1")Integer page,@RequestParam(value="limit",defaultValue="10")Integer limit,String keyword, HttpServletRequest request) {
 		PageInfo<Order> info = orderService.findAllOrdersBySplitPage(page, limit, keyword);
-		String path = request.getServletContext().getRealPath("/upload/App.png/");
+		String path = request.getServletContext().getRealPath("/upload/QRImage/");
 		for(Order order:info.getList()){
 			order.setQRImage(path);
 		}
