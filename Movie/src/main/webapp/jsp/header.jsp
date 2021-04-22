@@ -63,7 +63,6 @@
                             <p class="down-content">选座更优惠</p>
                         </div>
                     </a>
-
                 </div>
 
                 <div class="user-info">
