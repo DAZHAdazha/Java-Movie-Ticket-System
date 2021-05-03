@@ -113,7 +113,7 @@ public class Order {
 			e.printStackTrace();
 		}
 
-		QRImage = "/upload/App.png/QR_" + order_id + ".png";
+		QRImage = "/upload/QRImage/QR_" + order_id + ".png";
 	}
 
 	public String getQRImage() {

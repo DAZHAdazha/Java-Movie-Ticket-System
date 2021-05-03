@@ -39,7 +39,7 @@ public class OrderController {
 	@RequestMapping("findOrderById")
 	@ResponseBody
 	public JSONObject findOrderById(@RequestParam("order_id")String order_id, HttpServletRequest request) {
-		String path = request.getServletContext().getRealPath("/upload/App.png/");
+		String path = request.getServletContext().getRealPath("/upload/QRImage/");
 		JSONObject obj = new JSONObject();
 		Order order = orderService.findOrderById(order_id);
 		order.setQRImage(path);
