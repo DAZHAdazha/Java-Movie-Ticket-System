@@ -117,16 +117,29 @@ the website and using same data layer.
 
 **API Funtures**
 /api/getPhoneCode Get the SMS code for log in
+
 /api/captcha Generate the captcha for the sign in and sign up
+
 /api/phoneLogin Using SMS login
+
 /api/pwdLogin Using password and user name to log in
+
 /api/getUserInfo Get user information for the current user.
+
 /api/updateUserAvatar Update user avatar
+
 /api/updateUserName Update user name
+
 /api/updateUserPwd Change account's password
+
 /api/getMovieList Get local cinema movies' information
+
 /api/getMovieDetail Loading film's information
+
 /api/getUserComment Get a movie's comment.
-/api/getCurrentCinemaDetail Loading a cinema's information
+
+/api/getCurrentCinemaDetail Loading a cinema's information.
+
 /api/getScheduleById Get a detail of a movie's schedule.
+
 /api/order Submit a order
